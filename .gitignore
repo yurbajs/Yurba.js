@@ -1,0 +1,19 @@
+# Packages
+node_modules
+package-lock.json
+
+# Env
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yurba.log
+
+
+# Runtime data
+tests
+
+# -
+src

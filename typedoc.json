@@ -1,0 +1,15 @@
+{
+    "entryPoints": ["src"],  
+    "out": "docs",  
+    "name": "Yurba.js Documentation",
+    "includeVersion": true,  
+    "tsconfig": "tsconfig.json",  
+    "excludePrivate": true,  
+    "excludeProtected": true,  
+    "excludeExternals": true,  
+    "hideGenerator": true,  
+    "exclude": ["lib", "lib/types"],  
+    "readme": "README.md",  
+    "theme": "default"
+  }
+  

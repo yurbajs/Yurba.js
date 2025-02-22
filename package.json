@@ -1,0 +1,42 @@
+{
+  "name": "yurbacli",
+  "version": "0.0.0",
+  "description": "Yurba Bot Library",
+  "main": "./lib/index.js",
+  "types": "./lib/types/index.d.ts",
+  "scripts": {
+    "test": "node --trace-warnings  tests/test.js",
+    "build": "tsc",
+    "docs": "typedoc",
+    "dev": "node --trace-warnings --watch lib/index.js",
+    "dev-test": "tsc && node --trace-warnings tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rastgame/yurbacli.git"
+  },
+  "keywords": [
+    "yurba",
+    "api",
+    "bot",
+    "node",
+    "yurbaapp",
+    "yurbaone"
+  ],
+  "author": "rastgame",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rastgame/yurbacli/issues"
+  },
+  "homepage": "https://github.com/rastgame/yurbacli#readme",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/ws": "^8.5.13",
+    "dotenv": "^16.4.7",
+    "typedoc": "^0.27.7"
+  }
+}
