@@ -1,19 +1,21 @@
 {
-  "name": "yurbacli",
+  "name": "yurba.js",
   "version": "0.0.0",
   "description": "Yurba Bot Library",
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
   "scripts": {
-    "test": "node --trace-warnings  tests/test.js",
+    "test": "node --trace-warnings tests/test.js",
     "build": "tsc",
-    "docs": "typedoc",
-    "dev": "node --trace-warnings --watch lib/index.js",
-    "dev-test": "tsc && node --trace-warnings tests/test.js"
+    "docs": "typedoc src",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev-test": "tsc && node --trace-warnings tests/test.js",
+    "lint": "eslint src",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rastgame/yurbacli.git"
+    "url": "git+https://github.com/rastgame/yurba.js.git"
   },
   "keywords": [
     "yurba",
@@ -21,22 +23,38 @@
     "bot",
     "node",
     "yurbaapp",
-    "yurbaone"
+    "yurba.one"
   ],
   "author": "rastgame",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/rastgame/yurbacli/issues"
+    "url": "https://github.com/rastgame/yurba.js/issues"
   },
-  "homepage": "https://github.com/rastgame/yurbacli#readme",
+  "homepage": "https://github.com/rastgame/yurba.js#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
     "ws": "^8.18.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.25.1",
     "@types/node": "^22.10.2",
     "@types/ws": "^8.5.13",
-    "dotenv": "^16.4.7",
-    "typedoc": "^0.27.7"
-  }
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "ts-node-dev": "^2.0.0",
+    "typedoc": "^0.27.7",
+    "typescript": "^5.1.6",
+    "typescript-eslint": "^8.31.1"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ]
 }

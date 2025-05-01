@@ -1,0 +1,1 @@
+{"version":3,"file":"MessageManager.d.ts","sourceRoot":"","sources":["../../../src/client/MessageManager.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,UAAU,CAAC;AACnC,OAAO,IAAI,MAAM,cAAc,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,cAAc;IACjC,OAAO,CAAC,GAAG,CAAO;gBAEN,GAAG,EAAE,IAAI;IAIrB,cAAc,CAAC,OAAO,EAAE,OAAO,CAAC,SAAS,CAAC,GAAG,IAAI;CA4BlD"}

@@ -1,19 +1,26 @@
-# Packages
-node_modules
-package-lock.json
+# Node modules
+node_modules/
 
-# Env
-.env
+# Build output
+src/
+docs/
 
 # Logs
-logs
-*.log
 npm-debug.log*
-yurba.log
+yarn-debug.log*
+yarn-error.log*
 
+# Env files
+.env
+.env.*
 
-# Runtime data
-tests
+# TypeScript cache
+*.tsbuildinfo
 
-# -
-src
+# VSCode settings
+.vscode/
+
+# Test output
+coverage/
+*.log
+
