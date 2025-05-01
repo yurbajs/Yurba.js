@@ -1,4 +1,4 @@
-# TEST REALESE
+# TEST RELEASE
 
 # yurbacli
 
@@ -44,23 +44,6 @@ client.on("message", (msg) => {
 client.init();
 ```
 
-## Scripts
-
-- `npm run build` — Compile TypeScript to JavaScript
-- `npm run dev` — Start in development mode with auto-reload
-- `npm run test` — Run tests
-- `npm run docs` — Generate API documentation with TypeDoc
-
-## Documentation
-
-API documentation can be generated with:
-
-```sh
-npm run docs
-```
-
-Docs output is in the [`docs/`](docs/) folder.
-
 ## License
 
 This project is licensed under the [Apache-2.0 License](LICENSE).
@@ -68,9 +51,6 @@ This project is licensed under the [Apache-2.0 License](LICENSE).
 ## Links
 
 - [GitHub Repository](https://github.com/rastgame/yurba.js)
-- [Yurba.one](https://yurba.one)
+- [Yurba.one](https://me.yurba.one/yurba.js)
 
-```
-
-You can copy this into your README.md file.
 ```
