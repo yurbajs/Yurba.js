@@ -1,9 +1,9 @@
 import Apis from '../rest/Apis';
 import { EventEmitter } from 'events';
 import Logger from '../utils/Logger';
-import { UserModel, CommandArgsSchema, CommandHandler, PhotoModel, MessageModel } from '../types';
+import { UserModel, CommandArgsSchema, CommandHandler, Message, PhotoModel } from '../types';
 declare global {
-    var botData: UserModel;
+    let botData: UserModel;
 }
 declare const Dev: {
     debug: boolean;
@@ -16,6 +16,7 @@ declare class Client extends EventEmitter {
     private messageManager;
     private commandManager;
     private _user?;
+    private middlewares;
     constructor(token: string, prefix?: string);
     private checkToken;
     /**
@@ -90,7 +91,6 @@ declare class Client extends EventEmitter {
     waitFor<T extends any[] = any[]>(event: string, check: (...args: T) => boolean, options?: {
         timeout?: number;
         multiple?: boolean;
-        once?: boolean;
         signal?: AbortSignal;
     }): Promise<any>;
     /**
@@ -105,7 +105,7 @@ declare class Client extends EventEmitter {
      * @param repost Repost data (optional).
      * @returns A promise that resolves with the response data.
      */
-    sendMessage(dialogId: number, text: string, replyToId?: number | null, photos_list?: any[] | null, attachments?: any[] | null, edit?: number | null, repost?: any): Promise<MessageModel>;
+    sendMessage(dialogId: number, text: string, replyToId?: number | null, photos_list?: any[] | null, attachments?: any[] | null, edit?: number | null, repost?: any): Promise<Message>;
     /**
      * Gets user information by user tag.
      * @async
@@ -188,6 +188,11 @@ declare class Client extends EventEmitter {
      * client.removeAllListeners('message');
      */
     removeAllListeners(event?: string | symbol): this;
+    /**
+     * Adds a middleware function to be executed for each incoming message.
+     * @param middleware The middleware function.
+     */
+    use(middleware: (msg: Message) => Promise<void>): void;
 }
 declare const Version: string;
 declare const Author: string;
