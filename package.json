@@ -11,6 +11,7 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "dev-test": "tsc && node --trace-warnings tests/test.js",
     "lint": "eslint src",
+    "lintjs": "eslint lib",
     "format": "prettier --write ."
   },
   "repository": {
