@@ -1,2 +1,2 @@
-export * from './dialog';
+export * from './sendMessage';
 //# sourceMappingURL=index.d.ts.map

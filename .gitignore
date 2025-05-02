@@ -4,6 +4,7 @@ node_modules/
 # Build output
 src/
 docs/
+tests/
 
 # Logs
 npm-debug.log*
