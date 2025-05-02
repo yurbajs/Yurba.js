@@ -9,4 +9,4 @@ export default class WSM extends EventEmitter {
     private waitForWebSocketOpen;
     close(): void;
 }
-//# sourceMappingURL=WSM.d.ts.map
+//# sourceMappingURL=WebsocketManager.d.ts.map

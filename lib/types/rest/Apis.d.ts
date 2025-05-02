@@ -1,4 +1,4 @@
-import { UserModel, ShortUserModel } from '../types';
+import { UserModel, PhotoModel, TrackData } from '../types';
 declare class Apis {
     private token;
     private baseURL;
@@ -18,13 +18,13 @@ declare class Apis {
      * @param tag - User tag.
      * @returns User data.
      */
-    getUser(tag: string): Promise<ShortUserModel>;
+    getUser(tag: string): Promise<UserModel>;
     /**
      * Get photo by ID.
      * @param photoId - Photo ID.
      * @returns Photo data.
      */
-    getPhoto(photoId: string): Promise<any>;
+    getPhoto(photoId: string): Promise<PhotoModel>;
     /**
      * Send a message to a dialog.
      * @param dialogId - Dialog ID.
@@ -42,7 +42,7 @@ declare class Apis {
      * @param ID - Message ID.
      * @returns Deletion result.
      */
-    deleteMessage(ID: number): Promise<any>;
+    deleteMessage(ID: number): Promise<Boolean>;
     /**
      * Subscribe to events.
      * @param category - Event category.
@@ -168,7 +168,7 @@ declare class Apis {
      * @param trackId - Track ID.
      * @returns Track data.
      */
-    getTrack(trackId: number): Promise<any>;
+    getTrack(trackId: number): Promise<TrackData>;
     /**
      * Upload a track.
      * @param name - Track name.
