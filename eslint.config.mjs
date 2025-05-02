@@ -19,5 +19,16 @@ export default defineConfig([
     rules: {
       "@typescript-eslint/no-explicit-any": "off"
     }
+  },
+  {
+    files: ["lib/**/*.js"],
+    languageOptions: {
+      sourceType: "script",
+      globals: { ...globals.node }
+    },
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+      "no-undef": "off"
+    }
   }
 ]);

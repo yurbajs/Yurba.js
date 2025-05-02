@@ -8,4 +8,4 @@ body:
     attributes:
       label: Feature description
       description: What would you like to see?
-      required: true
+      required: truef
