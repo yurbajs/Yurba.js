@@ -95,7 +95,6 @@ declare class Client extends EventEmitter {
     }): Promise<any>;
     /**
      * Sends a message to a dialog.
-     * @async
      * @param dialogId The ID of the dialog.
      * @param text The message text.
      * @param replyToId The ID of the message to reply to (optional).
@@ -108,21 +107,18 @@ declare class Client extends EventEmitter {
     sendMessage(dialogId: number, text: string, replyToId?: number | null, photos_list?: any[] | null, attachments?: any[] | null, edit?: number | null, repost?: any): Promise<Message>;
     /**
      * Gets user information by user tag.
-     * @async
      * @param userTag The user's tag.
      * @returns A promise that resolves with the user data.
      */
     getUser(userTag: string): Promise<UserModel | null>;
     /**
      * Gets a photo from Yurba.
-     * @async
      * @param photoId The ID of the photo to get.
      * @returns A promise that resolves with the response of the API.
      */
     getPhoto(photoId: string): Promise<PhotoModel | null>;
     /**
      * Deletes a message by its ID.
-     * @async
      * @param ID The ID of the message to delete.
      */
     deleteMessage(ID: number): Promise<boolean>;

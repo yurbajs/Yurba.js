@@ -42,7 +42,7 @@ declare class Apis {
      * @param ID - Message ID.
      * @returns Deletion result.
      */
-    deleteMessage(ID: number): Promise<Boolean>;
+    deleteMessage(ID: number): Promise<boolean>;
     /**
      * Subscribe to events.
      * @param category - Event category.
