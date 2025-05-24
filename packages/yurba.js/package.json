@@ -1,0 +1,32 @@
+{
+  "name": "yurba.js",
+  "version": "0.1.0",
+  "description": "Офіційна бібліотека для роботи з Yurba API",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "author": "Yurba Team",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "docs": "typedoc"
+  },
+  "dependencies": {
+    "@yurbajs/rest": "file:../rest",
+    "@yurbajs/types": "file:../types",
+    "@yurbajs/ws": "file:../ws",
+    "events": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.25.1",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.3.2",
+    "typedoc": "^0.28.3",
+    "typescript": "^5.1.6"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@yurbajs/types",
+  "version": "0.0.1",
+  "description": "Types for packages yurba.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "RastGame",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rastgame/yurba.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rastgame/yurba.js/issues"
+  },
+  "homepage": "https://github.com/rastgame/yurba.js#readme",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1", 
+    "typescript": "^5.1.6"
+  }
+}

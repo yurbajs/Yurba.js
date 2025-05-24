@@ -9,7 +9,7 @@
 ```
 yurbajs/
 ├── packages/
-│   ├── yurba.js/     # Основний пакет yurba.js
+│   ├── core/         # Основний пакет yurba.js
 │   ├── rest/         # REST клієнт (@yurbajs/rest)
 │   └── ws/           # WebSocket клієнт (@yurbajs/ws)
 └── apps/
