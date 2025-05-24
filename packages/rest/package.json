@@ -1,6 +1,6 @@
 {
   "name": "@yurbajs/rest",
-  "version": "0.0.3",
+  "version": "0.1.3",
   "description": "REST client for Yurba API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,5 +48,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "53b0bdbf21a5488dad8839efc49710119aaef561"
+  "gitHead": "744aab79c9bc6f4dcfd34e4d48c91e47cabb89e4"
 }
