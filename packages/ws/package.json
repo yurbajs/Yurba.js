@@ -1,14 +1,14 @@
 {
   "name": "@yurbajs/ws",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "WebSocket клієнт для роботи з реальночасовими подіями Yurba.one",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "RastGame",
   "license": "Apache-2.0",
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib",
+    "clean": "rimraf dist",
     "test": "jest",
     "lint": "eslint src --ext .ts"
   },
