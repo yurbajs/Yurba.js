@@ -1,6 +1,6 @@
 {
   "name": "@yurbajs/ws",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "WebSocket client yurba.one",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,7 +34,7 @@
     "events"
   ],
   "dependencies": {
-    "@yurbajs/types": "^0.1.1",
+    "@yurbajs/types": "^0.1.2",
     "ws": "^8.18.0"
   },
   "devDependencies": {

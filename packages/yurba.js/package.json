@@ -1,6 +1,6 @@
 {
   "name": "yurba.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Simple library for creating Yurba clients and bots",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -36,9 +36,9 @@
     "yurba.one"
   ],
   "dependencies": {
-    "@yurbajs/rest": "^0.0.2",
-    "@yurbajs/types": "^0.1.1",
-    "@yurbajs/ws": "^0.1.1",
+    "@yurbajs/rest": "^0.0.3",
+    "@yurbajs/types": "^0.1.2",
+    "@yurbajs/ws": "^0.1.2",
     "events": "^3.3.0"
   },
   "devDependencies": {

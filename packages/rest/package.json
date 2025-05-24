@@ -1,6 +1,6 @@
 {
   "name": "@yurbajs/rest",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "REST client for Yurba API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,7 +33,7 @@
     "client"
   ],
   "dependencies": {
-    "@yurbajs/types": "^0.1.1",
+    "@yurbajs/types": "^0.1.2",
     "axios": "^1.7.9"
   },
   "devDependencies": {
