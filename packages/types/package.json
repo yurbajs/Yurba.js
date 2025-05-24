@@ -1,6 +1,6 @@
 {
   "name": "@yurbajs/types",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Types for yurba.js packages",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,7 +33,7 @@
   ],
   "devDependencies": {
     "eslint": "^9.25.1",
-    "rimraf": "^6.0.1", 
+    "rimraf": "^6.0.1",
     "typescript": "^5.1.6"
   },
   "publishConfig": {
