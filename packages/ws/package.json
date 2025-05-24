@@ -1,18 +1,40 @@
 {
   "name": "@yurbajs/ws",
-  "version": "0.0.1",
-  "description": "WebSocket клієнт для роботи з реальночасовими подіями Yurba.one",
+  "version": "0.1.0",
+  "description": "WebSocket client yurba.one",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "RastGame",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rastgame/yurba.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rastgame/yurba.js/issues"
+  },
+  "homepage": "https://github.com/RastGame/Yurba.js/tree/main/packages/ws",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist",
     "test": "jest",
-    "lint": "eslint src --ext .ts"
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run clean && npm run build"
   },
+  "keywords": [
+    "yurba",
+    "websocket",
+    "ws",
+    "realtime",
+    "events"
+  ],
   "dependencies": {
+    "@yurbajs/types": "^0.1.0",
     "ws": "^8.18.0"
   },
   "devDependencies": {

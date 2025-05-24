@@ -1,7 +1,7 @@
 {
   "name": "@yurbajs/types",
-  "version": "0.0.1",
-  "description": "Types for packages yurba.js",
+  "version": "0.1.0",
+  "description": "Types for yurba.js packages",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "RastGame",
@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/rastgame/yurba.js/issues"
   },
-  "homepage": "https://github.com/rastgame/yurba.js#readme",
+  "homepage": "https://github.com/RastGame/Yurba.js/tree/main/packages/types",
   "files": [
     "README.md",
     "LICENSE",
@@ -21,10 +21,22 @@
   ],
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib"
+    "clean": "rimraf dist",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run clean && npm run build"
   },
+  "keywords": [
+    "yurba",
+    "types",
+    "typescript",
+    "api"
+  ],
   "devDependencies": {
+    "eslint": "^9.25.1",
     "rimraf": "^6.0.1", 
     "typescript": "^5.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

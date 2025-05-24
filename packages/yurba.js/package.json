@@ -1,25 +1,48 @@
 {
   "name": "yurba.js",
   "version": "0.1.0",
-  "description": "Офіційна бібліотека для роботи з Yurba API",
+  "description": "Simple library for creating Yurba clients and bots",
   "main": "lib/index.js",
-  "types": "lib/types/index.d.ts",
-  "author": "Yurba Team",
+  "types": "lib/index.d.ts",
+  "author": "RastGame",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rastgame/yurba.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rastgame/yurba.js/issues"
+  },
+  "homepage": "https://github.com/RastGame/Yurba.js",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "lib"
+  ],
   "scripts": {
     "build": "tsc",
     "clean": "rimraf lib",
     "test": "jest",
     "lint": "eslint src --ext .ts",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "prepublishOnly": "npm run clean && npm run build"
   },
+  "keywords": [
+    "yurba",
+    "api",
+    "client",
+    "bots",
+    "typescript",
+    "yurba.one"
+  ],
   "dependencies": {
-    "@yurbajs/rest": "file:../rest",
-    "@yurbajs/types": "file:../types",
-    "@yurbajs/ws": "file:../ws",
+    "@yurbajs/rest": "^0.0.1",
+    "@yurbajs/types": "^0.1.0",
+    "@yurbajs/ws": "^0.1.0",
     "events": "^3.3.0"
   },
   "devDependencies": {
+    "@types/events": "^3.0.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.2",
     "eslint": "^9.25.1",
@@ -28,5 +51,8 @@
     "ts-jest": "^29.3.2",
     "typedoc": "^0.28.3",
     "typescript": "^5.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
