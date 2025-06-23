@@ -1,7 +1,7 @@
 # Node modules
 node_modules/
 
-# Build output
+
 src/
 tests/
 
@@ -25,3 +25,4 @@ coverage/
 *.log
 
 .vscode
+bun.lock

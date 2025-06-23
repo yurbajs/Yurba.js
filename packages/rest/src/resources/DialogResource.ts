@@ -35,8 +35,9 @@ export class DialogResource {
    * @param lastId - ID останнього учасника для пагінації
    * @returns Список учасників
    */
-  async getMembers(dialogId: number, lastId: number = 0): Promise<any> {
-    return this.client.get<any>(`/dialogs/${dialogId}/members`, { last_id: lastId });
+  async getMembers(dialogId: number, page: number = 0): Promise<any> {
+    
+    return this.client.get<any>(`/dialogs/${dialogId}/members?page=${page}`);
   }
   
   /**

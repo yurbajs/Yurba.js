@@ -11,12 +11,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@yurbajs/rest": ["../rest/dist"],
-      "@yurbajs/ws": ["../ws/dist"],
-      "@yurbajs/types": ["../types/lib"]
-    }
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.test.ts"]
