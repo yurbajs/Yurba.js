@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Монорепозиторій для Yurba.js та пов'язаних пакетів",
-  "workspaces": [
-    "packages/*"
-  ],
+
   "scripts": {
     "build": "lerna run build",
     "clean": "lerna run clean",
@@ -16,6 +14,15 @@
   "author": "RastGame",
   "license": "Apache-2.0",
   "devDependencies": {
-    "lerna": "^7.4.2"
+    "dotenv": "^17.0.1",
+    "lerna": "^7.4.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
-}   
+}
