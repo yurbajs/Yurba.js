@@ -23,7 +23,7 @@
     "build": "tsc",
     "clean": "rimraf dist",
     "test": "jest --passWithNoTests",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "keywords": [

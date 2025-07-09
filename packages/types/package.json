@@ -22,7 +22,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint src",
     "prepublishOnly": "npm run clean && npm run build",
     "bld": "npm run clean && eslint src --ext .ts && npm run build"
   },
