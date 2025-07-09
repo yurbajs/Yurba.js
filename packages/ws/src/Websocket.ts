@@ -138,7 +138,7 @@ class ReconnectingWebSocket extends EventEmitter {
       try {
         this.ws.close();
       } catch (closeErr) {
-        // Ігноруємо помилки при закритті
+          console.log(`Dev: ${closeErr}`)
       }
     }
   }
@@ -181,7 +181,7 @@ class ReconnectingWebSocket extends EventEmitter {
                 try {
                   this.ws.terminate();
                 } catch (err) {
-                  // Ігноруємо помилки при терміновому закритті
+                  console.log(`Dev: ${err}`)
                 }
               }
             }, this.options.pongTimeout);
@@ -261,6 +261,7 @@ class ReconnectingWebSocket extends EventEmitter {
       try {
         this.ws.close(code, reason);
       } catch (err) {
+        console.log(`Dev: ${err}`)
         // Ігноруємо помилки при закритті
       }
     }
