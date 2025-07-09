@@ -3,6 +3,9 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
+  {
+    ignores: ["lib/**", "dist/**", "**/*.d.ts", "**/*.js.map", "tests/**", "jest.config.js"]
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

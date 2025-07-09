@@ -23,7 +23,7 @@
     "build": "tsc",
     "clean": "rimraf lib",
     "test": "jest",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint .",
     "docs": "typedoc",
     "prepublishOnly": "npm run clean && npm run build"
   },

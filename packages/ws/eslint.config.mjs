@@ -13,6 +13,7 @@ export default tseslint.config(
     },
     rules: {
       "@typescript-eslint/no-explicit-any": "off"
-    }
+    },
+    ignores: ["dist/**", "lib/**", "*.d.ts", "*.js.map"]
   }
 );
