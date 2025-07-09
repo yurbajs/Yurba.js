@@ -1,4 +1,4 @@
-image: node:18
+image: node:20
 
 stages:
   - install
@@ -15,7 +15,7 @@ cache:
 install:
   stage: install
   script:
-    - npm ci
+    - pnpm install
     - npx lerna bootstrap
   artifacts:
     paths:
