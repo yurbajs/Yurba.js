@@ -10,30 +10,33 @@ stages:
 cache:
   paths:
     - node_modules/
-    - packages/*/node_modules/
+    - .pnpm-store/
+
+before_script:
+  - npm install -g pnpm
+  - pnpm config set store-dir .pnpm-store
 
 install:
   stage: install
   script:
     - pnpm install
-    - npx lerna bootstrap
   artifacts:
     paths:
       - node_modules/
-      - packages/*/node_modules/
+      - .pnpm-store/
     expire_in: 1 hour
 
 lint:
   stage: lint
   script:
-    - npx lerna run lint
+    - pnpm lint
   dependencies:
     - install
 
 test:
   stage: test
   script:
-    - npx lerna run test
+    - pnpm test
   coverage: '/Lines\s*:\s*(\d+\.?\d*)%/'
   dependencies:
     - install
@@ -41,11 +44,10 @@ test:
 build:
   stage: build
   script:
-    - npx lerna run build
+    - pnpm build
   artifacts:
     paths:
       - packages/*/lib/
-      - packages/*/dist/
     expire_in: 1 week
   dependencies:
     - install
@@ -53,7 +55,7 @@ build:
 deploy:
   stage: deploy
   script:
-    - npx lerna publish --yes
+    - pnpm publish
   only:
     - main
   dependencies:
