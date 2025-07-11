@@ -5,7 +5,7 @@ import { CommandError } from "@yurbajs/types";
 const logging = new Logger("CommandManager");
 
 /**
- * Менеджер команд для клієнта
+ * Command manager for client
  */
 export default class CommandManager implements ICommandManager {
   private commands: Map<
@@ -25,9 +25,9 @@ export default class CommandManager implements ICommandManager {
   private cooldowns: Map<string, Map<number, number>> = new Map();
 
   /**
-   * Створює новий менеджер команд
-   * @param api Об'єкт з методами API
-   * @param getUser Функція для отримання користувача
+   * Creates a new command manager
+   * @param api Object with API methods
+   * @param getUser Function to get user
    */
   constructor(
     api: {
@@ -42,11 +42,11 @@ export default class CommandManager implements ICommandManager {
   }
 
   /**
-   * Реєструє нову команду
-   * @param command Назва команди
-   * @param argsSchema Схема аргументів команди
-   * @param handler Обробник команди
-   * @param description Опис команди (опціонально)
+   * Registers a new command
+   * @param command Command name
+   * @param argsSchema Command arguments schema
+   * @param handler Command handler
+   * @param description Command description (optional)
    */
   registerCommand(
     command: string,
@@ -65,9 +65,9 @@ export default class CommandManager implements ICommandManager {
   }
 
   /**
-   * Додає аліас для команди
-   * @param alias Аліас команди
-   * @param command Оригінальна команда
+   * Adds alias for command
+   * @param alias Command alias
+   * @param command Original command
    */
   addAlias(alias: string, command: string): void {
     if (!this.commands.has(command)) {
@@ -78,10 +78,10 @@ export default class CommandManager implements ICommandManager {
   }
 
   /**
-   * Встановлює кулдаун для команди
-   * @param command Назва команди
-   * @param userId ID користувача
-   * @param cooldownMs Час кулдауну в мілісекундах
+   * Sets cooldown for command
+   * @param command Command name
+   * @param userId User ID
+   * @param cooldownMs Cooldown time in milliseconds
    */
   setCooldown(command: string, userId: number, cooldownMs: number): void {
     if (!this.cooldowns.has(command)) {
@@ -91,10 +91,10 @@ export default class CommandManager implements ICommandManager {
   }
 
   /**
-   * Перевіряє, чи команда на кулдауні для користувача
-   * @param command Назва команди
-   * @param userId ID користувача
-   * @returns Час до закінчення кулдауну в мілісекундах або 0, якщо кулдаун закінчився
+   * Checks if command is on cooldown for user
+   * @param command Command name
+   * @param userId User ID
+   * @returns Time until cooldown ends in milliseconds or 0 if cooldown has ended
    */
   checkCooldown(command: string, userId: number): number {
     if (!this.cooldowns.has(command)) {
@@ -118,9 +118,9 @@ export default class CommandManager implements ICommandManager {
   }
 
   /**
-   * Головний метод для обробки команд
-   * @param message Об'єкт повідомлення
-   * @param enhanceMessage Функція для розширення повідомлення
+   * Main method for handling commands
+   * @param message Message object
+   * @param enhanceMessage Function to enhance message
    */
   async handleCommand(
     message: Message["Message"],
@@ -135,7 +135,7 @@ export default class CommandManager implements ICommandManager {
 
     const [commandName, ...args] = Text.slice(1).split(" ");
 
-    // Перевіряємо оригінальну команду або аліас
+    // Check original command or alias
     let actualCommand = commandName;
     if (this.aliases.has(commandName)) {
       actualCommand = this.aliases.get(commandName) || commandName;
@@ -145,7 +145,7 @@ export default class CommandManager implements ICommandManager {
       throw new Error(`Command "${commandName}" not found.`);
     }
 
-    // Перевіряємо кулдаун
+    // Check cooldown
     const cooldownTime = this.checkCooldown(actualCommand, Author.ID);
     if (cooldownTime > 0) {
       const secondsLeft = Math.ceil(cooldownTime / 1000);
@@ -174,11 +174,11 @@ export default class CommandManager implements ICommandManager {
   }
 
   /**
-   * Парсинг аргументів з підтримкою типів string, int, user, repost
-   * @param args Масив аргументів
-   * @param argsSchema Схема аргументів
-   * @param message Об'єкт повідомлення
-   * @returns Об'єкт з розпарсеними аргументами
+   * Parses arguments with support for types string, int, user, repost
+   * @param args Array of arguments
+   * @param argsSchema Arguments schema
+   * @param message Message object
+   * @returns Object with parsed arguments
    */
   async parseArgs<T extends Record<string, unknown>>(
     args: string[],
@@ -224,7 +224,7 @@ export default class CommandManager implements ICommandManager {
         if (required) {
           throw new CommandError(`Missing required argument: ${argName}`, 'parseArgs');
         } else {
-          // Якщо аргумент необов'язковий, використовуємо значення за замовчуванням
+          // If argument is optional, use default value
           if (type === "user" && defaultValue && this.getUser) {
             try {
               const user = await this.getUser(defaultValue);
@@ -307,17 +307,17 @@ export default class CommandManager implements ICommandManager {
   }
 
   /**
-   * Повертає список зареєстрованих команд
-   * @returns Масив назв команд
+   * Returns list of registered commands
+   * @returns Array of command names
    */
   public getCommands(): string[] {
     return Array.from(this.commands.keys());
   }
 
   /**
-   * Повертає інформацію про команду
-   * @param command Назва команди
-   * @returns Об'єкт з інформацією про команду або undefined, якщо команда не знайдена
+   * Returns command information
+   * @param command Command name
+   * @returns Object with command information or undefined if command not found
    */
   public getCommandInfo(
     command: string
@@ -332,14 +332,14 @@ export default class CommandManager implements ICommandManager {
   }
 
   /**
-   * Видаляє команду
-   * @param command Назва команди
-   * @returns true, якщо команда була видалена, false в іншому випадку
+   * Removes command
+   * @param command Command name
+   * @returns true if command was removed, false otherwise
    */
   public removeCommand(command: string): boolean {
     const result = this.commands.delete(command);
 
-    // Видаляємо всі аліаси для цієї команди
+    // Remove all aliases for this command
     for (const [alias, cmd] of this.aliases.entries()) {
       if (cmd === command) {
         this.aliases.delete(alias);
