@@ -46,7 +46,7 @@ const erlog = (...args: unknown[]): void => {
 };
 
 /**
- * Основний клас для роботи з Yurba API
+ * Main class for working with Yurba API
  * @extends EventEmitter
  */
 class Client extends EventEmitter {
@@ -63,9 +63,9 @@ class Client extends EventEmitter {
   private maxReconnectAttempts: number = 5;
 
   /**
-   * Створює новий клієнт Yurba
-   * @param token Токен авторизації
-   * @param prefix Префікс для команд
+   * Creates a new Yurba client
+   * @param token Authorization token
+   * @param prefix Command prefix
    */
   constructor(token: string, options: ClientOptions = {}) {
     super();
@@ -85,7 +85,7 @@ class Client extends EventEmitter {
     );
     this.middlewareManager = new MiddlewareManager();
 
-    // Встановлюємо обробники подій для перепідключення
+    // Set up event handlers for reconnection
     this.wsm.on('close', () => {
       this.isReady = false;
       this.handleReconnect();
@@ -98,7 +98,7 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Перевіряє токен на валідність
+   * Checks token validity
    * @private
    */
   private checkToken(): void {
@@ -106,7 +106,7 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Валідує формат токена Yurba
+   * Validates Yurba token format
    * @private
    */
   private validateToken(token: string): void {
@@ -120,18 +120,18 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Getter для даних користувача бота
-   * @returns {UserModel | undefined} Дані користувача або undefined, якщо не ініціалізовано
+   * Getter for bot user data
+   * @returns {UserModel | undefined} User data or undefined if not initialized
    */
   get user(): UserModel | undefined {
     return this._user;
   }
 
   /**
-   * Реєструє нову команду
-   * @param command Назва команди
-   * @param argsSchema Схема аргументів команди
-   * @param handler Обробник команди
+   * Registers a new command
+   * @param command Command name
+   * @param argsSchema Command arguments schema
+   * @param handler Command handler
    * 
    * @example
    * client.registerCommand('hello', { name: 'string' }, (message, args) => {
@@ -149,8 +149,8 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Повертає список зареєстрованих команд
-   * @returns {string[]} Масив назв команд
+   * Returns list of registered commands
+   * @returns {string[]} Array of command names
    * 
    * @example
    * const commands = client.getCommands();
@@ -162,15 +162,15 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Ініціалізує клієнт
-   * @returns Promise, який вирішується після успішної ініціалізації
+   * Initializes the client
+   * @returns Promise that resolves after successful initialization
    */
   async init(): Promise<void> {
     this.checkToken();
     
     try {
       const user = await this.api.users.getMe();
-      this._user = user; // Зберігаємо дані користувача
+      this._user = user; // Store user data
 
       log('User data:', user);
 
@@ -194,7 +194,7 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Обробляє перепідключення до WebSocket
+   * Handles WebSocket reconnection
    * @private
    */
   private handleReconnect(): void {
@@ -219,12 +219,12 @@ class Client extends EventEmitter {
         erlog('Reconnect failed:', wsError);
         this.emit('reconnectError', wsError);
       }
-    }, 5000 * Math.pow(2, this.reconnectAttempts - 1)); // Експоненціальна затримка
+    }, 5000 * Math.pow(2, this.reconnectAttempts - 1)); // Exponential backoff
   }
 
   /**
-   * Обробляє командні повідомлення
-   * @param msg Об'єкт повідомлення
+   * Handles command messages
+   * @param msg Message object
    * @private
    */
   private async handleCommandMessage(msg: Message['Message']): Promise<void> {
@@ -239,15 +239,15 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Обробляє вхідні повідомлення
-   * Делегує обробку повідомлень MessageManager та виконання команд CommandManager
-   * Емітує події для інших обробників
-   * @param message Об'єкт вхідного повідомлення
+   * Handles incoming messages
+   * Delegates message handling to MessageManager and command execution to CommandManager
+   * Emits events for other handlers
+   * @param message Incoming message object
    * @private
    */
   private async handleMessage(message: Message): Promise<void> {
     try {
-      // Виконуємо всі middleware
+      // Execute all middleware
       await this.middlewareManager.execute(message).catch(err => {
         erlog('Middleware error:', err);
         this.emit('middlewareError', { error: err, message });
@@ -258,15 +258,15 @@ class Client extends EventEmitter {
 
       this.messageManager.enhanceMessage(msg);
 
-      // Обробляємо команди
+      // Handle commands
       if (Type === 'message' && msg.Text && msg.Text.startsWith(this.prefix)) {
         await this.handleCommandMessage(msg);
       }
 
-      // Емітуємо подію з типом повідомлення
+      // Emit event with message type
       this.emit(Type, msg);
       
-      // Також емітуємо загальну подію 'message' для зручності
+      // Also emit general 'message' event for convenience
       if (Type === 'message') {
         this.emit('message', msg);
       }
@@ -277,25 +277,25 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Чекає на певну подію та вирішується, коли функція перевірки повертає true
+   * Waits for a specific event and resolves when the check function returns true
    *
-   * @template T Тип аргументів, переданих події
-   * @param event Назва події для прослуховування
-   * @param check Функція, яка отримує аргументи події та повертає boolean,
-   *              що вказує, чи виконана бажана умова
-   * @param options Додаткові параметри:
-   *   - `timeout`: Максимальний час очікування події в мілісекундах. За замовчуванням 60000.
-   *   - `multiple`: Якщо true, вирішується з усіма аргументами як масивом; інакше вирішується з першим аргументом або повним масивом аргументів, якщо їх кілька.
-   *   - `signal`: AbortSignal для скасування операції очікування.
-   * @returns Promise, який вирішується з аргументами події, коли умова виконана,
-   *          або відхиляється, якщо досягнуто таймаут або операцію скасовано.
+   * @template T Type of arguments passed to the event
+   * @param event Event name to listen for
+   * @param check Function that receives event arguments and returns boolean,
+   *              indicating whether the desired condition is met
+   * @param options Additional parameters:
+   *   - `timeout`: Maximum time to wait for the event in milliseconds. Default is 60000.
+   *   - `multiple`: If true, resolves with all arguments as an array; otherwise resolves with the first argument or full array of arguments if there are multiple.
+   *   - `signal`: AbortSignal to cancel the wait operation.
+   * @returns Promise that resolves with event arguments when condition is met,
+   *          or rejects if timeout is reached or operation is cancelled.
    *
    * @example 1
-   * // Чекати на повідомлення з текстом "Hello"
+   * // Wait for a message with text "Hello"
    * await client.waitFor('message', msg => msg.Text === 'Hello', { timeout: 5000 });
    *
    * @example 2
-   * // Чекати на користувацьку подію та отримати всі аргументи
+   * // Wait for user eventію та отримати всі аргументи
    * const [arg1, arg2] = await client.waitFor('customEvent', () => true, { multiple: true });
    */
   async waitFor<T extends any[] = any[]>(
