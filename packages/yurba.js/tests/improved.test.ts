@@ -1,5 +1,4 @@
 import { Client } from '../src/client/Client';
-import { TokenValidationError, CommandError } from '@yurbajs/types';
 
 const VALID_TOKEN = 'y.AjqFIO1riKbU0ObhVXHscgnAC1LoZweW123456789';
 
