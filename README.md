@@ -1,7 +1,7 @@
 <div align="center">
 	<br />
 	<p>
-		<a href="https://yurba.js.org"><img src="https://cdn.yurba.one/photos/1423.jpg" width="546" alt="yurba.js" /></a>
+		<a href="https://yurba.js.org"><img src="https://cdn.yurba.one/photos/1423.jpg" width="300" alt="yurba.js" /></a>
 	</p>
 	<br />
 	<p>
@@ -22,10 +22,10 @@ Main package [`Yurba.js`](source).
 // This library gets inspiration from [discord.js](https://github.com/discordjs/discord.js), and for this reason various things can be similar ;) //
 
 ## Packages
-- `yurba.js` [![NPM Version](https://img.shields.io/npm/v/yurba.js)](https://www.npmjs.com/package/yurba.js) ([source][source]) - The powerful library for creating bots and integrating with the Yurba API.
-- `@yurbajs/rest` [![NPM Version](https://img.shields.io/npm/v/@yurbajs/rest)](https://www.npmjs.com/package/@yurbajs/rest) ([source][source]) - REST client for Yurba API.
-- `@yurbajs/ws` [![NPM Version](https://img.shields.io/npm/v/@yurbajs/ws)](https://www.npmjs.com/package/@yurbajs/ws) ([source][source]) - WebSocket client for yurba.one.
-- `@yurbajs/types` [![NPM Version](https://img.shields.io/npm/v/@yurbajs/types)](https://www.npmjs.com/package/@yurbajs/types) ([source][source]) - Types for yurba.js packages and yurba.one.
+- `yurba.js` ([source][source]) - The powerful library for creating bots and integrating with the Yurba API. [![NPM Version](https://img.shields.io/npm/v/yurba.js)](https://www.npmjs.com/package/yurba.js)
+- `@yurbajs/rest` ([source][source]) - REST client for Yurba API. [![NPM Version](https://img.shields.io/npm/v/@yurbajs/rest)](https://www.npmjs.com/package/@yurbajs/rest)
+- `@yurbajs/ws` ([source][source]) - WebSocket client for yurba.one. [![NPM Version](https://img.shields.io/npm/v/@yurbajs/ws)](https://www.npmjs.com/package/@yurbajs/ws)
+- `@yurbajs/types` ([source][source]) - Types for yurba.js packages and yurba.one. [![NPM Version](https://img.shields.io/npm/v/@yurbajs/types)](https://www.npmjs.com/package/@yurbajs/types)
 
 
 
