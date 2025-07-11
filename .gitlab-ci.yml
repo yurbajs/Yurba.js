@@ -25,6 +25,7 @@ install:
     paths:
       - node_modules/
       - packages/*/node_modules/
+      - packages/*/lib/
       - .pnpm-store/
     expire_in: 1 hour
 
