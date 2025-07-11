@@ -1,7 +1,7 @@
 <div align="center">
 	<br />
 	<p>
-		<a href="https://yurba.js.org"><img src="https://cdn.yurba.one/photos/1423.jpg" width="300" alt="yurba.js" /></a>
+		<a href="https://yurba.js.org"><img src="https://cdn.yurba.one/photos/1423.jpg" width="150" alt="yurba.js" /></a>
 	</p>
 	<br />
 	<p>
@@ -17,9 +17,10 @@
 
 ## About
 
-This repository contains [multiple packages](github-tags) which work with [API yurba.one](https://docs.yurba.one/overview) and are needed for the main package to work.
-Main package [`Yurba.js`](source).
-// This library gets inspiration from [discord.js](https://github.com/discordjs/discord.js), and for this reason various things can be similar ;) //
+This repository contains [multiple packages](github-tags) that work with the [Yurba.one API](https://docs.yurba.one/overview) and are required for the main package to function.
+The main package is [`Yurba.js`](source).
+
+> This library draws inspiration from [discord.js](https://github.com/discordjs/discord.js), so you may notice some similarities in design and structure.
 
 ## Packages
 - `yurba.js` ([source][source]) - The powerful library for creating bots and integrating with the Yurba API. [![NPM Version](https://img.shields.io/npm/v/yurba.js)](https://www.npmjs.com/package/yurba.js)
@@ -34,13 +35,30 @@ Main package [`Yurba.js`](source).
 - [Documentation][documentation]
 - [Yurba Account][yurba]
 - [Yurba Channel][yurba-channel]
+- [Yurba Chat/Discussion][yurba-chat]
 - [GitHub][source]
+- [Gitlab][gitlab]
 - [npm][npm]
 - [Related libraries][related-libs]
 
+## Contributing
+Want to help make yurba.js better?
+
+- Found a bug? [Open an issue](https://github.com/RastGame/Yurba.js/issues/new)
+- Have an idea? [Start a discussion](https://github.com/RastGame/Yurba.js/discussions)
+- Want to contribute code? Fork the repository and submit a pull request
+
+Please make sure to follow our coding style and test your changes before submitting.
+
+## Getting Help
+Need assistance? Here's where to find help:
+
+- Check the [documentation][documentation] first
+- Ask questions in our [Chat][yurba-chat]
+- Browse existing [issues](https://github.com/RastGame/Yurba.js/issues) and [discussions](https://github.com/RastGame/Yurba.js/discussions)
 
 
-
+[gitlab]: https://gitlab.com/RastGame/Yurba.js
 [github-tags]: https://github.com/RastGame/Yurba.js/tags
 [source]: https://github.com/RastGame/Yurba.js/tree/main/packages/yurba.js
 [website]: https://yurba.js.org
@@ -48,5 +66,6 @@ Main package [`Yurba.js`](source).
 [documentation]: #
 [yurba]: https://me.yurba.one/yurbajs
 [yurba-channel]: https://me.yurba.one/yjs
+[yurba-chat]: https://me.yurba.one/yurba.js
 [npm]: https://www.npmjs.com/package/yurba.js
 [related-libs]: #
