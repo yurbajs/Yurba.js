@@ -10,7 +10,7 @@ interface ReconnectingWebSocketOptions {
 }
 
 /**
- * WebSocket клієнт з автоматичним перепідключенням
+ * WebSocket client with automatic reconnection
  * @extends EventEmitter
  */
 class ReconnectingWebSocket extends EventEmitter {
@@ -25,9 +25,9 @@ class ReconnectingWebSocket extends EventEmitter {
   private forceClosed: boolean = false;
 
   /**
-   * Створює новий WebSocket клієнт з автоматичним перепідключенням
-   * @param url URL для підключення
-   * @param options Опції для WebSocket
+   * Creates a new WebSocket client with automatic reconnection
+   * @param url URL to connect to
+   * @param options WebSocket options
    */
   constructor(url: string, options: ReconnectingWebSocketOptions = {}) {
     super();
@@ -44,7 +44,7 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Підключається до WebSocket сервера
+   * Connects to WebSocket server
    * @private
    */
   private connect(): void {
@@ -76,7 +76,7 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Обробляє подію відкриття з'єднання
+   * Handles connection open event
    * @private
    */
   private handleOpen(): void {
@@ -87,7 +87,7 @@ class ReconnectingWebSocket extends EventEmitter {
     this.isConnected = true;
     this.emit('open');
     
-    // Відправляємо повідомлення з черги
+    // Send queued messages
     while (this.messageQueue.length > 0) {
       const msg = this.messageQueue.shift();
       if (msg && this.ws?.readyState === WebSocket.OPEN) {
@@ -95,13 +95,13 @@ class ReconnectingWebSocket extends EventEmitter {
       }
     }
 
-    // Запускаємо пінг для підтримки з'єднання
+    // Start ping to maintain connection
     this.startPingInterval();
   }
 
   /**
-   * Обробляє подію закриття з'єднання
-   * @param code Код закриття
+   * Handles connection close event
+   * @param code Close code
    * @private
    */
   private handleClose(code: number): void {
@@ -128,8 +128,8 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Обробляє помилки WebSocket
-   * @param err Об'єкт помилки
+   * Handles WebSocket errors
+   * @param err Error object
    * @private
    */
   private handleError(err: Error): void {
@@ -144,8 +144,8 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Обробляє вхідні повідомлення
-   * @param data Дані повідомлення
+   * Handles incoming messages
+   * @param data Message data
    * @private
    */
   private handleMessage(data: WebSocket.Data): void {
@@ -156,7 +156,7 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Запускає інтервал відправки пінг-повідомлень
+   * Starts ping message interval
    * @private
    */
   private startPingInterval(): void {
@@ -172,7 +172,7 @@ class ReconnectingWebSocket extends EventEmitter {
           try {
             this.ws.ping();
             
-            // Встановлюємо таймаут для pong
+            // Set timeout for pong
             this.pongTimeoutId = setTimeout(() => {
               if (this.options.debug) {
                 this.emit('debug', 'Pong timeout - reconnecting');
@@ -194,7 +194,7 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Зупиняє інтервал відправки пінг-повідомлень
+   * Stops ping message interval
    * @private
    */
   private stopPingInterval(): void {
@@ -210,7 +210,7 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Обробляє відповідь pong від сервера
+   * Handles pong response from server
    * @private
    */
   private handlePong(): void {
@@ -224,8 +224,8 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Відправляє дані через WebSocket
-   * @param data Дані для відправки
+   * Sends data through WebSocket
+   * @param data Data to send
    */
   public send(data: string): void {
     if (this.isConnected && this.ws?.readyState === WebSocket.OPEN) {
@@ -246,9 +246,9 @@ class ReconnectingWebSocket extends EventEmitter {
   }
 
   /**
-   * Закриває WebSocket з'єднання
-   * @param code Код закриття
-   * @param reason Причина закриття
+   * Closes WebSocket connection
+   * @param code Close code
+   * @param reason Close reason
    */
   public close(code: number = 1000, reason: string = ''): void {
     if (this.options.debug) {
@@ -262,21 +262,21 @@ class ReconnectingWebSocket extends EventEmitter {
         this.ws.close(code, reason);
       } catch (err) {
         console.log(`Dev: ${err}`)
-        // Ігноруємо помилки при закритті
+        // Ignore errors when closing
       }
     }
   }
 
   /**
-   * Перевіряє, чи підключений WebSocket
-   * @returns true, якщо підключений
+   * Checks if WebSocket is connected
+   * @returns true if connected
    */
   public isOpen(): boolean {
     return this.isConnected && this.ws?.readyState === WebSocket.OPEN;
   }
 
   /**
-   * Очищає чергу повідомлень
+   * Clears message queue
    */
   public clearQueue(): void {
     this.messageQueue = [];

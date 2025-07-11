@@ -1,5 +1,5 @@
 /**
- * Базовий REST клієнт для взаємодії з API Yurba.one
+ * Base REST client for interacting with Yurba.one API
  */
 export class REST {
   private baseURL: string;
@@ -8,9 +8,9 @@ export class REST {
   private abortControllers: Map<string, AbortController> = new Map();
 
   /**
-   * Створює новий REST клієнт
-   * @param token - Токен авторизації
-   * @param baseURL - Базовий URL API (за замовчуванням https://api.yurba.one)
+   * Creates a new REST client
+   * @param token - Authorization token
+   * @param baseURL - Base API URL (default https://api.yurba.one)
    */
   constructor(token: string, baseURL: string = 'https://api.yurba.one') {
     this.token = token;
@@ -23,11 +23,11 @@ export class REST {
   }
 
   /**
-   * Виконує GET запит до API
-   * @param endpoint - Ендпоінт API
-   * @param queryParams - Параметри запиту
-   * @param timeout - Таймаут запиту в мілісекундах
-   * @returns Результат запиту
+   * Executes GET request to API
+   * @param endpoint - API endpoint
+   * @param queryParams - Query parameters
+   * @param timeout - Request timeout in milliseconds
+   * @returns Request result
    */
   async get<T>(endpoint: string, queryParams: Record<string, any> = {}, timeout?: number): Promise<T> {
     const url = this.buildUrl(endpoint, queryParams);
@@ -35,11 +35,11 @@ export class REST {
   }
 
   /**
-   * Виконує POST запит до API
-   * @param endpoint - Ендпоінт API
-   * @param data - Дані для відправки
-   * @param timeout - Таймаут запиту в мілісекундах
-   * @returns Результат запиту
+   * Executes POST request to API
+   * @param endpoint - API endpoint
+   * @param data - Data to send
+   * @param timeout - Request timeout in milliseconds
+   * @returns Request result
    */
   async post<T>(endpoint: string, data: any = {}, timeout?: number): Promise<T> {
     const url = this.buildUrl(endpoint);
@@ -47,11 +47,11 @@ export class REST {
   }
 
   /**
-   * Виконує PUT запит до API
-   * @param endpoint - Ендпоінт API
-   * @param data - Дані для відправки
-   * @param timeout - Таймаут запиту в мілісекундах
-   * @returns Результат запиту
+   * Executes PUT request to API
+   * @param endpoint - API endpoint
+   * @param data - Data to send
+   * @param timeout - Request timeout in milliseconds
+   * @returns Request result
    */
   async put<T>(endpoint: string, data: any = {}, timeout?: number): Promise<T> {
     const url = this.buildUrl(endpoint);
@@ -59,11 +59,11 @@ export class REST {
   }
 
   /**
-   * Виконує PATCH запит до API
-   * @param endpoint - Ендпоінт API
-   * @param data - Дані для відправки
-   * @param timeout - Таймаут запиту в мілісекундах
-   * @returns Результат запиту
+   * Executes PATCH request to API
+   * @param endpoint - API endpoint
+   * @param data - Data to send
+   * @param timeout - Request timeout in milliseconds
+   * @returns Request result
    */
   async patch<T>(endpoint: string, data: any = {}, timeout?: number): Promise<T> {
     const url = this.buildUrl(endpoint);
@@ -71,10 +71,10 @@ export class REST {
   }
 
   /**
-   * Виконує DELETE запит до API
-   * @param endpoint - Ендпоінт API
-   * @param timeout - Таймаут запиту в мілісекундах
-   * @returns Результат запиту
+   * Executes DELETE request to API
+   * @param endpoint - API endpoint
+   * @param timeout - Request timeout in milliseconds
+   * @returns Request result
    */
   async delete<T>(endpoint: string, timeout?: number): Promise<T> {
     const url = this.buildUrl(endpoint);
@@ -82,8 +82,8 @@ export class REST {
   }
 
   /**
-   * Скасовує запит за ендпоінтом
-   * @param endpoint - Ендпоінт API
+   * Cancels request by endpoint
+   * @param endpoint - API endpoint
    */
   cancelRequest(endpoint: string): void {
     const controller = this.abortControllers.get(endpoint);
