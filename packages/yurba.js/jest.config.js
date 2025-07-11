@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['**/tests/**/*.test.ts'],
   moduleNameMapper: {
-    '^@yurbajs/(.*)$': '<rootDir>/../$1/src'
+    '^@yurbajs/(.*)$': '<rootDir>/../$1/lib'
   },
   transform: {
     '^.+\.ts$': ['ts-jest', {
