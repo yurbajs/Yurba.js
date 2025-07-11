@@ -1,7 +1,6 @@
 {
   "version": "independent",
   "npmClient": "pnpm",
-  "useWorkspaces": true,
   "command": {
     "publish": {
       "conventionalCommits": true,
@@ -11,9 +10,6 @@
     "run": {
       "npmClient": "pnpm",
       "stream": true
-    },
-    "bootstrap": {
-      "npmClientArgs": ["--no-package-lock"]
     }
   }
 } 

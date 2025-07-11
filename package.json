@@ -4,19 +4,22 @@
   "author": "RastGame",
   "license": "Apache-2.0",
   "private": true,
-  "workspaces": ["packages/*"],
+  "packageManager": "pnpm@10.12.4",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "lerna run build",
+    "build": "turbo run build",
     "build:local": "pnpm run clean && pnpm run build",
-    "test": "lerna run build && lerna run test",
+    "test": "turbo run test",
     "test:local": "pnpm run build:local && pnpm run test",
-    "lint": "lerna run lint",
+    "lint": "turbo run lint",
     "lint:fix": "lerna run lint -- --fix",
     "dev": "lerna run build --watch",
-    "clean": "lerna run clean",
+    "clean": "turbo run clean",
     "all": "pnpm run lint && pnpm test && pnpm build",
     "install:all": "pnpm install",
-    "publish": "pnpm run lint:fix && pnpm run test && pnpm run clean && pnpm run build && pnpm run publish",
+    "publish": "turbo run lint test clean build && lerna publish",
     "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install"
   },
   "devDependencies": {
@@ -36,7 +39,7 @@
     "lint-staged": "^15.2.0",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.3.2",
-
+    "turbo": "^2.5.4",
     "typedoc": "^0.28.3",
     "typescript": "^5.1.6",
     "typescript-eslint": "^8.0.0",
