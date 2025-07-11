@@ -6,7 +6,7 @@ import { PostResource } from './resources/PostResource';
 import { MediaResource } from './resources/MediaResource';
 import { AuthResource } from './resources/AuthResource';
 
-// Розширюємо RestClient з ресурсами
+// Extend RestClient with resources
 class RestClient extends REST {
   public users: UserResource;
   public messages: MessageResource;
