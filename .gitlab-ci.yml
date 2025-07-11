@@ -66,4 +66,3 @@ deploy:
     - main
   dependencies:
     - build
-
