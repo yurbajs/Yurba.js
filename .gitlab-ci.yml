@@ -19,13 +19,10 @@ install:
   stage: install
   script:
     - pnpm install
-    - pnpm build
   artifacts:
     paths:
       - node_modules/
       - packages/*/node_modules/
-      - packages/*/lib/
-      - packages/*/dist/
       - .pnpm-store/
     expire_in: 1 hour
 
@@ -60,8 +57,10 @@ deploy:
   stage: deploy
   before_script:
     - npm install -g pnpm
+    - pnpm config set store-dir .pnpm-store
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
   script:
+    - pnpm install
     - pnpm publish --no-git-checks
   only:
     - main
