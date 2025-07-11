@@ -21,7 +21,7 @@ The powerful library for creating bots and integrating with the Yurba API.
 
 ## Instalation
 Node.js 20 or newer is required.
-```bash
+```sh
 npm install yurba.js
 yarn add yurba.js
 pnpm add yurba.js
@@ -35,11 +35,16 @@ bun add yurba.js
 ```js
 // твій код 1
 ```
-</details> <details> <summary>another</summary>
+</details> 
+
+<details> 
+<summary>another</summary>
+
 ```js
 // твій код 2
 ```
-</details> ```
+
+</details>
 
 
 ## Links
