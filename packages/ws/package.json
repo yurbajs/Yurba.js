@@ -1,7 +1,7 @@
 {
   "name": "@yurbajs/ws",
   "version": "0.1.3",
-  "description": "WebSocket client yurba.one",
+  "description": "WebSocket client for yurba.one",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "RastGame",
@@ -23,7 +23,7 @@
     "build": "tsc",
     "clean": "rimraf dist",
     "test": "jest --passWithNoTests",
-    "lint": "eslint src",
+    "lint": "eslint src/**/*.ts",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "keywords": [

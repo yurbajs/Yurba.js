@@ -59,7 +59,7 @@ test('Client should not register command without name', () => {
 // Test empty message validation
 test('Client should not send empty message', async () => {
   const client = new Client(VALID_TOKEN);
-  // @ts-expect-error - Intentionally using a partial mock of the Apis class for testing purposes
+  // @ts-expect-error
   client.api = { sendMessage: jest.fn() };
   await expect(client.sendMessage(123, '')).rejects.toThrow();
 });

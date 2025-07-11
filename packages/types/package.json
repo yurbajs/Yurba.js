@@ -24,7 +24,7 @@
     "clean": "rimraf dist",
     "lint": "eslint src/**/*.ts",
     "prepublishOnly": "npm run clean && npm run build",
-    "bld": "npm run clean && eslint src --ext .ts && npm run build"
+    "test": "jest --passWithNoTests"
   },
   "keywords": [
     "yurba",
