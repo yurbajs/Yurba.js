@@ -1,171 +1,83 @@
-# Yurba.js
+<div align="center">
+  <br />
+  <p>
+    <a href="https://yurba.js.org"><img src="https://cdn.yurba.one/photos/1423.jpg" width="150" alt="yurba.js" /></a>
+  </p>
+  <br />
+  <p>
+    <a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/v/yurba.js.svg?maxAge=3600" alt="npm version" /></a>
+    <a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/dt/yurba.js.svg?maxAge=3600" alt="npm downloads" /></a>
+    <!-- <a href="https://github.com/rastgame/yurba.js/actions"><img src="https://github.com/rastgame/yurba.js/actions/workflows/tests.yml/badge.svg" alt="Tests status" /></a> -->
+    <a href="https://github.com/rastgame/yurba.js/commits/main"><img src="https://img.shields.io/github/last-commit/rastgame/yurba.js.svg?logo=github&logoColor=ffffff" alt="Last commit." /></a>
+    <a href="https://github.com/rastgame/yurba.js/graphs/contributors"><img src="https://img.shields.io/github/contributors/rastgame/yurba.js.svg?maxAge=3600&logo=github&logoColor=fff&color=00c7be" alt="contributors" /></a>
+    <!-- <a href="https://codecov.io/gh/rastgame/yurba.js"><img src="https://codecov.io/gh/rastgame/yurba.js/branch/main/graph/badge.svg?precision=2" alt="Code coverage" /></a> -->
+        <a href="https://www.npmjs.com/package/yurba.js"><img alt="NPM Last Update" src="https://img.shields.io/npm/last-update/yurba.js" alt="npm last update"></a>
+  </p>
+</div>
 
-A powerful and modern JavaScript/TypeScript library for creating Yurba bots and clients, inspired by discord.js architecture.
+## About
+The powerful library for creating bots and integrating with the Yurba API.
 
-## Features
 
-- 🚀 **Modern Architecture** - Built with TypeScript, interfaces, and best practices
-- 🔧 **Easy to Use** - Simple and intuitive API similar to discord.js
-- 🛡️ **Type Safe** - Full TypeScript support with comprehensive type definitions
-- 🔌 **Middleware System** - Powerful middleware system for message processing
-- ⚡ **Real-time** - WebSocket support for real-time communication
-- 🎯 **Command System** - Advanced command parsing with argument validation
-- 🔄 **Auto-reconnect** - Automatic WebSocket reconnection with exponential backoff
-- 📦 **Modular** - Separate packages for different functionality
-
-## Installation
-
+## Instalation
+Node.js 20 or newer is required.
 ```bash
 npm install yurba.js
-# or
 yarn add yurba.js
+pnpm add yurba.js
+bun add yurba.js
 ```
 
-## Quick Start
 
-```typescript
-import { Client } from 'yurba.js';
+<details>
+<summary>first</summary>
 
-// Create client with options (discord.js style)
-const client = new Client('y.YOUR_TOKEN_HERE', {
-  prefix: '!',
-  maxReconnectAttempts: 10,
-  debug: true
-});
-
-// Add middleware for logging
-client.use(async (message) => {
-  console.log(`[${message.Type}] ${message.Message?.Author?.Name}: ${message.Message?.Text}`);
-}, { name: 'logger', priority: 1 });
-
-// Register commands
-client.registerCommand('hello', { name: ['string', 'World'] }, async (message, args) => {
-  await message.reply(`Hello, ${args.name}!`);
-});
-
-client.registerCommand('add', { a: 'int', b: 'int' }, async (message, args) => {
-  const result = args.a + args.b;
-  await message.reply(`${args.a} + ${args.b} = ${result}`);
-});
-
-// Event handlers
-client.once('ready', () => {
-  console.log(`Bot ${client.user?.Name} is ready!`);
-});
-
-client.on('message', (message) => {
-  // Handle regular messages
-});
-
-client.on('commandError', ({ error, message }) => {
-  console.error('Command error:', error);
-  message.reply('Sorry, there was an error executing that command.');
-});
-
-// Initialize the client
-client.init().catch(console.error);
+```js
+// твій код 1
 ```
-
-## Command System
-
-The command system supports various argument types and validation:
-
-```typescript
-// String argument with default value
-client.registerCommand('greet', { name: ['string', 'Anonymous'] }, async (message, args) => {
-  await message.reply(`Hello, ${args.name}!`);
-});
-
-// Integer arguments
-client.registerCommand('multiply', { a: 'int', b: 'int' }, async (message, args) => {
-  await message.reply(`Result: ${args.a * args.b}`);
-});
-
-// User argument
-client.registerCommand('userinfo', { target: 'user' }, async (message, args) => {
-  const user = args.target;
-  await message.reply(`User: ${user.Name} (ID: ${user.ID})`);
-});
-
-// Boolean argument
-client.registerCommand('toggle', { enabled: 'boolean' }, async (message, args) => {
-  await message.reply(`Setting is now ${args.enabled ? 'enabled' : 'disabled'}`);
-});
+</details> <details> <summary>another</summary>
+```js
+// твій код 2
 ```
+</details> ```
 
-## Middleware System
 
-Middleware functions are executed for every incoming message:
-
-```typescript
-// Logging middleware
-client.use(async (message) => {
-  console.log(`Message from ${message.Message?.Author?.Name}`);
-}, { name: 'logger', priority: 1 });
-
-// Spam filter middleware
-client.use(async (message) => {
-  if (message.Message?.Text?.includes('spam')) {
-    console.log('Spam detected, ignoring message');
-    return;
-  }
-}, { name: 'spam-filter', priority: 2 });
-
-// Remove middleware
-client.removeMiddleware('spam-filter');
-
-// List all middleware
-console.log(client.getMiddlewares());
-```
-
-## Error Handling
-
-The library provides comprehensive error handling:
-
-```typescript
-import { TokenValidationError, CommandError, WebSocketError } from 'yurba.js';
-
-try {
-  const client = new Client('invalid-token');
-} catch (error) {
-  if (error instanceof TokenValidationError) {
-    console.error('Invalid token format');
-  }
-}
-
-client.on('commandError', ({ error, message }) => {
-  if (error instanceof CommandError) {
-    console.error(`Command error in ${error.commandName}:`, error.message);
-  }
-});
-```
-
-## API Reference
-
-### Client Options
-
-```typescript
-interface ClientOptions {
-  prefix?: string;                // Command prefix (default: '/')
-  maxReconnectAttempts?: number;  // Max reconnection attempts (default: 5)
-  reconnectDelay?: number;        // Reconnection delay (default: 5000ms)
-  debug?: boolean;                // Enable debug logging (default: false)
-}
-```
-
-### Events
-
-- `ready` - Emitted when the client is ready
-- `message` - Emitted for every message
-- `commandError` - Emitted when a command fails
-- `unknownCommand` - Emitted for unknown commands
-- `middlewareError` - Emitted when middleware fails
-- `reconnectError` - Emitted when reconnection fails
-
-## License
-
-Apache-2.0
+## Links
+- [Website][website] ([source][website-source])
+- [Documentation][documentation]
+- [Yurba Account][yurba]
+- [Yurba Channel][yurba-channel]
+- [Yurba Chat/Discussion][yurba-chat]
+- [GitHub][source]
+- [Gitlab][gitlab]
+- [npm][npm]
+- [Related libraries][related-libs]
 
 ## Contributing
+Want to help make yurba.js better?
 
-Contributions are welcome! Please read our contributing guidelines and submit pull requests.
+- Found a bug? [Open an issue](https://github.com/RastGame/Yurba.js/issues/new)
+- Have an idea? [Start a discussion](https://github.com/RastGame/Yurba.js/discussions)
+- Want to contribute code? Fork the repository and submit a pull request
+
+Please make sure to follow our coding style and test your changes before submitting.
+
+## Getting Help
+Need assistance? Here's where to find help:
+
+- Check the [documentation][documentation] first
+- Ask questions in our [Chat][yurba-chat]
+- Browse existing [issues](https://github.com/RastGame/Yurba.js/issues) and [discussions](https://github.com/RastGame/Yurba.js/discussions)
+
+
+[gitlab]: https://gitlab.com/RastGame/Yurba.js
+[github-tags]: https://github.com/RastGame/Yurba.js/tags
+[source]: https://github.com/RastGame/Yurba.js/tree/main/packages/yurba.js
+[website]: https://yurba.js.org
+[website-source]: #
+[documentation]: #
+[yurba]: https://me.yurba.one/yurbajs
+[yurba-channel]: https://me.yurba.one/yjs
+[yurba-chat]: https://me.yurba.one/yurba.js
+[npm]: https://www.npmjs.com/package/yurba.js
+[related-libs]: #
