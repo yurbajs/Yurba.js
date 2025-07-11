@@ -1,6 +1,6 @@
 {
   "name": "@yurbajs/types",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Types for yurba.js packages and yurba.one",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,7 +32,6 @@
     "typescript",
     "api"
   ],
-
   "publishConfig": {
     "access": "public"
   },
