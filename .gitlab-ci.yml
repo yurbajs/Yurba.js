@@ -59,8 +59,9 @@ build:
 deploy:
   stage: deploy
   script:
-    - pnpm publish
+    - pnpm publish --no-git-checks
   only:
     - main
   dependencies:
     - build
+

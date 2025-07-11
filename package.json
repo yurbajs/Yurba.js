@@ -12,6 +12,7 @@
     "lint:fix": "lerna run lint -- --fix",
     "dev": "lerna run build --watch",
     "clean": "lerna run clean",
+    "all": "pnpm run lint && pnpm test && pnpm build",
     "install:all": "pnpm install",
     "publish": "lerna publish",
     "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install"
