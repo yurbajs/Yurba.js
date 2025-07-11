@@ -26,6 +26,7 @@ install:
       - node_modules/
       - packages/*/node_modules/
       - packages/*/lib/
+      - packages/*/dist/
       - .pnpm-store/
     expire_in: 1 hour
 
@@ -43,6 +44,7 @@ test:
   coverage: '/Lines\s*:\s*(\d+\.?\d*)%/'
   dependencies:
     - install
+    - pnpm build
 
 build:
   stage: build
