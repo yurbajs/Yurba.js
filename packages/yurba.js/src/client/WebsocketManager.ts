@@ -20,7 +20,7 @@ if (process.env.MODULES === 'WSM') {
 
 
 /**
- * Менеджер WebSocket з'єднань
+ * WebSocket connection manager
  * @extends EventEmitter
  */
 export default class WSM extends EventEmitter implements IWebSocketManager {
@@ -30,8 +30,8 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
   private connectionTimeoutId: NodeJS.Timeout | null = null;
 
   /**
-   * Створює новий менеджер WebSocket
-   * @param token Токен авторизації
+   * Creates a new WebSocket manager
+   * @param token Authorization token
    */
   constructor(token: string) {
     super();
@@ -39,9 +39,9 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
   }
 
   /**
-   * Підключається до WebSocket сервера
-   * @param botData Дані бота
-   * @returns Promise, який вирішується після успішного підключення
+   * Connects to WebSocket server
+   * @param botData Bot data
+   * @returns Promise that resolves after successful connection
    */
   async connect(botData: ShortUserModel): Promise<void> {
     this.ws = new ReconnectingWebSocket(
@@ -56,20 +56,20 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
     this.ws.on("open", () => {
       logging.info("WebSocket connection opened.");
 
-      // Відновлюємо підписки
+      // Restore subscriptions
       this.restoreSubscriptions();
 
-      // Підписуємося на діалог бота
+      // Subscribe to bot dialog
       this.subscribeToEvents("dialog", botData.ID);
 
-      this.emit("ready"); // Емітуємо подію "ready" для Client
+      this.emit("ready"); // Emit "ready" event for Client
     });
 
     this.ws.on("message", (data: string) => {
       logging.debug("WebSocket received a message:", data);
       try {
         const message: Message = JSON.parse(data.toString());
-        this.emit("message", message); // Емітуємо подію "message" для Client
+        this.emit("message", message); // Emit "message" event for Client
       } catch (err) {
         logging.error("Failed to parse WebSocket message:", err);
         this.emit(
@@ -81,21 +81,21 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
 
     this.ws.on("close", (code) => {
       logging.warn(`WebSocket connection closed with code ${code}.`);
-      this.emit("close", code); // Емітуємо подію "close" для Client
+      this.emit("close", code); // Emit "close" event for Client
     });
 
     this.ws.on("error", (err: Error) => {
       logging.error("WebSocket error:", err);
-      this.emit("error", err); // Емітуємо подію "error" для Client
+      this.emit("error", err); // Emit "error" event for Client
     });
 
     await this.waitForWebSocketOpen();
   }
 
   /**
-   * Підписується на події певної категорії
-   * @param category Категорія подій
-   * @param thing_id ID об'єкта
+   * Subscribes to events of a specific category
+   * @param category Event category
+   * @param thing_id Object ID
    */
   public subscribeToEvents(category: string, thing_id: number): void {
     const subscribeData = {
@@ -108,7 +108,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
       `Subscribing to events for category: ${category}, thing_id: ${thing_id}`
     );
 
-    // Зберігаємо підписку для можливого відновлення
+    // Store subscription for possible restoration
     if (!this.subscriptions.has(category)) {
       this.subscriptions.set(category, []);
     }
@@ -120,9 +120,9 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
   }
 
   /**
-   * Відписується від подій певної категорії
-   * @param category Категорія подій
-   * @param thing_id ID об'єкта
+   * Unsubscribes from events of a specific category
+   * @param category Event category
+   * @param thing_id Object ID
    */
   public unsubscribeFromEvents(category: string, thing_id: number): void {
     const unsubscribeData = {
@@ -135,7 +135,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
       `Unsubscribing from events for category: ${category}, thing_id: ${thing_id}`
     );
 
-    // Видаляємо підписку зі збережених
+    // Remove subscription from stored ones
     if (this.subscriptions.has(category)) {
       const ids = this.subscriptions.get(category);
       if (ids) {
@@ -153,7 +153,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
   }
 
   /**
-   * Відновлює всі збережені підписки
+   * Restores all stored subscriptions
    * @private
    */
   private restoreSubscriptions(): void {
@@ -172,8 +172,8 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
   }
 
   /**
-   * Чекає на відкриття WebSocket з'єднання
-   * @returns Promise, який вирішується після відкриття з'єднання
+   * Waits for WebSocket connection to open
+   * @returns Promise that resolves after connection opens
    * @private
    */
   private waitForWebSocketOpen(): Promise<void> {
@@ -207,7 +207,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
       this.ws?.once("open", onOpen);
       this.ws?.once("error", onError);
 
-      // Встановлюємо таймаут для підключення
+      // Set connection timeout
       this.connectionTimeoutId = setTimeout(() => {
         this.ws?.removeListener("open", onOpen);
         this.ws?.removeListener("error", onError);
@@ -217,7 +217,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
   }
 
   /**
-   * Закриває WebSocket з'єднання
+   * Closes WebSocket connection
    */
   close(): void {
     logging.info("Closing WebSocket connection...");
@@ -230,8 +230,8 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
   }
 
   /**
-   * Перевіряє, чи підключений WebSocket
-   * @returns true, якщо підключений
+   * Checks if WebSocket is connected
+   * @returns true if connected
    */
   isConnected(): boolean {
     return this.ws?.isOpen() || false;
