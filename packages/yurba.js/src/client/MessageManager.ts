@@ -2,30 +2,30 @@ import { Message, IMessageManager } from '@yurbajs/types';
 import { REST } from '@yurbajs/rest';
 
 /**
- * Менеджер повідомлень для клієнта
+ * Message manager for client
  */
 export default class MessageManager implements IMessageManager {
   private api: REST;
 
   /**
-   * Створює новий менеджер повідомлень
-   * @param api REST клієнт
+   * Creates a new message manager
+   * @param api REST client
    */
   constructor(api: REST) {
     this.api = api;
   }
 
   /**
-   * Розширює об'єкт повідомлення додатковими методами
-   * @param message Об'єкт повідомлення
+   * Enhances message object with additional methods
+   * @param message Message object
    */
   enhanceMessage(message: Message['Message']): void {
     /**
-     * Відповідає на повідомлення
-     * @param text Текст відповіді
-     * @param photos_list Список фото (опціонально)
-     * @param attachments Список вкладень (опціонально)
-     * @returns Promise з результатом відправки
+     * Replies to the message
+     * @param text Reply text
+     * @param photos_list List of photos (optional)
+     * @param attachments List of attachments (optional)
+     * @returns Promise with send result
      */
     message.reply = async (
       text: string,
@@ -42,12 +42,12 @@ export default class MessageManager implements IMessageManager {
     };
 
     /**
-     * Відправляє повідомлення у відповідь
-     * @param text Текст повідомлення
-     * @param photos_list Список фото (опціонально)
-     * @param attachments Список вкладень (опціонально)
-     * @param edit ID повідомлення для редагування (опціонально)
-     * @returns Promise з результатом відправки та методом edit для редагування
+     * Sends a message in response
+     * @param text Message text
+     * @param photos_list List of photos (optional)
+     * @param attachments List of attachments (optional)
+     * @param edit Message ID for editing (optional)
+     * @returns Promise with send result and edit method for editing
      */
     message.response = async (
       text: string,
@@ -65,11 +65,11 @@ export default class MessageManager implements IMessageManager {
       );
 
       /**
-       * Редагує відправлене повідомлення
-       * @param newText Новий текст
-       * @param newPhotosList Новий список фото (за замовчуванням як у оригінальному повідомленні)
-       * @param newAttachments Новий список вкладень (за замовчуванням як у оригінальному повідомленні)
-       * @returns Promise з результатом редагування
+       * Edits the sent message
+       * @param newText New text
+       * @param newPhotosList New list of photos (defaults to original message)
+       * @param newAttachments New list of attachments (defaults to original message)
+       * @returns Promise with edit result
        */
       response.edit = async (
         newText: string,
@@ -90,20 +90,20 @@ export default class MessageManager implements IMessageManager {
     };
 
     /**
-     * Видаляє повідомлення
-     * @returns Promise з результатом видалення
+     * Deletes the message
+     * @returns Promise with deletion result
      */
     message.delete = async () => {
       await this.api.messages.delete(message.ID);
     };
 
     /**
-     * Редагує повідомлення
-     * @param text Новий текст (за замовчуванням як у оригінальному повідомленні)
-     * @param replyToId ID повідомлення, на яке відповідаємо (за замовчуванням як у оригінальному повідомленні)
-     * @param photos_list Новий список фото (за замовчуванням як у оригінальному повідомленні)
-     * @param attachments Новий список вкладень (за замовчуванням як у оригінальному повідомленні)
-     * @returns Promise з результатом редагування
+     * Edits the message
+     * @param text New text (defaults to original message)
+     * @param replyToId ID of message to reply to (defaults to original message)
+     * @param photos_list New list of photos (defaults to original message)
+     * @param attachments New list of attachments (defaults to original message)
+     * @returns Promise with edit result
      */
     message.edit = async (
       text?: string,
@@ -121,15 +121,15 @@ export default class MessageManager implements IMessageManager {
       );
     };
 
-    // Додаємо допоміжні методи для роботи з командами
+    // Add helper methods for working with commands
     (message as any).isCommand = (prefix: string = '/') => {
       return message.Text && message.Text.startsWith(prefix);
     };
 
     /**
-     * Отримує аргументи команди
-     * @param prefix Префікс команди (за замовчуванням '/')
-     * @returns Масив аргументів
+     * Gets command arguments
+     * @param prefix Command prefix (default '/')
+     * @returns Array of arguments
      */
     (message as any).getCommandArgs = (prefix: string = '/') => {
       if (!message.Text || !message.Text.startsWith(prefix)) {
@@ -137,14 +137,14 @@ export default class MessageManager implements IMessageManager {
       }
 
       const parts = message.Text.slice(prefix.length).split(' ');
-      // Перший елемент - це назва команди, тому повертаємо все після неї
+      // First element is the command name, so return everything after it
       return parts.slice(1);
     };
 
     /**
-     * Отримує назву команди
-     * @param prefix Префікс команди (за замовчуванням '/')
-     * @returns Назва команди або null, якщо це не команда
+     * Gets command name
+     * @param prefix Command prefix (default '/')
+     * @returns Command name or null if not a command
      */
     (message as any).getCommandName = (prefix: string = '/') => {
       if (!message.Text || !message.Text.startsWith(prefix)) {

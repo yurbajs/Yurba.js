@@ -37,3 +37,7 @@ registerCommand
 removeMiddleware
 getMiddlewares
 userinfo
+maxReconnectAttempts
+commandError
+WebSocketError
+ws
