@@ -8,6 +8,16 @@
     "declarationMap": true,
     "sourceMap": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*.test.ts", "node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.json"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "tests",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }
