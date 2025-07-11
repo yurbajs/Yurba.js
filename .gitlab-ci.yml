@@ -58,6 +58,9 @@ build:
 
 deploy:
   stage: deploy
+  before_script:
+    - npm install -g pnpm
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
   script:
     - pnpm publish --no-git-checks
   only:
