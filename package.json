@@ -1,8 +1,10 @@
 {
   "name": "@yurbajs/yurba.js",
   "version": "0.0.0",
+  "author": "RastGame",
+  "license": "Apache-2.0",
   "private": true,
-  "description": "The powerful library for creating bots and integrating with the Yurba API.в",
+  "workspaces": ["packages/*"],
   "scripts": {
     "build": "lerna run build",
     "build:local": "pnpm run clean && pnpm run build",
@@ -17,8 +19,6 @@
     "publish": "lerna publish",
     "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install"
   },
-  "author": "RastGame",
-  "license": "Apache-2.0",
   "devDependencies": {
     "@eslint/js": "^9.25.1",
     "@types/events": "^3.0.3",

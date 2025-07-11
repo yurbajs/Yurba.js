@@ -1,7 +1,7 @@
 {
   "name": "yurba.js",
   "version": "0.1.4",
-  "description": "Simple library for creating Yurba clients and bots",
+  "description": "The powerful library for creating bots and integrating with the Yurba API.s",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "RastGame",
