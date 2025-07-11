@@ -20,9 +20,11 @@ install:
   stage: install
   script:
     - pnpm install
+    - pnpm build
   artifacts:
     paths:
       - node_modules/
+      - packages/*/node_modules/
       - .pnpm-store/
     expire_in: 1 hour
 

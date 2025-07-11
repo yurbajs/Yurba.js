@@ -1,17 +1,17 @@
-import { RestClient } from '../RestClient';
+import { REST } from '../RestClient';
 import { PhotoModel, TrackData, PlaylistData } from '@yurbajs/types';
 
 /**
  * Ресурс для роботи з медіа
  */
 export class MediaResource {
-  private client: RestClient;
+  private client: REST;
 
   /**
    * Створює новий ресурс для роботи з медіа
    * @param client REST клієнт
    */
-  constructor(client: RestClient) {
+  constructor(client: REST) {
     this.client = client;
   }
 

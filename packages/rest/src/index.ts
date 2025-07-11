@@ -1,4 +1,4 @@
-import { RestClient, ApiError } from './RestClient';
+import { REST, ApiError } from './RestClient';
 import { UserResource } from './resources/UserResource';
 import { MessageResource } from './resources/MessageResource';
 import { DialogResource } from './resources/DialogResource';
@@ -7,7 +7,7 @@ import { MediaResource } from './resources/MediaResource';
 import { AuthResource } from './resources/AuthResource';
 
 // Розширюємо RestClient з ресурсами
-class EnhancedRestClient extends RestClient {
+class RestClient extends REST {
   public users: UserResource;
   public messages: MessageResource;
   public dialogs: DialogResource;
@@ -28,8 +28,8 @@ class EnhancedRestClient extends RestClient {
 }
 
 export {
-  EnhancedRestClient as RestClient,
+  RestClient as REST,
   ApiError,
 };
 
-export default EnhancedRestClient;
+export default RestClient;

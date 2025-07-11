@@ -1,17 +1,17 @@
-import { RestClient } from '../RestClient';
+import { REST } from '../RestClient';
 import { MessageData } from '@yurbajs/types';
 
 /**
  * Ресурс для роботи з повідомленнями
  */
 export class MessageResource {
-  private client: RestClient;
+  private client: REST;
 
   /**
    * Створює новий ресурс для роботи з повідомленнями
    * @param client REST клієнт
    */
-  constructor(client: RestClient) {
+  constructor(client: REST) {
     this.client = client;
   }
 

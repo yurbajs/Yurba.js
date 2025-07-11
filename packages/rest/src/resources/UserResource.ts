@@ -1,17 +1,17 @@
-import { RestClient } from '../RestClient';
+import { REST } from '../RestClient';
 import { UserModel, PhotoModel } from '@yurbajs/types';
 
 /**
  * Ресурс для роботи з користувачами
  */
 export class UserResource {
-  private client: RestClient;
+  private client: REST;
 
   /**
    * Створює новий ресурс для роботи з користувачами
    * @param client REST клієнт
    */
-  constructor(client: RestClient) {
+  constructor(client: REST) {
     this.client = client;
   }
 

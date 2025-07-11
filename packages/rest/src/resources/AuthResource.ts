@@ -1,12 +1,12 @@
-import { RestClient } from '../RestClient';
+import { REST } from '../RestClient';
 
 /**
  * Ресурс для роботи з автентифікацією
  */
 export class AuthResource {
-  private client: RestClient;
+  private client: REST;
   
-  constructor(client: RestClient) {
+  constructor(client: REST) {
     this.client = client;
   }
   

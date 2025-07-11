@@ -1,7 +1,7 @@
 /**
  * Базовий REST клієнт для взаємодії з API Yurba.one
  */
-export class RestClient {
+export class REST {
   private baseURL: string;
   private token: string;
   private headers: Record<string, string>;
