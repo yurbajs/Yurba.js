@@ -1,17 +1,30 @@
 {
+  "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", "lib/**"],
+      "cache": true
     },
     "test": {
-      "dependsOn": ["build"]
+      "dependsOn": ["build"],
+      "cache": true
     },
     "lint": {
+      "cache": true,
       "outputs": []
     },
-    "dev": {
+    "clean": {
       "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
     }
-  }
+  },
+  "globalDependencies": [
+    "package.json",
+    "pnpm-lock.yaml",
+    "tsconfig.json"
+  ]
 }
