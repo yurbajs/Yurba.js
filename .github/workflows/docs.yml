@@ -6,11 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   docs:
     runs-on: ubuntu-latest
@@ -36,9 +31,9 @@ jobs:
     - name: Generate documentation
       run: pnpm run docs
       
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main' && success()
-      uses: peaceiris/actions-gh-pages@v4
+    - name: Upload docs artifact
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-artifact@v4
       with:
-        personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        publish_dir: ./docs
+        name: docs
+        path: docs/
