@@ -15,7 +15,7 @@
 ## About
 WebSocket client for yurba.one with real-time messaging support.
 
-> WARNING: it's alfa version 
+> WARNING: it's alpha version 
 
 ## Install
 Node.js 20 or newer is required.

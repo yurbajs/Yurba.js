@@ -1,16 +1,11 @@
 matrix:
 - name: Markdown
-  sources:
-  - '**/*.md'
   aspell:
     lang: en
-    d: en_US
-  hunspell:
     d: en_US
   dictionary:
     wordlists:
     - .wordlist.txt
-    output: build/dictionary/markdown.dic
   pipeline:
   - pyspelling.filters.markdown:
   - pyspelling.filters.html:
@@ -21,3 +16,6 @@ matrix:
       ignores:
       - code
       - pre
+  sources:
+  - '**/*.md'
+  default_encoding: utf-8

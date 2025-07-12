@@ -8,7 +8,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rastgame/yurba.js.git"
+    "url": "git+https://github.com/yurbajs/yurba.js.git"
   },
   "bugs": {
     "url": "https://github.com/rastgame/yurba.js/issues"
