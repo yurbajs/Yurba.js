@@ -26,6 +26,7 @@
     "guide:dev": "vitepress dev apps/guide",
     "guide:build": "vitepress build apps/guide",
     "guide:preview": "vitepress preview apps/guide",
+    "guide:start": "pnpm run guide:build && pnpm run guide:preview",
     "publish": "turbo run lint test clean build && lerna publish",
     "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install"
   },
