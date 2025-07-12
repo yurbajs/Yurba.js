@@ -4,6 +4,7 @@ export default defineConfig({
   title: "Yurba.js",
   description: "The powerful library for creating bots and integrating with the Yurba API",
   base: '/',
+  ignoreDeadLinks: true,
   
   // Локалізації
   locales: {
