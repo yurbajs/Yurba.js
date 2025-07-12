@@ -85,7 +85,7 @@ export default defineConfig({
     },
 
     search: {
-      provider: 'algolia',
+      provider: 'local',
       options: {
         appId: process.env.VITE_ALGOLIA_APP_ID!,
         apiKey: process.env.VITE_ALGOLIA_SEARCH_API_KEY!,
