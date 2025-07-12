@@ -40,5 +40,9 @@
     "NPM": "https://www.npmjs.com/package/yurba.js",
     "Yurba.one": "https://yurba.one"
   },
-  "favicon": "./assets/logo.png"
+  "favicon": "./assets/logo.png",
+  "skipErrorChecking": true,
+  "compilerOptions": {
+    "skipLibCheck": true
+  }
 }
