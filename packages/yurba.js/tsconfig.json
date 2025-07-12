@@ -4,7 +4,7 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "composite": true,
-    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "tsBuildInfoFile": "./lib/.tsbuildinfo",
     "paths": {
       "@yurbajs/types": ["../types/dist"],
       "@yurbajs/rest": ["../rest/dist"],
@@ -14,7 +14,7 @@
   "include": ["src/**/*.ts"],
   "exclude": [
     "node_modules",
-    "lib",
+    "dist",
     "tests",
     "examples",
     "**/*.test.ts",

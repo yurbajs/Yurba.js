@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "exclude": [
     "node_modules",
-    "lib",
+    "dist",
     "tests",
     "examples",
     "**/*.test.ts",
