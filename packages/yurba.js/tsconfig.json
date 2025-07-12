@@ -1,23 +1,17 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "outDir": "./lib",
     "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "composite": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "paths": {
+      "@yurbajs/types": ["../types/dist"],
+      "@yurbajs/rest": ["../rest/dist"],
+      "@yurbajs/ws": ["../ws/dist"]
+    }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.js",
-    "src/**/*.json"
-  ],
+  "include": ["src/**/*.ts"],
   "exclude": [
     "node_modules",
     "lib",
@@ -25,5 +19,10 @@
     "examples",
     "**/*.test.ts",
     "**/*.spec.ts"
+  ],
+  "references": [
+    { "path": "../types" },
+    { "path": "../rest" },
+    { "path": "../ws" }
   ]
 }

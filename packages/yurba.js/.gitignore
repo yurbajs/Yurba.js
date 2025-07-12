@@ -1,24 +1,3 @@
-# Node modules
-node_modules/
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Env files
-.env
-.env.*
-
-# TypeScript cache
+dist/
+lib/
 *.tsbuildinfo
-
-# VSCode settings
-.vscode/
-
-# Test output
-coverage/
-*.log
-
-.vscode
-bun.lock
