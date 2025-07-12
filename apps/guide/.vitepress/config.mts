@@ -74,7 +74,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/logo.svg',
+    logo: '/assets/logo.svg',
     
     // Навігація з версіями
     nav: [
