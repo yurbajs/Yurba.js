@@ -1,6 +1,5 @@
 {
-  "$schema": "https://typedoc.org/schema.json",
-  "name": "Yurba.js",
+  "name": "Yurba.js Documentation",
   "entryPointStrategy": "packages",
   "entryPoints": [
     "packages/yurba.js",
@@ -15,18 +14,11 @@
   "excludeProtected": true,
   "excludeInternal": true,
   "hideGenerator": true,
-  "readme": "docs-README.md",
+  "readme": "README.md",
   "categorizeByGroup": true,
   "sort": ["alphabetical"],
-  "searchInComments": true,
-  "navigation": {
-    "includeCategories": true,
-    "includeGroups": true
-  },
-  "customCss": "./docs-theme/modern-style.css",
   "gitRevision": "main",
   "sourceLinkTemplate": "https://github.com/RastGame/Yurba.js/blob/{gitRevision}/{path}#L{line}",
-  "titleLink": "https://yurba.js.org",
   "cleanOutputDir": true,
   "treatWarningsAsErrors": false,
   "validation": {
@@ -34,15 +26,6 @@
     "invalidLink": false,
     "notDocumented": false
   },
-  "plugin": ["typedoc-plugin-mdn-links"],
-  "sidebarLinks": {
-    "GitHub": "https://github.com/RastGame/Yurba.js",
-    "NPM": "https://www.npmjs.com/package/yurba.js",
-    "Yurba.one": "https://yurba.one"
-  },
-  "favicon": "./assets/logo.png",
-  "skipErrorChecking": true,
-  "compilerOptions": {
-    "skipLibCheck": true
-  }
+  "basePath": "./",
+  "disableSources": false
 }
