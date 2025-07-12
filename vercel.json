@@ -1,0 +1,5 @@
+{
+  "buildCommand": "pnpm run guide:build",
+  "outputDirectory": "apps/guide/.vitepress/dist",
+  "installCommand": "pnpm install"
+}
