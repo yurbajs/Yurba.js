@@ -5,6 +5,9 @@ export default defineConfig({
   description: "The powerful library for creating bots and integrating with the Yurba API",
   base: '/',
   ignoreDeadLinks: true,
+  head: [
+    ['link', { rel: 'icon', href: '/assets/logo.svg' }]
+  ],
   
   // Локалізації
   locales: {
