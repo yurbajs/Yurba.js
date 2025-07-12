@@ -1,7 +1,4 @@
 import { defineConfig } from 'vitepress'
-import { config } from 'dotenv'
-
-config()
 
 export default defineConfig({
   title: "Yurba.js",
@@ -9,10 +6,9 @@ export default defineConfig({
   base: '/',
   ignoreDeadLinks: true,
   head: [
-    ['link', { rel: 'icon', href: '/assets/logo.svg' }]
+    ['link', { rel: 'icon', href: '/logo.png' }]
   ],
   
-  // Локалізації
   locales: {
     root: {
       label: 'English',
@@ -22,8 +18,33 @@ export default defineConfig({
       label: 'Українська',
       lang: 'uk',
       title: 'Yurba.js',
-      description: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API'
-
+      description: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API',
+      themeConfig: {
+        nav: [
+          { text: 'Посібник', link: '/uk/getting-started' },
+          { text: 'Документація', link: 'https://yurbajs.pages.dev/' },
+          { text: 'Приклади', link: '/uk/examples' }
+        ],
+        outline: {
+          label: 'На цій сторінці'
+        },
+        lastUpdated: {
+          text: 'Оновлено'
+        },
+        docFooter: {
+          prev: 'Попередня сторінка',
+          next: 'Наступна сторінка'
+        },
+        darkModeSwitchLabel: 'Вигляд',
+        lightModeSwitchTitle: 'Переключити на світлу тему',
+        darkModeSwitchTitle: 'Переключити на темну тему',
+        returnToTopLabel: 'Повернутися до початку',
+        sidebarMenuLabel: 'Меню',
+        editLink: {
+          pattern: 'https://github.com/RastGame/Yurba.js/edit/main/apps/guide/:path',
+          text: 'Редагувати цю сторінку'
+        }
+      }
     }
   },
 
@@ -87,47 +108,74 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
-        appId: process.env.VITE_ALGOLIA_APP_ID!,
-        apiKey: process.env.VITE_ALGOLIA_SEARCH_API_KEY!,
-        indexName: process.env.VITE_ALGOLIA_INDEX_NAME!,
+        miniSearch: {
+          searchOptions: {
+            combineWith: 'AND',
+            fuzzy: 0.2,
+            prefix: true,
+            boost: { title: 4, text: 2, titles: 1 }
+          },
+          options: {
+            fields: ['title', 'titles', 'text'],
+            storeFields: ['title', 'titles'],
+            searchOptions: {
+              fuzzy: 0.2,
+              prefix: true,
+              boost: { title: 4, text: 2, titles: 1 }
+            }
+          }
+        },
+        _render(src, env, md) {
+          const html = md.render(src, env)
+          if (env.frontmatter?.search === false) return ''
+          if (env.relativePath.startsWith('uk/')) {
+            return html
+          }
+          return html
+        },
         locales: {
           uk: {
-            placeholder: 'Пошук документації',
             translations: {
               button: {
                 buttonText: 'Пошук',
-                buttonAriaLabel: 'Пошук'
+                buttonAriaLabel: 'Пошук документації'
               },
               modal: {
-                searchBox: {
-                  resetButtonTitle: 'Очистити запит',
-                  resetButtonAriaLabel: 'Очистити запит',
-                  cancelButtonText: 'Скасувати',
-                  cancelButtonAriaLabel: 'Скасувати'
-                },
-                startScreen: {
-                  recentSearchesTitle: 'Останні пошуки',
-                  noRecentSearchesText: 'Немає останніх пошуків',
-                  saveRecentSearchButtonTitle: 'Зберегти цей пошук',
-                  removeRecentSearchButtonTitle: 'Видалити цей пошук з історії',
-                  favoriteSearchesTitle: 'Улюблені',
-                  removeFavoriteSearchButtonTitle: 'Видалити з улюблених'
-                },
-                errorScreen: {
-                  titleText: 'Неможливо отримати результати',
-                  helpText: 'Можливо, варто перевірити мережеве з\'єднання.'
-                },
+                displayDetails: 'Показати детальний список',
+                resetButtonTitle: 'Скинути пошук',
+                backButtonTitle: 'Закрити пошук',
+                noResultsText: 'Немає результатів для',
                 footer: {
                   selectText: 'вибрати',
+                  selectKeyAriaLabel: 'enter',
                   navigateText: 'навігувати',
+                  navigateUpKeyAriaLabel: 'стрілка вгору',
+                  navigateDownKeyAriaLabel: 'стрілка вниз',
                   closeText: 'закрити',
-                  searchByText: 'пошук від'
-                },
-                noResultsScreen: {
-                  noResultsText: 'Немає результатів для',
-                  suggestedQueryText: 'Спробуйте пошукати',
-                  reportMissingResultsText: 'Вважаєте, що цей запит повинен повертати результати?',
-                  reportMissingResultsLinkText: 'Повідомте нас.'
+                  closeKeyAriaLabel: 'escape'
+                }
+              }
+            }
+          },
+          root: {
+            translations: {
+              button: {
+                buttonText: 'Search',
+                buttonAriaLabel: 'Search docs'
+              },
+              modal: {
+                displayDetails: 'Display detailed list',
+                resetButtonTitle: 'Reset search',
+                backButtonTitle: 'Close search',
+                noResultsText: 'No results for',
+                footer: {
+                  selectText: 'to select',
+                  selectKeyAriaLabel: 'enter',
+                  navigateText: 'to navigate',
+                  navigateUpKeyAriaLabel: 'up arrow',
+                  navigateDownKeyAriaLabel: 'down arrow',
+                  closeText: 'to close',
+                  closeKeyAriaLabel: 'escape'
                 }
               }
             }
@@ -143,7 +191,7 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the Apache-2.0 License.',
-      copyright: 'Copyright © 2024 RastGame'
+      copyright: 'Copyright © 2025 RastGame'
     },
 
     editLink: {
@@ -171,6 +219,18 @@ export default defineConfig({
 
     darkModeSwitchLabel: 'Appearance',
     lightModeSwitchTitle: 'Switch to light theme',
-    darkModeSwitchTitle: 'Switch to dark theme'
+    darkModeSwitchTitle: 'Switch to dark theme',
+
+    // Українські переклади
+    localeLinks: {
+      text: 'Мова',
+      items: [
+        { text: 'English', link: '/' },
+        { text: 'Українська', link: '/uk/' }
+      ]
+    },
+
+    // Переклади для української версії
+    i18nRouting: false
   }
 })
