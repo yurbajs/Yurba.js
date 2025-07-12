@@ -27,5 +27,5 @@ function fixHtmlFiles(dir) {
 }
 
 console.log('Fixing HTML file paths...');
-fixHtmlFiles('./docs');
+fixHtmlFiles('./apps/docs');
 console.log('Done!');

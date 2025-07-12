@@ -20,12 +20,18 @@
     "all": "pnpm run lint && pnpm test && pnpm build",
     "install:all": "pnpm install",
     "docs": "pnpm run docs:clean && pnpm run build && typedoc && node fix-docs.js",
-    "docs:serve": "pnpm run docs && npx http-server docs -p 3000 -o",
-    "docs:clean": "rimraf docs",
+    "docs:serve": "pnpm run docs && npx http-server apps/docs -p 3000 -o",
+    "docs:clean": "rimraf apps/docs",
     "docs:watch": "typedoc --watch",
-    "docs:build": "pnpm run build && pnpm run docs",
+    "guide:dev": "vitepress dev apps/guide",
+    "guide:build": "vitepress build apps/guide",
+    "guide:preview": "vitepress preview apps/guide",
+    "docs:build": "vitepress build apps/guide",
     "publish": "turbo run lint test clean build && lerna publish",
-    "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install"
+    "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install",
+    "guide:dev": "vitepress dev apps/guide",
+    "guide:build": "vitepress build apps/guide",
+    "guide:preview": "vitepress preview apps/guide"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",
@@ -38,6 +44,7 @@
     "eslint": "^9.25.1",
     "events": "^3.3.0",
     "globals": "^15.0.0",
+    "http-server": "^14.1.1",
     "husky": "^8.0.3",
     "jest": "^29.7.0",
     "lerna": "^7.4.2",
@@ -46,12 +53,10 @@
     "ts-jest": "^29.3.2",
     "turbo": "^2.5.4",
     "typedoc": "^0.28.3",
-
-
     "typescript": "^5.1.6",
     "typescript-eslint": "^8.0.0",
-    "ws": "^8.18.0",
-    "http-server": "^14.1.1"
+    "vitepress": "^1.6.3",
+    "ws": "^8.18.0"
   },
   "lint-staged": {
     "*.{ts,js}": [

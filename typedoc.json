@@ -7,12 +7,12 @@
     "packages/ws",
     "packages/types"
   ],
-  "out": "docs",
+  "out": "apps/docs",
   "theme": "default",
   "includeVersion": true,
-  "excludePrivate": true,
-  "excludeProtected": true,
-  "excludeInternal": true,
+  "excludePrivate": false,
+  "excludeProtected": false,
+  "excludeInternal": false,
   "hideGenerator": true,
   "readme": "README.md",
   "categorizeByGroup": true,
@@ -26,6 +26,5 @@
     "invalidLink": false,
     "notDocumented": false
   },
-  "basePath": "./",
-  "disableSources": false
+  "skipErrorChecking": true
 }
