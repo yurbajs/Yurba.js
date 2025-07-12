@@ -1,26 +1,54 @@
 {
-  "name": "Yurba.js Documentation",
+  "name": "Yurba.js",
   "entryPoints": [
-    "packages/yurba.js",
-    "packages/rest",
-    "packages/ws",
-    "packages/types"
+    "packages/yurba.js/src/index.ts"
   ],
-  "entryPointStrategy": "packages",
   "out": "docs",
   "theme": "default",
   "includeVersion": false,
-  "excludePrivate": false,
-  "excludeProtected": false,
+  "excludePrivate": true,
+  "excludeProtected": true,
   "excludeInternal": true,
-  "hideGenerator": false,
-  "readme": "README.md",
+  "hideGenerator": true,
+  "readme": "none",
   "categorizeByGroup": true,
-  "sort": ["source-order"],
+  "categoryOrder": [
+    "Classes",
+    "Interfaces", 
+    "Types",
+    "Functions",
+    "*"
+  ],
+  "sort": ["alphabetical"],
   "searchInComments": true,
-  "customCss": "./docs-theme/custom.css",
+  "searchInDocuments": true,
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
+  "kindSortOrder": [
+    "Project",
+    "Module", 
+    "Class",
+    "Interface",
+    "TypeAlias",
+    "Function",
+    "Variable",
+    "Property",
+    "Method",
+    "Constructor",
+    "Accessor"
+  ],
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": true,
+    "external": false
+  },
+  "customCss": "./docs-theme/discord-style.css",
   "gitRevision": "main",
-  "gitRemote": "origin",
+  "sourceLinkTemplate": "https://github.com/yurbajs/yurba.js/blob/{gitRevision}/{path}#L{line}",
+  "titleLink": "https://yurba.js.org",
   "cleanOutputDir": true,
   "treatWarningsAsErrors": false,
   "validation": {
