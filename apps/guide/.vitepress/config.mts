@@ -1,4 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { config } from 'dotenv'
+
+config()
 
 export default defineConfig({
   title: "Yurba.js",
@@ -82,60 +85,56 @@ export default defineConfig({
     },
 
     search: {
-      provider: 'local'
+      provider: 'algolia',
+      options: {
+        appId: process.env.VITE_ALGOLIA_APP_ID!,
+        apiKey: process.env.VITE_ALGOLIA_SEARCH_API_KEY!,
+        indexName: process.env.VITE_ALGOLIA_INDEX_NAME!,
+        locales: {
+          uk: {
+            placeholder: 'Пошук документації',
+            translations: {
+              button: {
+                buttonText: 'Пошук',
+                buttonAriaLabel: 'Пошук'
+              },
+              modal: {
+                searchBox: {
+                  resetButtonTitle: 'Очистити запит',
+                  resetButtonAriaLabel: 'Очистити запит',
+                  cancelButtonText: 'Скасувати',
+                  cancelButtonAriaLabel: 'Скасувати'
+                },
+                startScreen: {
+                  recentSearchesTitle: 'Останні пошуки',
+                  noRecentSearchesText: 'Немає останніх пошуків',
+                  saveRecentSearchButtonTitle: 'Зберегти цей пошук',
+                  removeRecentSearchButtonTitle: 'Видалити цей пошук з історії',
+                  favoriteSearchesTitle: 'Улюблені',
+                  removeFavoriteSearchButtonTitle: 'Видалити з улюблених'
+                },
+                errorScreen: {
+                  titleText: 'Неможливо отримати результати',
+                  helpText: 'Можливо, варто перевірити мережеве з\'єднання.'
+                },
+                footer: {
+                  selectText: 'вибрати',
+                  navigateText: 'навігувати',
+                  closeText: 'закрити',
+                  searchByText: 'пошук від'
+                },
+                noResultsScreen: {
+                  noResultsText: 'Немає результатів для',
+                  suggestedQueryText: 'Спробуйте пошукати',
+                  reportMissingResultsText: 'Вважаєте, що цей запит повинен повертати результати?',
+                  reportMissingResultsLinkText: 'Повідомте нас.'
+                }
+              }
+            }
+          }
+        }
+      }
     },
-
-  // search: {
-  //   provider: 'algolia',
-  //   options: {
-  //     appId: 'BH4D9OD16A',
-  //     apiKey: 'b573aa848fd57fb47d693b531297d32f',
-  //     indexName: 'yurbajs',
-  //     locales: {
-  //       uk: {
-  //         placeholder: 'Пошук документації',
-  //         translations: {
-  //           button: {
-  //             buttonText: 'Пошук',
-  //             buttonAriaLabel: 'Пошук'
-  //           },
-  //           modal: {
-  //             searchBox: {
-  //               resetButtonTitle: 'Очистити запит',
-  //               resetButtonAriaLabel: 'Очистити запит',
-  //               cancelButtonText: 'Скасувати',
-  //               cancelButtonAriaLabel: 'Скасувати'
-  //             },
-  //             startScreen: {
-  //               recentSearchesTitle: 'Останні пошуки',
-  //               noRecentSearchesText: 'Немає останніх пошуків',
-  //               saveRecentSearchButtonTitle: 'Зберегти цей пошук',
-  //               removeRecentSearchButtonTitle: 'Видалити цей пошук з історії',
-  //               favoriteSearchesTitle: 'Улюблені',
-  //               removeFavoriteSearchButtonTitle: 'Видалити з улюблених'
-  //             },
-  //             errorScreen: {
-  //               titleText: 'Неможливо отримати результати',
-  //               helpText: 'Можливо, варто перевірити мережеве з\'єднання.'
-  //             },
-  //             footer: {
-  //               selectText: 'вибрати',
-  //               navigateText: 'навігувати',
-  //               closeText: 'закрити',
-  //               searchByText: 'пошук від'
-  //             },
-  //             noResultsScreen: {
-  //               noResultsText: 'Немає результатів для',
-  //               suggestedQueryText: 'Спробуйте пошукати',
-  //               reportMissingResultsText: 'Вважаєте, що цей запит повинен повертати результати?',
-  //               reportMissingResultsLinkText: 'Повідомте нас.'
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/RastGame/Yurba.js' },
