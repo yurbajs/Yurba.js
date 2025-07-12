@@ -10,6 +10,11 @@ CommonJS
 ReconnectingWebSocket
 wss
 yurbajs
+yurba
+ws
+init
+registerCommand
+Gitlab
 TypeScript
 WebSocket
 npm
