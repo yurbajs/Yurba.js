@@ -9,7 +9,7 @@
   "entryPointStrategy": "packages",
   "out": "docs",
   "theme": "default",
-  "includeVersion": true,
+  "includeVersion": false,
   "excludePrivate": false,
   "excludeProtected": false,
   "excludeInternal": true,
