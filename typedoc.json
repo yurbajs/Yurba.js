@@ -1,59 +1,44 @@
 {
+  "$schema": "https://typedoc.org/schema.json",
   "name": "Yurba.js",
+  "entryPointStrategy": "packages",
   "entryPoints": [
-    "packages/yurba.js/src/index.ts"
+    "packages/yurba.js",
+    "packages/rest",
+    "packages/ws",
+    "packages/types"
   ],
   "out": "docs",
   "theme": "default",
-  "includeVersion": false,
+  "includeVersion": true,
   "excludePrivate": true,
   "excludeProtected": true,
   "excludeInternal": true,
   "hideGenerator": true,
-  "readme": "none",
+  "readme": "docs-README.md",
   "categorizeByGroup": true,
-  "categoryOrder": [
-    "Classes",
-    "Interfaces", 
-    "Types",
-    "Functions",
-    "*"
-  ],
   "sort": ["alphabetical"],
   "searchInComments": true,
-  "searchInDocuments": true,
   "navigation": {
     "includeCategories": true,
     "includeGroups": true
   },
-  "kindSortOrder": [
-    "Project",
-    "Module", 
-    "Class",
-    "Interface",
-    "TypeAlias",
-    "Function",
-    "Variable",
-    "Property",
-    "Method",
-    "Constructor",
-    "Accessor"
-  ],
-  "visibilityFilters": {
-    "protected": false,
-    "private": false,
-    "inherited": true,
-    "external": false
-  },
-  "customCss": "./docs-theme/discord-style.css",
+  "customCss": "./docs-theme/modern-style.css",
   "gitRevision": "main",
-  "sourceLinkTemplate": "https://github.com/yurbajs/yurba.js/blob/{gitRevision}/{path}#L{line}",
+  "sourceLinkTemplate": "https://github.com/RastGame/Yurba.js/blob/{gitRevision}/{path}#L{line}",
   "titleLink": "https://yurba.js.org",
   "cleanOutputDir": true,
   "treatWarningsAsErrors": false,
   "validation": {
-    "notExported": true,
-    "invalidLink": true,
+    "notExported": false,
+    "invalidLink": false,
     "notDocumented": false
-  }
+  },
+  "plugin": ["typedoc-plugin-mdn-links"],
+  "sidebarLinks": {
+    "GitHub": "https://github.com/RastGame/Yurba.js",
+    "NPM": "https://www.npmjs.com/package/yurba.js",
+    "Yurba.one": "https://yurba.one"
+  },
+  "favicon": "./assets/logo.png"
 }

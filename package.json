@@ -19,9 +19,11 @@
     "clean": "turbo run clean",
     "all": "pnpm run lint && pnpm test && pnpm build",
     "install:all": "pnpm install",
-    "docs": "typedoc",
+    "docs": "pnpm run docs:clean && typedoc",
     "docs:serve": "pnpm run docs && npx http-server docs -p 3000 -o",
     "docs:clean": "rimraf docs",
+    "docs:watch": "typedoc --watch",
+    "docs:build": "pnpm run build && pnpm run docs",
     "publish": "turbo run lint test clean build && lerna publish",
     "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install"
   },
@@ -44,6 +46,8 @@
     "ts-jest": "^29.3.2",
     "turbo": "^2.5.4",
     "typedoc": "^0.28.3",
+    "typedoc-plugin-mdn-links": "^3.3.2",
+
     "typescript": "^5.1.6",
     "typescript-eslint": "^8.0.0",
     "ws": "^8.18.0",
