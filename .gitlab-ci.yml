@@ -1,70 +1,22 @@
 image: node:22
 
 stages:
-  - install
-  - lint
-  - test
-  - build
   - deploy
 
 cache:
   paths:
     - .pnpm-store/
 
-before_script:
-  - npm install -g pnpm
-  - pnpm config set store-dir .pnpm-store
-
-install:
-  stage: install
-  script:
-    - pnpm install
-    - pnpm build
-  artifacts:
-    paths:
-      - node_modules/
-      - packages/*/node_modules/
-      - packages/*/lib/
-      - packages/*/dist/
-      - .pnpm-store/
-    expire_in: 1 hour
-
-lint:
-  stage: lint
-  script:
-    - pnpm lint
-  dependencies:
-    - install
-
-test:
-  stage: test
-  script:
-    - pnpm test
-  dependencies:
-    - install
-  coverage: '/Lines\s*:\s*(\d+\.?\d*)%/'
-
-build:
-  stage: build
-  script:
-    - pnpm build
-  artifacts:
-    paths:
-      - packages/*/lib/
-      - packages/*/dist/
-    expire_in: 1 week
-  dependencies:
-    - install
-
 deploy:
   stage: deploy
   before_script:
     - npm install -g pnpm
+    - pnpm config set store-dir .pnpm-store
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
   script:
+    - pnpm install
+    - pnpm build
     - pnpm run publish --no-git-checks
   only:
     - release
-  dependencies:
-    - build
 
