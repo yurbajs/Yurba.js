@@ -20,74 +20,21 @@ export default defineConfig({
       lang: 'uk',
       title: 'Yurba.js',
       description: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API'
+
     }
   },
 
-  // Algolia пошук
-  search: {
-    provider: 'algolia',
-    options: {
-      appId: 'BH4D9OD16A',
-      apiKey: 'b573aa848fd57fb47d693b531297d32f',
-      indexName: 'yurbajs',
-      locales: {
-        uk: {
-          placeholder: 'Пошук документації',
-          translations: {
-            button: {
-              buttonText: 'Пошук',
-              buttonAriaLabel: 'Пошук'
-            },
-            modal: {
-              searchBox: {
-                resetButtonTitle: 'Очистити запит',
-                resetButtonAriaLabel: 'Очистити запит',
-                cancelButtonText: 'Скасувати',
-                cancelButtonAriaLabel: 'Скасувати'
-              },
-              startScreen: {
-                recentSearchesTitle: 'Останні пошуки',
-                noRecentSearchesText: 'Немає останніх пошуків',
-                saveRecentSearchButtonTitle: 'Зберегти цей пошук',
-                removeRecentSearchButtonTitle: 'Видалити цей пошук з історії',
-                favoriteSearchesTitle: 'Улюблені',
-                removeFavoriteSearchButtonTitle: 'Видалити з улюблених'
-              },
-              errorScreen: {
-                titleText: 'Неможливо отримати результати',
-                helpText: 'Можливо, варто перевірити мережеве з\'єднання.'
-              },
-              footer: {
-                selectText: 'вибрати',
-                navigateText: 'навігувати',
-                closeText: 'закрити',
-                searchByText: 'пошук від'
-              },
-              noResultsScreen: {
-                noResultsText: 'Немає результатів для',
-                suggestedQueryText: 'Спробуйте пошукати',
-                reportMissingResultsText: 'Вважаєте, що цей запит повинен повертати результати?',
-                reportMissingResultsLinkText: 'Повідомте нас.'
-              }
-            }
-          }
-        }
-      }
-    }
-  },
 
   themeConfig: {
-    logo: '/assets/logo.svg',
-    
-    // Навігація з версіями
+    logo: '/logo.svg',
     nav: [
       { text: 'Guide', link: '/getting-started' },
-      { text: 'API Reference', link: '../docs/' },
+      { text: 'Documentation', link: 'https://yurbajs.pages.dev/' },
       { text: 'Examples', link: '/examples' },
       {
         text: 'v0.1.9',
         items: [
-          { text: 'Changelog', link: 'https://github.com/RastGame/Yurba.js/releases' },
+          { text: 'Changelog', link: 'https://github.com/RastGame/Yurba.js/tags' },
           { text: 'v0.1.9 (current)', link: '/' },
           { text: 'v0.1.8', link: 'https://github.com/RastGame/Yurba.js/tree/v0.1.8' }
         ]
@@ -133,6 +80,62 @@ export default defineConfig({
         }
       ]
     },
+
+    search: {
+      provider: 'local'
+    },
+
+  // search: {
+  //   provider: 'algolia',
+  //   options: {
+  //     appId: 'BH4D9OD16A',
+  //     apiKey: 'b573aa848fd57fb47d693b531297d32f',
+  //     indexName: 'yurbajs',
+  //     locales: {
+  //       uk: {
+  //         placeholder: 'Пошук документації',
+  //         translations: {
+  //           button: {
+  //             buttonText: 'Пошук',
+  //             buttonAriaLabel: 'Пошук'
+  //           },
+  //           modal: {
+  //             searchBox: {
+  //               resetButtonTitle: 'Очистити запит',
+  //               resetButtonAriaLabel: 'Очистити запит',
+  //               cancelButtonText: 'Скасувати',
+  //               cancelButtonAriaLabel: 'Скасувати'
+  //             },
+  //             startScreen: {
+  //               recentSearchesTitle: 'Останні пошуки',
+  //               noRecentSearchesText: 'Немає останніх пошуків',
+  //               saveRecentSearchButtonTitle: 'Зберегти цей пошук',
+  //               removeRecentSearchButtonTitle: 'Видалити цей пошук з історії',
+  //               favoriteSearchesTitle: 'Улюблені',
+  //               removeFavoriteSearchButtonTitle: 'Видалити з улюблених'
+  //             },
+  //             errorScreen: {
+  //               titleText: 'Неможливо отримати результати',
+  //               helpText: 'Можливо, варто перевірити мережеве з\'єднання.'
+  //             },
+  //             footer: {
+  //               selectText: 'вибрати',
+  //               navigateText: 'навігувати',
+  //               closeText: 'закрити',
+  //               searchByText: 'пошук від'
+  //             },
+  //             noResultsScreen: {
+  //               noResultsText: 'Немає результатів для',
+  //               suggestedQueryText: 'Спробуйте пошукати',
+  //               reportMissingResultsText: 'Вважаєте, що цей запит повинен повертати результати?',
+  //               reportMissingResultsLinkText: 'Повідомте нас.'
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/RastGame/Yurba.js' },
