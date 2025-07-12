@@ -47,7 +47,39 @@ const erlog = (...args: unknown[]): void => {
 
 /**
  * Main class for working with Yurba API
+ * 
+ * The Client class is the main entry point for interacting with the Yurba.one platform.
+ * It provides methods for sending messages, registering commands, handling events,
+ * and managing bot functionality.
+ * 
+ * @example Basic usage
+ * ```typescript
+ * import { Client } from 'yurba.js';
+ * 
+ * const client = new Client('your-token-here');
+ * 
+ * client.registerCommand('hello', { name: 'string' }, (message, args) => {
+ *   message.reply(`Hello, ${args.name}!`);
+ * });
+ * 
+ * client.on('ready', () => {
+ *   console.log('Bot is ready!');
+ * });
+ * 
+ * client.init();
+ * ```
+ * 
+ * @example With options
+ * ```typescript
+ * const client = new Client('token', {
+ *   prefix: '!',
+ *   maxReconnectAttempts: 10
+ * });
+ * ```
+ * 
+ * @public
  * @extends EventEmitter
+ * @category Client
  */
 class Client extends EventEmitter {
   private token: string;
@@ -64,8 +96,21 @@ class Client extends EventEmitter {
 
   /**
    * Creates a new Yurba client
-   * @param token Authorization token
-   * @param prefix Command prefix
+   * 
+   * @param token - Authorization token from Yurba.one (must start with 'y.' and be at least 34 characters)
+   * @param options - Client configuration options
+   * @param options.prefix - Command prefix (default: '/')
+   * @param options.maxReconnectAttempts - Maximum reconnection attempts (default: 5)
+   * 
+   * @throws {TokenValidationError} When token format is invalid
+   * 
+   * @example
+   * ```typescript
+   * const client = new Client('y.your-token-here', {
+   *   prefix: '!',
+   *   maxReconnectAttempts: 10
+   * });
+   * ```
    */
   constructor(token: string, options: ClientOptions = {}) {
     super();
