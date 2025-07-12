@@ -15,6 +15,8 @@
 ## About
 TypeScript type definitions for yurba.js packages and yurba.one API.
 
+> Not complete, this is an alpha version.
+
 ## Install
 Node.js 20 or newer is required.
 
