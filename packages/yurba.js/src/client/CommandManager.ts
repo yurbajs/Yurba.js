@@ -1,8 +1,31 @@
 import { CommandArgsSchema, CommandHandler, Message, ICommandManager } from "@yurbajs/types";
-import Logger from "../utils/Logger";
+import Logger, { LogLevel } from "../utils/Logger";
 import { CommandError } from "@yurbajs/types";
 
-const logging = new Logger("CommandManager");
+interface DevConfig {
+  debug: boolean;
+  level?: LogLevel;
+}
+
+let Dev: DevConfig = {
+  debug: false,
+  level: LogLevel.DEBUG
+};
+
+if (process.env.MODULES === 'yurbajs') {
+  try {
+    require('dotenv').config();
+    
+    Dev = {
+      debug: Boolean(process.env.DEBUG),
+      level: (process.env.LEVEL as unknown) as LogLevel
+    };
+  } catch {  
+    // no-op
+  }
+}
+
+const logging = new Logger("CommandManager", { enabled: Dev.debug });
 
 /**
  * Command manager for client

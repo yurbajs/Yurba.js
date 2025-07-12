@@ -5,15 +5,15 @@
   </p>
   <br />
   <p>
-    <a href="https://www.npmjs.com/package/@yurbajs/rest"><img src="https://img.shields.io/npm/v/@yurbajs/rest.svg?maxAge=3600" alt="npm version" /></a>
-    <a href="https://www.npmjs.com/package/@yurbajs/rest"><img src="https://img.shields.io/npm/dt/@yurbajs/rest.svg?maxAge=3600" alt="npm downloads" /></a>
+    <a href="https://www.npmjs.com/package/@yurbajs/ws"><img src="https://img.shields.io/npm/v/@yurbajs/ws.svg?maxAge=3600" alt="npm version" /></a>
+    <a href="https://www.npmjs.com/package/@yurbajs/ws"><img src="https://img.shields.io/npm/dt/@yurbajs/ws.svg?maxAge=3600" alt="npm downloads" /></a>
     <a href="https://github.com/rastgame/yurba.js/commits/main"><img src="https://img.shields.io/github/last-commit/rastgame/yurba.js.svg?logo=github&logoColor=ffffff" alt="Last commit" /></a>
-    <a href="https://www.npmjs.com/package/@yurbajs/rest"><img src="https://img.shields.io/npm/last-update/@yurbajs/rest" alt="npm last update"></a>
+    <a href="https://www.npmjs.com/package/@yurbajs/ws"><img src="https://img.shields.io/npm/last-update/@yurbajs/ws" alt="npm last update"></a>
   </p>
 </div>
 
 ## About
-REST client for Yurba API with full TypeScript support.
+WebSocket client for yurba.one with real-time messaging support.
 
 > WARNING: it's alfa version 
 
@@ -21,42 +21,30 @@ REST client for Yurba API with full TypeScript support.
 Node.js 20 or newer is required.
 
 ```sh
-npm install @yurbajs/rest
-yarn add @yurbajs/rest
-pnpm add @yurbajs/rest
-bun add @yurbajs/rest
+npm install @yurbajs/ws
+yarn add @yurbajs/ws
+pnpm add @yurbajs/ws
+bun add @yurbajs/ws
 ```
 
 ## Example usage
 
 ```js
-import { REST } from '@yurbajs/rest';
+import { ReconnectingWebSocket } from '@yurbajs/ws';
 
-const api = new REST('TOKEN');
+const ws = new ReconnectingWebSocket('wss://api.yurba.one/ws?token=TOKEN');
 
-try {
-  // Get user info
-  const user = await api.users.getMe();
-  console.log('Bot user:', user);
+ws.on('message', (message) => {
+  console.log('Received message:', message);
+});
 
-  // Send message (dialogid)
-  try {
-    const message = await api.messages.send(1111, 'Hello, world!');
-    console.log('Message sent:', message);
-  } catch (error) {
-    console.error('Failed to send message:', error.message);
-  }
+ws.on('open', () => {
+  console.log('WebSocket connected!');
+});
 
-  // Get user by tag (@)
-  try {
-    const targetUser = await api.users.getByTag('rastgame');
-    console.log('User:', targetUser);
-  } catch (error) {
-    console.error('Failed to get user:', error.message);
-  }
-} catch (error) {
-  console.error('Failed to get bot info:', error.message);
-}
+ws.on('error', (error) => {
+  console.error('WebSocket error:', error);
+});
 ```
 
 ## Links
@@ -89,11 +77,11 @@ Need assistance?
 * Browse existing [issues](https://github.com/RastGame/Yurba.js/issues) and [discussions](https://github.com/RastGame/Yurba.js/discussions).
 
 [gitlab]: https://gitlab.com/RastGame/Yurba.js
-[source]: https://github.com/RastGame/Yurba.js/tree/main/packages/rest
+[source]: https://github.com/RastGame/Yurba.js/tree/main/packages/ws
 [website]: https://yurba.js.org
 [website-source]: https://github.com/RastGame/Yurba.js
 [documentation]: https://yurba.js.org/docs
 [yurba]: https://me.yurba.one/yurbajs
 [yurba-channel]: https://me.yurba.one/yjs
 [yurba-chat]: https://me.yurba.one/yurba.js
-[npm]: https://www.npmjs.com/package/@yurbajs/rest
+[npm]: https://www.npmjs.com/package/@yurbajs/ws

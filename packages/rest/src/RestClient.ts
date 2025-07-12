@@ -133,11 +133,20 @@ export class REST {
       this.abortControllers.delete(endpoint);
       
       if (!response.ok) {
-        throw new ApiError(
-          `API request failed: ${response.status} ${response.statusText}`,
-          response.status,
-          await response.text()
-        );
+        let errorBody: string;
+        let errorMessage = `API request failed: ${response.status} ${response.statusText}`;
+        
+        try {
+          const errorData = await response.json();
+          errorBody = JSON.stringify(errorData);
+          if (errorData.detail) {
+            errorMessage = `API Error: ${errorData.detail}`;
+          }
+        } catch {
+          errorBody = await response.text();
+        }
+        
+        throw new ApiError(errorMessage, response.status, errorBody);
       }
 
       return await response.json() as T;
@@ -199,11 +208,20 @@ export class REST {
       this.abortControllers.delete(endpointPath);
       
       if (!response.ok) {
-        throw new ApiError(
-          `File upload failed: ${response.status} ${response.statusText}`,
-          response.status,
-          await response.text()
-        );
+        let errorBody: string;
+        let errorMessage = `File upload failed: ${response.status} ${response.statusText}`;
+        
+        try {
+          const errorData = await response.json();
+          errorBody = JSON.stringify(errorData);
+          if (errorData.detail) {
+            errorMessage = `Upload Error: ${errorData.detail}`;
+          }
+        } catch {
+          errorBody = await response.text();
+        }
+        
+        throw new ApiError(errorMessage, response.status, errorBody);
       }
 
       return await response.json() as T;
