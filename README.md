@@ -1,12 +1,13 @@
 <div align="center">
 	<br />
 	<p>
-		<a href="https://yurba.js.org"><img src="https://raw.githubusercontent.com/yurbajs/yurba.js/2b1e6dc4578a0a9200bd2a25731e9a07c79b78b1/assets/banner.svg" width="500" alt="yurba.js" /></a>
+		<a href="https://yurba.js.org"><img src="https://yurbajs.vercel.app/banner.svg" width="500" alt="yurba.js" /></a>
 	</p>
 	<br />
 	<p>
 		<a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/v/yurba.js.svg?maxAge=3600" alt="npm version" /></a>
 		<a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/dt/yurba.js.svg?maxAge=3600" alt="npm downloads" /></a>
+		<a href="https://gitlab.com/RastGame/Yurba.js/-/commits/main"><img alt="pipeline status" src="https://gitlab.com/RastGame/Yurba.js/badges/main/pipeline.svg" /></a>
 		<!-- <a href="https://github.com/rastgame/yurba.js/actions"><img src="https://github.com/rastgame/yurba.js/actions/workflows/tests.yml/badge.svg" alt="Tests status" /></a> -->
 		<a href="https://github.com/rastgame/yurba.js/commits/main"><img src="https://img.shields.io/github/last-commit/rastgame/yurba.js.svg?logo=github&logoColor=ffffff" alt="Last commit." /></a>
 		<a href="https://github.com/rastgame/yurba.js/graphs/contributors"><img src="https://img.shields.io/github/contributors/rastgame/yurba.js.svg?maxAge=3600&logo=github&logoColor=fff&color=00c7be" alt="contributors" /></a>

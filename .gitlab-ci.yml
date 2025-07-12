@@ -64,7 +64,7 @@ deploy:
   script:
     - pnpm run publish --no-git-checks
   only:
-    - main
+    - release
   dependencies:
     - build
 
