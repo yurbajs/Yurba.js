@@ -1,0 +1,18 @@
+{
+  "current": "0.1.9",
+  "versions": [
+    {
+      "version": "0.1.9",
+      "label": "v0.1.9 (current)",
+      "path": "/",
+      "archived": false
+    },
+    {
+      "version": "0.1.8", 
+      "label": "v0.1.8",
+      "path": "/v0.1.8/",
+      "archived": true,
+      "archiveUrl": "https://github.com/RastGame/Yurba.js/tree/v0.1.8"
+    }
+  ]
+}

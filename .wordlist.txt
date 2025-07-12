@@ -148,3 +148,6 @@ VitePress
 md
 Frontmatter
 Shiki
+svg
+javascript
+messageCreate

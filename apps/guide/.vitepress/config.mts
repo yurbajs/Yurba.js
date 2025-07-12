@@ -1,14 +1,21 @@
 import { defineConfig } from 'vitepress'
+import versions from './versions.json'
+import links from './links.json'
 
 export default defineConfig({
   title: "Yurba.js",
   description: "The powerful library for creating bots and integrating with the Yurba API",
   base: '/',
+  cleanUrls: true,
   ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }]
   ],
   
+  srcDir: '.',
+  rewrites: {
+    'en/(.*)': '(.*)',
+  },
   locales: {
     root: {
       label: 'English',
@@ -21,9 +28,19 @@ export default defineConfig({
       description: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API',
       themeConfig: {
         nav: [
-          { text: 'Посібник', link: '/uk/getting-started' },
-          { text: 'Документація', link: 'https://yurbajs.pages.dev/' },
-          { text: 'Приклади', link: '/uk/examples' }
+          { text: 'Посібник', link: links.uk.guide },
+          { text: 'Документація', link: links.external.docs },
+          { text: 'Приклади', link: links.uk.examples },
+          {
+            text: `v${versions.current}`,
+            items: [
+              { text: 'Зміни', link: links.external.changelog },
+              ...versions.versions.map(v => ({
+                text: v.label.replace('current', 'поточна'),
+                link: v.archived ? v.archiveUrl : (v.path === '/' ? '/uk/' : `/uk${v.path}`)
+              }))
+            ]
+          }
         ],
         outline: {
           label: 'На цій сторінці'
@@ -41,7 +58,7 @@ export default defineConfig({
         returnToTopLabel: 'Повернутися до початку',
         sidebarMenuLabel: 'Меню',
         editLink: {
-          pattern: 'https://github.com/RastGame/Yurba.js/edit/main/apps/guide/:path',
+          pattern: `${links.external.github}/edit/main/apps/guide/:path`,
           text: 'Редагувати цю сторінку'
         }
       }
@@ -52,15 +69,17 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.svg',
     nav: [
-      { text: 'Guide', link: '/getting-started' },
-      { text: 'Documentation', link: 'https://yurbajs.pages.dev/' },
-      { text: 'Examples', link: '/examples' },
+      { text: 'Guide', link: links.internal.guide },
+      { text: 'Documentation', link: links.external.docs },
+      { text: 'Examples', link: links.internal.examples },
       {
-        text: 'v0.1.9',
+        text: `v${versions.current}`,
         items: [
-          { text: 'Changelog', link: 'https://github.com/RastGame/Yurba.js/tags' },
-          { text: 'v0.1.9 (current)', link: '/' },
-          { text: 'v0.1.8', link: 'https://github.com/RastGame/Yurba.js/tree/v0.1.8' }
+          { text: 'Changelog', link: links.external.changelog },
+          ...versions.versions.map(v => ({
+            text: v.label,
+            link: v.archived ? v.archiveUrl : v.path
+          }))
         ]
       }
     ],
@@ -70,23 +89,24 @@ export default defineConfig({
         {
           text: 'Getting Started',
           items: [
-            { text: 'Introduction', link: '/introduction' },
-            { text: 'Installation', link: '/installation' },
-            { text: 'Quick Start', link: '/getting-started' }
+            { text: 'Introduction', link: links.internal.introduction },
+            { text: 'Installation', link: links.internal.installation },
+            { text: 'Quick Start', link: links.internal.guide }
           ]
         },
         {
           text: 'Guide',
           items: [
-            { text: 'Creating a Bot', link: '/creating-bot' },
-            { text: 'Commands', link: '/commands' },
-            { text: 'Events', link: '/events' },
+            { text: 'Creating a Bot', link: links.internal.creatingBot },
+            { text: 'Commands', link: links.internal.commands },
+            { text: 'Events', link: links.internal.events },
             { text: 'Middleware', link: '/middleware' }
           ]
         },
         {
           text: 'Examples',
           items: [
+            { text: 'Overview', link: links.internal.examples },
             { text: 'Basic Bot', link: '/examples/basic-bot' },
             { text: 'Command Handler', link: '/examples/command-handler' },
             { text: 'Event Handling', link: '/examples/event-handling' }
@@ -97,9 +117,23 @@ export default defineConfig({
         {
           text: 'Початок роботи',
           items: [
-            { text: 'Вступ', link: '/uk/introduction' },
-            { text: 'Встановлення', link: '/uk/installation' },
-            { text: 'Швидкий старт', link: '/uk/getting-started' }
+            { text: 'Вступ', link: links.uk.introduction },
+            { text: 'Встановлення', link: links.uk.installation },
+            { text: 'Швидкий старт', link: links.uk.guide }
+          ]
+        },
+        {
+          text: 'Посібник',
+          items: [
+            { text: 'Створення бота', link: links.uk.creatingBot },
+            { text: 'Команди', link: links.uk.commands },
+            { text: 'Події', link: links.uk.events }
+          ]
+        },
+        {
+          text: 'Приклади',
+          items: [
+            { text: 'Огляд', link: links.uk.examples }
           ]
         }
       ]
@@ -185,8 +219,8 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/RastGame/Yurba.js' },
-      { icon: 'npm', link: 'https://www.npmjs.com/package/yurba.js' }
+      { icon: 'github', link: links.external.github },
+      { icon: 'npm', link: links.external.npm }
     ],
 
     footer: {
@@ -195,7 +229,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/RastGame/Yurba.js/edit/main/apps/guide/:path'
+      pattern: `${links.external.github}/edit/main/apps/guide/:path`
     },
 
     // Додаткові функції

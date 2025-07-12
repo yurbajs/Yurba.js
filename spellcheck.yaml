@@ -19,3 +19,22 @@ matrix:
   sources:
   - '**/*.md'
   default_encoding: utf-8
+- name: Ukrainian
+  hunspell:
+    d: uk_UA
+  dictionary:
+    wordlists:
+    - .wordlist.txt
+  pipeline:
+  - pyspelling.filters.markdown:
+  - pyspelling.filters.html:
+      comments: false
+      attributes:
+      - title
+      - alt
+      ignores:
+      - code
+      - pre
+  sources:
+  - 'apps/guide/uk/**/*.md'
+  default_encoding: utf-8
