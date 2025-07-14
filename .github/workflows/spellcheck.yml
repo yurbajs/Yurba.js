@@ -1,7 +1,18 @@
-name: Spellcheck Action
+name: Spellcheck Action Check
 on:
+  pull_request:
+    branches: [ main, dev ]
+    paths:
+      - '**/*.md'
+      - '**/*.mdx'
+    
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
+    paths:
+      - '**/*.md'
+      - '**/*.mdx'
+
+
 
 jobs:
   build:

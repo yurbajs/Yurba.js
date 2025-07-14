@@ -3,18 +3,16 @@ name: Pull Request Checks
 on:
   pull_request:
     branches: [ main, dev ]
+    paths: 
+      - 'packages/**'
+      - 'apps/**'
   push:
     branches: [ main, dev ]
+    paths: 
+      - 'packages/**'
+      - 'apps/**'
 
 jobs:
-  spellcheck:
-    name: Spellcheck
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: rojopolis/spellcheck-github-actions@0.51.0
-      name: Spellcheck
-
   lint:
     name: Lint Code
     runs-on: ubuntu-latest

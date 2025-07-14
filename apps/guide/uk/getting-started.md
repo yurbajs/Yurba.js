@@ -10,7 +10,7 @@ bun add yurba.js
 ```js
 import { Client } from "yurba.js"; // імпортуємо Client
 
-const client = new Client('TOKEN'); // Вставляємо токен yurba (y.DSksdajjsdjsd)
+const client = new Client('TOKEN'); // Вставляємо токен yurba ( він виглядає так: `y.RT0ZALrC4tUwU7WmEGvq5XdlsRjpMlrL`)
 
 client.registerCommand('hi', { name: 'string' }, (message, args) => {
     message.reply(`Привіт!, ${args.name}!`);
