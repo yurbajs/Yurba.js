@@ -75,6 +75,17 @@
   display: none;
 }
 
+/* ===== МОБІЛЬНЕ МЕНЮ ===== */
+@media (max-width: 768px) {
+  .VPSidebar {
+    transform: translateX(0) !important;
+  }
+  
+  .VPSidebar.open {
+    transform: translateX(0) !important;
+  }
+}
+
 /* ===== ПОКРАЩИТИ LAYOUT ===== */
 .VPDoc .container {
   max-width: none;
@@ -86,22 +97,18 @@
 
 /* ===== ПОКРАЩИТИ CODE GROUPS ===== */
 .vp-code-group {
-  border-radius: 12px;
-  border: none;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.dark .vp-code-group {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin: 16px 0;
 }
 
 .vp-code-group .tabs {
-  background: var(--vp-c-bg);
-  border-bottom: 1px solid var(--vp-c-divider-light);
-  padding: 8px;
+  background: var(--vp-c-bg-alt);
+  border-bottom: 1px solid var(--vp-c-divider);
+  padding: 4px;
   display: flex;
-  gap: 4px;
+  gap: 2px;
 }
 
 .vp-code-group .tabs input {
@@ -110,14 +117,16 @@
 
 .vp-code-group .tabs label {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 6px 12px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--vp-c-text-2);
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .vp-code-group .tabs label:hover {
@@ -127,20 +136,22 @@
 
 .vp-code-group .tabs input:checked + label {
   color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
-  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
   font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== ПОКРАЩИТИ БЛОКИ КОДУ ===== */
 div[class*="language-"] {
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 8px 8px;
   margin: 0;
   border: none;
 }
 
 .vp-code-group div[class*="language-"] {
-  border-radius: 0 0 12px 12px;
+  border-radius: 0;
+  margin: 0;
+  border: none;
 }
 
 /* ===== CUSTOM BLOCKS ===== */
