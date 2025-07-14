@@ -2,8 +2,9 @@
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import './style.css'
+import './clean-style.css'
 import HeroActions from './components/HeroActions.vue'
+import SimpleHero from './components/SimpleHero.vue'
 
 export default {
   extends: DefaultTheme,
@@ -14,6 +15,7 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     app.component('HeroActions', HeroActions)
+    app.component('SimpleHero', SimpleHero)
     
     // Автоматичне розгортання активних розділів sidebar
     if (typeof window !== 'undefined') {

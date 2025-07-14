@@ -1,0 +1,270 @@
+/**
+ * Yurba.js Clean Theme
+ * Простий та сучасний стиль для світлої та темної теми
+ */
+
+/* ===== БРЕНДОВІ КОЛЬОРИ ===== */
+:root {
+  --yurba-primary: #41d1ff;
+  --yurba-secondary: #bd34fe;
+  --yurba-gradient: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  
+  /* VitePress переопределення */
+  --vp-c-brand-1: #41d1ff;
+  --vp-c-brand-2: #0ea5e9;
+  --vp-c-brand-3: #0284c7;
+  --vp-c-brand-soft: rgba(65, 209, 255, 0.14);
+}
+
+/* ===== ГОЛОВНА СТОРІНКА ===== */
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: var(--yurba-gradient);
+  
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #bd34fe 50%,
+    #47caff 50%
+  );
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+/* ===== КНОПКИ (повертаю оригінальний стиль) ===== */
+:root {
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+}
+
+/* ===== NAVBAR ПОКРАЩЕННЯ ===== */
+.VPNav {
+  backdrop-filter: blur(8px);
+}
+
+.VPNavBar .title {
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+}
+
+/* ===== SIDEBAR ПОКРАЩЕННЯ ===== */
+.VPSidebarItem .link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* ===== ПРИХОВАТИ ПРАВЕ МЕНЮ ===== */
+.VPDocAside {
+  display: none;
+}
+
+/* ===== ПОКРАЩИТИ LAYOUT ===== */
+.VPDoc .container {
+  max-width: none;
+}
+
+.VPDoc .content {
+  max-width: 1000px;
+}
+
+/* ===== ПОКРАЩИТИ CODE GROUPS ===== */
+.vp-code-group {
+  border-radius: 12px;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark .vp-code-group {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.vp-code-group .tabs {
+  background: var(--vp-c-bg);
+  border-bottom: 1px solid var(--vp-c-divider-light);
+  padding: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.vp-code-group .tabs input {
+  display: none;
+}
+
+.vp-code-group .tabs label {
+  display: inline-block;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.vp-code-group .tabs label:hover {
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-soft);
+}
+
+.vp-code-group .tabs input:checked + label {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* ===== ПОКРАЩИТИ БЛОКИ КОДУ ===== */
+div[class*="language-"] {
+  border-radius: 0 0 12px 12px;
+  margin: 0;
+  border: none;
+}
+
+.vp-code-group div[class*="language-"] {
+  border-radius: 0 0 12px 12px;
+}
+
+/* ===== CUSTOM BLOCKS ===== */
+.custom-block {
+  border-radius: 8px;
+  border-left: 4px solid var(--vp-c-brand-1);
+}
+
+.custom-block.tip {
+  border-left-color: var(--vp-c-brand-1);
+}
+
+/* ===== ПОШУК ===== */
+.DocSearch-Button {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.DocSearch-Button:hover {
+  background: var(--vp-c-bg-soft);
+}
+
+/* ===== АДАПТИВНІСТЬ ===== */
+@media (max-width: 1279px) {
+  .VPDoc .content {
+    max-width: 100%;
+    padding: 0 32px;
+  }
+}
+
+@media (max-width: 960px) {
+  .VPDoc .container {
+    padding: 0 24px;
+  }
+  
+  .VPDoc .content {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .VPDoc .container {
+    padding: 0 16px;
+  }
+  
+  .VPDoc .content {
+    padding: 0 16px;
+  }
+  
+  .vp-code-group {
+    margin: 16px -16px;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .VPDoc .container {
+    padding: 0 12px;
+  }
+  
+  .VPDoc .content {
+    padding: 0 12px;
+  }
+}
+
+/* ===== СВІТЛА ТЕМА СПЕЦИФІКА ===== */
+:root:not(.dark) {
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f6f8fa;
+  --vp-c-bg-soft: #f6f8fa;
+  --vp-c-bg-elv: #ffffff;
+}
+
+/* ===== ТЕМНА ТЕМА СПЕЦИФІКА ===== */
+.dark {
+  --vp-c-bg: #1a1a1a;
+  --vp-c-bg-alt: #262626;
+  --vp-c-bg-soft: #262626;
+  --vp-c-bg-elv: #1a1a1a;
+}
+
+/* ===== ПЛАВНІ ПЕРЕХОДИ ===== */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* ===== ПОКРАЩЕННЯ ТИПОГРАФІЇ ===== */
+.vp-doc h1 {
+  color: var(--vp-c-brand-1);
+  font-weight: 800;
+}
+
+.vp-doc h2 {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  border-bottom: 1px solid var(--vp-c-divider);
+  padding-bottom: 8px;
+}
+
+.vp-doc h3 {
+  color: var(--vp-c-brand-2);
+  font-weight: 600;
+}
+
+/* ===== ПОСИЛАННЯ ===== */
+.vp-doc a {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.vp-doc a:hover {
+  border-bottom-color: var(--vp-c-brand-1);
+}
+
+/* ===== ТАБЛИЦІ ===== */
+.vp-doc table {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc table th {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+}

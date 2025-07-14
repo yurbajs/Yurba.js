@@ -1,5 +1,5 @@
 .VPHero {
-  padding: 16px 24px;
+  padding: 24px;
 }
 
 .container {
@@ -10,7 +10,7 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
 }
 
@@ -22,69 +22,92 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
-  padding: 0 20px;
-  line-height: 38px;
+  gap: 8px;
+  border-radius: 24px;
+  padding: 12px 24px;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  border: 1px solid rgba(63, 60, 255, 0.068);
-  transition: all 0.4s ease;
-}
-
-.dark .Button {
-  border-color: rgba(255, 255, 255, 0.075);
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .Button:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
   transform: translateY(-1px);
-  filter: brightness(1.05);
-}
-
-.Button.medium {
-  border-radius: 20px;
-  padding: 0 20px;
-  line-height: 38px;
-  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(65, 209, 255, 0.15);
 }
 
 .Button.brand {
-  color: var(--vp-button-brand-text);
-  background-color: var(--vp-button-brand-bg);
+  background: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-white);
 }
 
 .Button.brand:hover {
-  color: var(--vp-button-brand-hover-text);
-  background-color: var(--vp-button-brand-hover-bg);
+  background: var(--vp-c-brand-2);
+  border-color: var(--vp-c-brand-2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(65, 209, 255, 0.3);
 }
 
 .Button.alt {
-  color: var(--vp-button-alt-text);
-  background-color: var(--vp-button-alt-bg);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
 }
 
 .Button.alt:hover {
-  color: var(--vp-button-alt-hover-text);
-  background-color: var(--vp-button-alt-hover-bg);
-}
-
-.text {
-  display: flex;
-  align-items: center;
+  background: var(--vp-c-bg-elv);
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(65, 209, 255, 0.1);
 }
 
 .dark .yurba-icon {
   filter: brightness(0) invert(1);
 }
 
+@media (max-width: 768px) {
+  .VPHero {
+    padding: 16px;
+  }
+  
+  .actions {
+    gap: 12px;
+  }
+  
+  .Button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 640px) {
   .actions {
     flex-direction: column;
     align-items: center;
+    gap: 10px;
   }
   
   .Button {
     width: 100%;
-    max-width: 200px;
+    max-width: 280px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .VPHero {
+    padding: 12px;
+  }
+  
+  .Button {
+    max-width: 240px;
+    font-size: 14px;
   }
 }
