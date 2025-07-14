@@ -8,10 +8,18 @@ export const sidebar = [
     ]
   },
   {
-    text: 'Instalation & Налаштування',
+    text: 'Installation & Setup',
     collapsed: true,
     items: [
-      { text: '', link: '/installation' },
+      { text: 'Installation', link: '/installation' },
+      { text: 'Setting up bot account', link: '/setting-up-bot-account' }
+    ]
+  },
+  {
+    text: 'Creating bot',
+    collapsed: true,
+    items: [
+      { text: 'Installation', link: '/installation' },
       { text: 'Events', link: '/events' }
     ]
   },

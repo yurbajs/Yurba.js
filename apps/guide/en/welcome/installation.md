@@ -9,7 +9,7 @@ sidebar: true
 ## Install Node.js
 To use yurba.js, you need to install Node.js, preferably the LTS version.
 
-::: tip TIP
+::: tip 
 To check if you already have Node installed on your machine (e.g., if you're using a VPS), run `node -v` in your terminal. It is recommended to use the latest LTS version of Node.
 :::
 
@@ -21,8 +21,6 @@ On macOS, either:
 - Use a package manager like Homebrew with the command `brew install node` 
 
 On Linux, you can consult [this page](https://nodejs.org/en/download) to determine how you should install Node.
-
-#
 
 
 ## Install yurba.js
@@ -43,8 +41,10 @@ yarn add yurba.js
 pnpm add yurba.js
 ```
 
+
+```bash [bun]
+bun add yurba.js
+```
+
 :::
 
-::: tip
-We recommend using pnpm for better performance and disk space efficiency.
-:::

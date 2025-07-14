@@ -99,7 +99,7 @@ export default defineConfig({
       '/uk/': []
     },
 
-    aside: true,
+    aside: false,
 
     search: {
       provider: 'local',
@@ -195,10 +195,7 @@ export default defineConfig({
     },
 
     // Додаткові функції
-    outline: {
-      level: [2, 3],
-      label: 'On this page'
-    },
+    outline: false,
 
     lastUpdated: {
       text: 'Updated at',

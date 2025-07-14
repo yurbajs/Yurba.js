@@ -1,13 +1,13 @@
-# Indruction to Yurba.js <Badge type="tip" text="^0.1.9" />
+# Introduction to Yurba.js <Badge type="tip" text="^0.1.9" />
 
-Вітаємо, якщо ти це читаєш, то скоріше за все ти хочеш розібратися з yurba.js - та створити свого бота, або щось інше що пов'язане з api.yurba.one. Тож ти чудово потрапив куди треба! Це повний guide по yurba.js.
+Welcome! If you're reading this, you probably want to learn about yurba.js and create your own bot, or something else related to api.yurba.one. You've come to the right place! This is a complete guide to yurba.js.
 
-> [!CAUTION] Бета версія
-> На цю хвилю, ця бібіліотека ще в розробці, стабільна версія буде починатися від версії 1.0.0+.
+> [!CAUTION] Beta Version
+> Currently, this library is still in development. The stable version will start from version 1.0.0+.
 
-## Швидкий старт
-- How to get a bot [up and running](/instalation) from scratch
-- Як [створити](/create) та [організувати](/structure) проєкт
+## Quick Start
+- How to get a bot [up and running](/installation) from scratch
+- How to [create](/create) and [organize](/structure) a project
 
-## Перед тим як почати
-Незважаючи на то що бібліотека легка у вікористанні, бажанно мати хоть якесь розуміння використання javascript.
+## Before You Begin
+Although the library is easy to use, it's recommended to have at least some understanding of JavaScript usage.
