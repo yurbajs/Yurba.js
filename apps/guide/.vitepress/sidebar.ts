@@ -11,7 +11,7 @@ export const sidebar = [
     text: 'Instalation & Налаштування',
     collapsed: true,
     items: [
-      { text: 'Installation', link: '/installation' },
+      { text: '', link: '/installation' },
       { text: 'Events', link: '/events' }
     ]
   },
