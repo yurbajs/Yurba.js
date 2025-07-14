@@ -151,3 +151,9 @@ Shiki
 svg
 javascript
 messageCreate
+editLink
+LTS
+VPS
+Homebrew
+macOS
+env
