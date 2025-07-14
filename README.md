@@ -7,9 +7,8 @@
 	<p>
 		<a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/v/yurba.js.svg?maxAge=3600" alt="npm version" /></a>
 		<a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/dt/yurba.js.svg?maxAge=3600" alt="npm downloads" /></a>
-		<a href="https://gitlab.com/RastGame/Yurba.js/-/commits/main"><img alt="pipeline status" src="https://gitlab.com/RastGame/Yurba.js/badges/main/pipeline.svg" /></a>
-
-<a href="https://gitlab.com/RastGame/Yurba.js/-/commits/dev"><img alt="pipeline status" src="https://gitlab.com/RastGame/Yurba.js/badges/dev/pipeline.svg" /></a>
+		<img alt="GitHub Release" src="https://img.shields.io/github/v/release/yurbajs/yurba.js?display_name=release">
+        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/yurbajs/yurba.js/pr-checks.yml?branch=main&label=Tests&link=https%3A%2F%2Fgithub.com%2Fyurbajs%2Fyurba.js%2Factions%2Fworkflows%2Fpr-checks.yml">
 		<!-- <a href="https://github.com/rastgame/yurba.js/actions"><img src="https://github.com/rastgame/yurba.js/actions/workflows/tests.yml/badge.svg" alt="Tests status" /></a> -->
 		<a href="https://github.com/rastgame/yurba.js/commits/main"><img src="https://img.shields.io/github/last-commit/rastgame/yurba.js.svg?logo=github&logoColor=ffffff" alt="Last commit." /></a>
 		<a href="https://github.com/rastgame/yurba.js/graphs/contributors"><img src="https://img.shields.io/github/contributors/rastgame/yurba.js.svg?maxAge=3600&logo=github&logoColor=fff&color=00c7be" alt="contributors" /></a>
@@ -66,8 +65,8 @@ Need assistance? Here's where to find help:
 [github-tags]: https://github.com/RastGame/Yurba.js/tags
 [source]: https://github.com/RastGame/Yurba.js/tree/main/packages/yurba.js
 [website]: https://yurba.js.org
-[website-source]: #
-[documentation]: #
+[website-source]: https://github.com/RastGame/Yurba.js/tree/main/apps/guide
+[documentation]: https://yurbajs.pages.dev/
 [yurba]: https://me.yurba.one/yurbajs
 [yurba-channel]: https://me.yurba.one/yjs
 [yurba-chat]: https://me.yurba.one/yurba.js

@@ -1,6 +1,10 @@
 import { defineConfig } from 'vitepress'
 import versions from './versions.json'
 import links from './links.json'
+import { sidebar } from './sidebar'
+import { t, createNavItem } from './utils/i18n'
+
+
 
 export default defineConfig({
   title: "Yurba.js",
@@ -28,13 +32,13 @@ export default defineConfig({
       description: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API',
       themeConfig: {
         nav: [
-          { text: 'Посібник', link: links.uk.guide },
-          { text: 'Документація', link: links.external.docs },
-          { text: 'Приклади', link: links.uk.examples },
+          { text: 'Посібник', link: '/uk/introduction' },
+          { text: 'Документація', link: links.docs },
+          { text: 'Приклади', link: '/uk/examples' },
           {
             text: `v${versions.current}`,
             items: [
-              { text: 'Зміни', link: links.external.changelog },
+              { text: 'Зміни', link: links.changelog },
               ...versions.versions.map(v => ({
                 text: v.label.replace('current', 'поточна'),
                 link: v.archived ? v.archiveUrl : (v.path === '/' ? '/uk/' : `/uk${v.path}`)
@@ -58,8 +62,14 @@ export default defineConfig({
         returnToTopLabel: 'Повернутися до початку',
         sidebarMenuLabel: 'Меню',
         editLink: {
-          pattern: `${links.external.github}/edit/main/apps/guide/:path`,
+          pattern: `${links.github}/edit/main/apps/guide/:path`,
           text: 'Редагувати цю сторінку'
+        },
+        notFound: {
+          title: t('notFound.title', 'uk'),
+          quote: t('notFound.quote', 'uk'),
+          linkText: t('notFound.linkText', 'uk'),
+          linkLabel: t('notFound.linkText', 'uk')
         }
       }
     }
@@ -67,15 +77,15 @@ export default defineConfig({
 
 
   themeConfig: {
-    logo: '/logo.svg',
+    logo: '/logo.png',
     nav: [
-      { text: 'Guide', link: links.internal.guide },
-      { text: 'Documentation', link: links.external.docs },
-      { text: 'Examples', link: links.internal.examples },
+      createNavItem('nav.guide', '/introduction'),
+      { text: t('nav.documentation'), link: links.docs },
+      createNavItem('nav.examples', '/examples'),
       {
         text: `v${versions.current}`,
         items: [
-          { text: 'Changelog', link: links.external.changelog },
+          { text: 'Changelog', link: links.changelog },
           ...versions.versions.map(v => ({
             text: v.label,
             link: v.archived ? v.archiveUrl : v.path
@@ -85,59 +95,11 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/': [
-        {
-          text: 'Getting Started',
-          items: [
-            { text: 'Introduction', link: links.internal.introduction },
-            { text: 'Installation', link: links.internal.installation },
-            { text: 'Quick Start', link: links.internal.guide }
-          ]
-        },
-        {
-          text: 'Guide',
-          items: [
-            { text: 'Creating a Bot', link: links.internal.creatingBot },
-            { text: 'Commands', link: links.internal.commands },
-            { text: 'Events', link: links.internal.events },
-            { text: 'Middleware', link: '/middleware' }
-          ]
-        },
-        {
-          text: 'Examples',
-          items: [
-            { text: 'Overview', link: links.internal.examples },
-            { text: 'Basic Bot', link: '/examples/basic-bot' },
-            { text: 'Command Handler', link: '/examples/command-handler' },
-            { text: 'Event Handling', link: '/examples/event-handling' }
-          ]
-        }
-      ],
-      '/uk/': [
-        {
-          text: 'Початок роботи',
-          items: [
-            { text: 'Вступ', link: links.uk.introduction },
-            { text: 'Встановлення', link: links.uk.installation },
-            { text: 'Швидкий старт', link: links.uk.guide }
-          ]
-        },
-        {
-          text: 'Посібник',
-          items: [
-            { text: 'Створення бота', link: links.uk.creatingBot },
-            { text: 'Команди', link: links.uk.commands },
-            { text: 'Події', link: links.uk.events }
-          ]
-        },
-        {
-          text: 'Приклади',
-          items: [
-            { text: 'Огляд', link: links.uk.examples }
-          ]
-        }
-      ]
+      '/': sidebar,
+      '/uk/': []
     },
+
+    aside: true,
 
     search: {
       provider: 'local',
@@ -219,8 +181,8 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: links.external.github },
-      { icon: 'npm', link: links.external.npm }
+      { icon: 'github', link: links.github },
+      { icon: 'npm', link: links.npm }
     ],
 
     footer: {
@@ -229,7 +191,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: `${links.external.github}/edit/main/apps/guide/:path`
+      pattern: `${links.github}/edit/main/apps/guide/:path`
     },
 
     // Додаткові функції
@@ -265,6 +227,13 @@ export default defineConfig({
     },
 
     // Переклади для української версії
-    i18nRouting: false
+    i18nRouting: false,
+
+    notFound: {
+      title: t('notFound.title'),
+      quote: t('notFound.quote'),
+      linkText: t('notFound.linkText'),
+      linkLabel: t('notFound.linkText')
+    }
   }
 })

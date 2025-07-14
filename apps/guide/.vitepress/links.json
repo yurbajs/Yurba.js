@@ -1,29 +1,9 @@
 {
-  "external": {
-    "github": "https://github.com/RastGame/Yurba.js",
-    "npm": "https://www.npmjs.com/package/yurba.js",
-    "docs": "https://yurbajs.pages.dev/",
-    "changelog": "https://github.com/RastGame/Yurba.js/tags",
-    "yurba": "https://me.yurba.one/yurbajs",
-    "yurbaChannel": "https://me.yurba.one/yjs",
-    "yurbaChat": "https://me.yurba.one/yurba.js"
-  },
-  "internal": {
-    "guide": "/getting-started",
-    "installation": "/installation",
-    "examples": "/examples",
-    "introduction": "/introduction",
-    "creatingBot": "/creating-bot",
-    "commands": "/commands",
-    "events": "/events"
-  },
-  "uk": {
-    "guide": "/uk/getting-started",
-    "installation": "/uk/installation", 
-    "examples": "/uk/examples",
-    "introduction": "/uk/introduction",
-    "creatingBot": "/uk/creating-bot",
-    "commands": "/uk/commands",
-    "events": "/uk/events"
-  }
+  "github": "https://github.com/RastGame/Yurba.js",
+  "npm": "https://www.npmjs.com/package/yurba.js",
+  "docs": "https://yurbajs.pages.dev/",
+  "changelog": "https://github.com/RastGame/Yurba.js/tags",
+  "yurba": "https://me.yurba.one/yurbajs",
+  "yurbaChannel": "https://me.yurba.one/yjs",
+  "yurbaChat": "https://me.yurba.one/yurba.js"
 }

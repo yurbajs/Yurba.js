@@ -137,3 +137,28 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+.test {
+  color: #41d1ff;
+}
+
+/**
+ * Component: Sidebar improvements
+ * -------------------------------------------------------------------------- */
+
+/* Покращення відображення sidebar */
+.VPSidebarItem .text {
+  font-weight: 500;
+}
+
+.VPSidebarItem .link {
+  transition: all 0.25s ease;
+}
+
+.VPSidebarItem .link:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.VPSidebarItem .link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}

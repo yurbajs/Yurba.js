@@ -1,0 +1,90 @@
+.VPHero {
+  padding: 16px 24px;
+}
+
+.container {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.action {
+  flex-shrink: 0;
+}
+
+.Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(63, 60, 255, 0.068);
+  transition: all 0.4s ease;
+}
+
+.dark .Button {
+  border-color: rgba(255, 255, 255, 0.075);
+}
+
+.Button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.Button.medium {
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  font-size: 14px;
+}
+
+.Button.brand {
+  color: var(--vp-button-brand-text);
+  background-color: var(--vp-button-brand-bg);
+}
+
+.Button.brand:hover {
+  color: var(--vp-button-brand-hover-text);
+  background-color: var(--vp-button-brand-hover-bg);
+}
+
+.Button.alt {
+  color: var(--vp-button-alt-text);
+  background-color: var(--vp-button-alt-bg);
+}
+
+.Button.alt:hover {
+  color: var(--vp-button-alt-hover-text);
+  background-color: var(--vp-button-alt-hover-bg);
+}
+
+.text {
+  display: flex;
+  align-items: center;
+}
+
+.dark .yurba-icon {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 640px) {
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .Button {
+    width: 100%;
+    max-width: 200px;
+  }
+}

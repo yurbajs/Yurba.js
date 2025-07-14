@@ -1,46 +1,37 @@
-# Швидкий старт
+# Встановлення 
+```sh
+npm install yurba.js
+yarn add yurba.js
+pnpm add yurba.js
+bun add yurba.js
+````
 
-Цей посібник допоможе вам створити вашого першого бота за кілька хвилин.
+## Початок 
+```js
+import { Client } from "yurba.js"; // імпортуємо Client
 
-## Створення проекту
+const client = new Client('TOKEN'); // Вставляємо токен yurba (y.DSksdajjsdjsd)
 
-Створіть новий файл `bot.js`:
-
-```javascript
-const { Client } = require('yurba.js');
-
-const client = new Client({
-  token: 'ВАШ_ТОКЕН_БОТА'
-});
+client.registerCommand('hi', { name: 'string' }, (message, args) => {
+    message.reply(`Привіт!, ${args.name}!`);
+}); 
+// Перша команда hi, з аргументом name, тобто:
+// Коли користувач пише /hi ля ля1 ля2
+// Відповідь буде: Привіт!, ля
+// Текст що після першого ля, вважаються як інші аргументи
 
 client.on('ready', () => {
-  console.log(`Бот ${client.user.username} готовий до роботи!`);
+    console.log('Йоуууу!');
 });
+// Коли бот запустився в консоль прийде лог: "Йоуууу!"
 
-client.on('messageCreate', (message) => {
-  if (message.content === '!ping') {
-    message.reply('Pong!');
-  }
-});
-
-client.login();
+client.init();
+// Запуск бота 
 ```
 
-## Отримання токена
-
-1. Перейдіть на [Yurba.one](https://yurba.one)
-2. Створіть нового бота
-3. Скопіюйте токен бота
-4. Замініть `ВАШ_ТОКЕН_БОТА` на справжній токен
-
-## Запуск бота
-
-```bash
-node bot.js
-```
-
-## Наступні кроки
-
-- [Створення бота](/uk/creating-bot) - детальний посібник
-- [Команди](/uk/commands) - як обробляти команди
-- [Події](/uk/events) - робота з подіями
+::: warning
+Це просто тестова версія, хехе, але гадаю це буде корисно, хотя тут нічого й немає
+:::
+::: info
+[English version](/)
+:::
