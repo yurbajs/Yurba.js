@@ -40,8 +40,8 @@ export default defineConfig({
             items: [
               { text: 'Зміни', link: links.changelog },
               ...versions.versions.map(v => ({
-                text: v.label.replace('current', 'поточна'),
-                link: v.archived ? v.archiveUrl : (v.path === '/' ? '/uk/' : `/uk${v.path}`)
+                text: v.archived ? `${v.label.replace('current', 'поточна')} (архів)` : v.label.replace('current', 'поточна'),
+                link: v.path === '/' ? '/uk/' : `/uk${v.path}`
               }))
             ]
           }
@@ -87,8 +87,8 @@ export default defineConfig({
         items: [
           { text: 'Changelog', link: links.changelog },
           ...versions.versions.map(v => ({
-            text: v.label,
-            link: v.archived ? v.archiveUrl : v.path
+            text: v.archived ? `${v.label} (archived)` : v.label,
+            link: v.path
           }))
         ]
       }

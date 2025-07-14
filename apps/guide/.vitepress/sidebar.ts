@@ -1,19 +1,17 @@
 export const sidebar = [
   {
-    text: 'Getting Started',
+    text: 'Welcome',
     collapsed: false,
     items: [
       { text: 'Introduction', link: '/introduction' },
-      { text: 'Installation', link: '/installation' },
-      { text: 'Quick Start', link: '/getting-started' }
+      { text: "What's new?", link: '/whats-new' }
     ]
   },
   {
-    text: 'Guide',
+    text: 'Instalation & Налаштування',
     collapsed: true,
     items: [
-      { text: 'Creating a Bot', link: '/creating-bot' },
-      { text: 'Commands', link: '/commands' },
+      { text: 'Installation', link: '/installation' },
       { text: 'Events', link: '/events' }
     ]
   },

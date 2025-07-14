@@ -10,7 +10,7 @@ const { isDark } = useData()
     <div class="container">
       <div class="actions">
           <div class="action">
-            <a class="Button brand" href="/start">
+            <a class="Button brand" href="/introduction">
               Guide
             </a>
           </div>
