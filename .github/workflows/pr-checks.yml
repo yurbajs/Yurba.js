@@ -5,12 +5,10 @@ on:
     branches: [ main, dev ]
     paths: 
       - 'packages/**'
-      - 'apps/**'
   push:
     branches: [ main, dev ]
     paths: 
       - 'packages/**'
-      - 'apps/**'
 
 jobs:
   lint:

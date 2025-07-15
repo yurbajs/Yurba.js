@@ -157,3 +157,5 @@ VPS
 Homebrew
 macOS
 env
+json
+bot's

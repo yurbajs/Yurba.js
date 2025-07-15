@@ -1,13 +1,13 @@
 <div align="center">
   <br />
   <p>
-    <a href="https://yurba.js.org"><img src="https://raw.githubusercontent.com/yurbajs/yurba.js/2b1e6dc4578a0a9200bd2a25731e9a07c79b78b1/assets/banner.svg" width="500" alt="yurba.js logo" /></a>
+    <a href="https://yurba.js.org"><img src="https://yurbajs.vercel.app/banner.svg" width="500" alt="yurba.js logo" /></a>
   </p>
   <br />
   <p>
     <a href="https://www.npmjs.com/package/@yurbajs/types"><img src="https://img.shields.io/npm/v/@yurbajs/types.svg?maxAge=3600" alt="npm version" /></a>
     <a href="https://www.npmjs.com/package/@yurbajs/types"><img src="https://img.shields.io/npm/dt/@yurbajs/types.svg?maxAge=3600" alt="npm downloads" /></a>
-    <a href="https://github.com/rastgame/yurba.js/commits/main"><img src="https://img.shields.io/github/last-commit/rastgame/yurba.js.svg?logo=github&logoColor=ffffff" alt="Last commit" /></a>
+    <a href="https://github.com/yurbajs/yurba.js/commits/main"><img src="https://img.shields.io/github/last-commit/yurbajs/yurba.js.svg?logo=github&logoColor=ffffff" alt="Last commit" /></a>
     <a href="https://www.npmjs.com/package/@yurbajs/types"><img src="https://img.shields.io/npm/last-update/@yurbajs/types" alt="npm last update"></a>
   </p>
 </div>
@@ -42,8 +42,8 @@ bun add @yurbajs/types
 
 Want to help make yurba.js better?
 
-* Found a bug? [Open an issue](https://github.com/RastGame/Yurba.js/issues/new).
-* Have an idea? [Start a discussion](https://github.com/RastGame/Yurba.js/discussions).
+* Found a bug? [Open an issue](https://github.com/yurbajs/yurba.js/issues/new).
+* Have an idea? [Start a discussion](https://github.com/yurbajs/yurba.js/discussions).
 * Want to contribute code? Fork the repository and submit a pull request.
 
 Please make sure to follow our coding style and test your changes before submitting.
@@ -54,12 +54,12 @@ Need assistance?
 
 * Check the [documentation][documentation] first.
 * Ask questions in our [Chat][yurba-chat].
-* Browse existing [issues](https://github.com/RastGame/Yurba.js/issues) and [discussions](https://github.com/RastGame/Yurba.js/discussions).
+* Browse existing [issues](https://github.com/yurbajs/yurba.js/issues) and [discussions](https://github.com/yurbajs/yurba.js/discussions).
 
-[gitlab]: https://gitlab.com/RastGame/Yurba.js
-[source]: https://github.com/RastGame/Yurba.js/tree/main/packages/types
+[gitlab]: https://gitlab.com/yurbajs/yurba.js
+[source]: https://github.com/yurbajs/yurba.js/tree/main/packages/types
 [website]: https://yurba.js.org
-[website-source]: https://github.com/RastGame/Yurba.js
+[website-source]: https://github.com/yurbajs/yurba.js
 [documentation]: https://yurba.js.org/docs
 [yurba]: https://me.yurba.one/yurbajs
 [yurba-channel]: https://me.yurba.one/yjs
