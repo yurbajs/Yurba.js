@@ -1,5 +1,6 @@
 {
   "buildCommand": "pnpm run guide:build",
   "outputDirectory": ".vitepress/dist",
-  "installCommand": "pnpm install --frozen-lockfile"
+  "installCommand": "pnpm install --frozen-lockfile",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./apps/guide"
 }

@@ -27,8 +27,4 @@ jobs:
         output_file: spellcheck-results.txt
     - name: Format spellcheck results
       if: failure()
-      run: |
-        if [ -f spellcheck-results.txt ]; then
-          echo "📋 Spelling errors summary:"
-          node scripts/format-spellcheck.js
-        fi
+      run: node scripts/format-spellcheck.js
