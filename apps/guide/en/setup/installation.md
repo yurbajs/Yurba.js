@@ -149,7 +149,7 @@ bun add yurba.js
 :::
 
 ::: tip Recommendation
-For new projects, we recommend **pnpm** for its speed and efficiency, or **npm** for its universal compatibility. The yurba.js project itself uses pnpm.
+For new projects, we recommend **[pnpm](https://pnpm.io/)** for its speed and efficiency, or **npm** for its universal compatibility. The [yurba.js](https://github.com/yurbajs/yurba.js) project itself uses pnpm.
 :::
 
 ## Verifying Installation
@@ -157,7 +157,8 @@ For new projects, we recommend **pnpm** for its speed and efficiency, or **npm**
 After installation, verify that yurba.js is properly installed:
 
 **Check Package Installation**
-   ::: code group
+    
+::: code-group
 
    ```sh [npm]
    npm list yurba.js
@@ -174,18 +175,7 @@ After installation, verify that yurba.js is properly installed:
    ```sh [bun]
    bun list yurba.js
    ```
-
-#### Network Issues
-If you're behind a corporate firewall or experiencing network issues:
-
-```bash
-# Configure npm registry (if needed)
-npm config set registry https://registry.npmjs.org/
-
-# Configure proxy (if needed)
-npm config set proxy http://proxy.company.com:8080
-npm config set https-proxy http://proxy.company.com:8080
-```
+   :::
 
 #### Windows Path Issues
 If Node.js commands aren't recognized in Windows:
