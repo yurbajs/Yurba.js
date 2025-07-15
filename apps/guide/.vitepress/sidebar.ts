@@ -21,7 +21,7 @@ export const sidebar = [
     collapsed: true,
     items: [
       { text: 'Create project', link: '/creating/create' },
-      { text: 'Events', link: '/events' }
+      { text: 'Structure', link: '/creating/structure' }
     ]
   },
   {
