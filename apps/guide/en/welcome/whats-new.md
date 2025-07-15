@@ -1,2 +1,2 @@
 > [!NOTE]
-> З часом тут щось буде, але наразі, вибачте за очікування
+> Something will be here over time, but for now, sorry for the wait

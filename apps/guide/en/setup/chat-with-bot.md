@@ -5,12 +5,12 @@ sidebar: true
 ---
 
 # Chat with bot
-Вітаю, вже залишилось не багато. Щоб спількуватися з ботом та мати взаємодії якийсь з ним, треба створити группу
+Greetings! There's not much left to do. To communicate with the bot and have some interactions with it, you need to create a group.
 
 > [!NOTE]
-> Якщо ви будете створювати группу - то бажанно з аккаунту бота ( але не обовязково ), так як він буде мати всі права. Нажаль на цю хвилю в Yurba.one немає можливостей для надання користувачам права адміна/модератора або створення будь яких ролей в каналах/группах
+> If you're going to create a group, it's preferable to do it from the bot's account (but not mandatory), as it will have all the rights. Unfortunately, at this time Yurba.one doesn't have the ability to grant users admin/moderator rights or create any roles in channels/groups.
 
 <img src="/images/create-group.png" width="700" alt="Create group" />
 
-## По ітогу в групи буде 2 користувача - ви та ваш бот.
+## As a result, there will be 2 users in the group - you and your bot.
 <img src="/images/group-info.png" width="500" alt="Info about group" />

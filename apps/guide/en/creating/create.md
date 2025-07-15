@@ -6,10 +6,11 @@ sidebar: true
 ---
 
 # Create project
-Вже майже готово! Приступаємо до створення проєкту та файлів бота
 
-## Відриваємо папку/діректорію де буде бот 
-Коли ви відриєте треба відкрити в цьому місці термінал та ініцізуавати проєкт створивши (`package.json`)
+Almost ready! Let's proceed to creating the project and bot files.
+
+## Open the folder/directory where the bot will be located
+Once you open it, you need to open a terminal in this location and initialize the project by creating (`package.json`)
 ```sh
 npm init
 ```
