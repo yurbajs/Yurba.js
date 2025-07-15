@@ -19,13 +19,7 @@ jobs:
     name: Spellcheck
     runs-on: ubuntu-latest
     steps:
+    # The checkout step
     - uses: actions/checkout@v3
     - uses: rojopolis/spellcheck-github-actions@0.51.0
       name: Spellcheck
-      continue-on-error: true
-      id: spellcheck
-    - name: Format spellcheck results
-      if: steps.spellcheck.outcome == 'failure'
-      run: |
-        echo "Formatting spellcheck results..."
-        pyspelling -c spellcheck.yaml 2>&1 | node scripts/format-spellcheck.js || true

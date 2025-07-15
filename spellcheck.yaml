@@ -8,7 +8,6 @@ matrix:
     - .wordlist.txt
   pipeline:
   - pyspelling.filters.markdown:
-      line_num: true
   - pyspelling.filters.html:
       comments: false
       attributes:
@@ -20,6 +19,7 @@ matrix:
   sources:
   - '**/*.md'
   default_encoding: utf-8
+  output: spellcheck-results.txt
 - name: Ukrainian
   hunspell:
     d: uk_UA
@@ -28,7 +28,6 @@ matrix:
     - .wordlist.txt
   pipeline:
   - pyspelling.filters.markdown:
-      line_num: true
   - pyspelling.filters.html:
       comments: false
       attributes:
@@ -40,3 +39,4 @@ matrix:
   sources:
   - 'apps/guide/uk/**/*.md'
   default_encoding: utf-8
+  output: spellcheck-results-uk.txt
