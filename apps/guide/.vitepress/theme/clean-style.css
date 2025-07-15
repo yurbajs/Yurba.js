@@ -11,8 +11,8 @@
   
   /* VitePress переопределення */
   --vp-c-brand-1: #41d1ff;
-  --vp-c-brand-2: #0ea5e9;
-  --vp-c-brand-3: #0284c7;
+  --vp-c-brand-2: #39b8f3;
+  --vp-c-brand-3: #46c1ff;
   --vp-c-brand-soft: rgba(65, 209, 255, 0.14);
 }
 
@@ -41,7 +41,6 @@
   }
 }
 
-/* ===== КНОПКИ (повертаю оригінальний стиль) ===== */
 :root {
   --vp-button-brand-border: transparent;
   --vp-button-brand-text: var(--vp-c-white);
@@ -56,7 +55,7 @@
 
 /* ===== NAVBAR ПОКРАЩЕННЯ ===== */
 .VPNav {
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(1px);
 }
 
 .VPNavBar .title {
@@ -68,11 +67,6 @@
 .VPSidebarItem .link.active {
   color: var(--vp-c-brand-1);
   font-weight: 600;
-}
-
-/* ===== ПРИХОВАТИ ПРАВЕ МЕНЮ ===== */
-.VPDocAside {
-  display: none;
 }
 
 /* ===== МОБІЛЬНЕ МЕНЮ ===== */

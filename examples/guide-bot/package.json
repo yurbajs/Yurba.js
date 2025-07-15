@@ -1,0 +1,17 @@
+{
+  "name": "my-bot",
+  "version": "0.0.1",
+  "description": "bot for guide",
+  "keywords": [
+    "bot",
+    "yurbajs",
+    "guide-bot"
+  ],
+  "license": "ISC",
+  "author": "RastGame",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

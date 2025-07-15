@@ -4,22 +4,23 @@ export const sidebar = [
     collapsed: false,
     items: [
       { text: 'Introduction', link: '/introduction' },
-      { text: "What's new?", link: '/whats-new' }
+      { text: "What's new?", link: '/welcome/whats-new' }
     ]
   },
   {
     text: 'Installation & Setup',
     collapsed: true,
     items: [
-      { text: 'Installation', link: '/installation' },
-      { text: 'Setting up bot account', link: '/setting-up-bot-account' }
+      { text: 'Installation', link: '/setup/installation' },
+      { text: 'Setting up bot account', link: '/setup/setting-up-bot-account' },
+      { text: 'Чат з ботом', link: '/setup/chat-with-bot' }
     ]
   },
   {
     text: 'Creating bot',
     collapsed: true,
     items: [
-      { text: 'Installation', link: '/installation' },
+      { text: 'Create project', link: '/creating/create' },
       { text: 'Events', link: '/events' }
     ]
   },
