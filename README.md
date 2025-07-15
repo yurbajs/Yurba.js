@@ -56,7 +56,7 @@ Please make sure to follow our coding style and test your changes before submitt
 ## Getting Help
 Need assistance? Here's where to find help:
 
-- Check the [documentation][documentation] first
+- Check the [documentation][documentation] first and [guide][guide] 
 - Ask questions in our [Chat][yurba-chat]
 - Browse existing [issues](https://github.com/RastGame/Yurba.js/issues) and [discussions](https://github.com/RastGame/Yurba.js/discussions)
 
@@ -72,3 +72,4 @@ Need assistance? Here's where to find help:
 [yurba-chat]: https://me.yurba.one/yurba.js
 [npm]: https://www.npmjs.com/package/yurba.js
 [related-libs]: #
+[guide]: https://yurbajs.vercel.app
