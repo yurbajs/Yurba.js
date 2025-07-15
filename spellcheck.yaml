@@ -19,7 +19,6 @@ matrix:
   sources:
   - '**/*.md'
   default_encoding: utf-8
-  output: spellcheck-results.txt
 - name: Ukrainian
   hunspell:
     d: uk_UA
@@ -39,4 +38,3 @@ matrix:
   sources:
   - 'apps/guide/uk/**/*.md'
   default_encoding: utf-8
-  output: spellcheck-results-uk.txt

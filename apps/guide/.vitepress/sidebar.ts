@@ -13,7 +13,7 @@ export const sidebar = [
     items: [
       { text: 'Installation', link: '/setup/installation' },
       { text: 'Setting up bot account', link: '/setup/setting-up-bot-account' },
-      { text: 'Чат з ботом', link: '/setup/chat-with-bot' }
+      { text: 'Chat with bot', link: '/setup/chat-with-bot' }
     ]
   },
   {
