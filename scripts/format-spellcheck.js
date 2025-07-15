@@ -1,30 +1,45 @@
 #!/usr/bin/env node
 
+const { execSync } = require('child_process');
 const fs = require('fs');
-const path = require('path');
 
-function formatSpellcheckResults() {
-  const resultsFile = path.join(process.cwd(), 'spellcheck-results.txt');
-  
-  if (!fs.existsSync(resultsFile)) {
-    console.log('No spellcheck results file found');
-    return;
-  }
-  
-  const content = fs.readFileSync(resultsFile, 'utf8');
-  const lines = content.split('\n');
+try {
+  const output = execSync('pyspelling -c spellcheck.yaml --verbose', { encoding: 'utf8' });
+  console.log('✅ No spelling errors found!');
+} catch (error) {
+  const output = error.stdout || error.message;
+  const lines = output.split('\n');
   
   const errors = [];
   let currentFile = '';
+  let inMisspelledSection = false;
   
-  for (const line of lines) {
-    if (line.includes('Processing:')) {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    
+    if (line.includes('> Processing:')) {
       currentFile = line.replace('> Processing: ', '').trim();
-    } else if (line.includes('Misspelled words:') && lines[lines.indexOf(line) + 2]) {
-      const word = lines[lines.indexOf(line) + 2].trim();
-      if (word && !word.includes('---')) {
-        errors.push({ file: currentFile, word });
+    } else if (line.includes('Misspelled words:')) {
+      inMisspelledSection = true;
+      const contextLine = lines[i + 1];
+      let lineInfo = '';
+      
+      if (contextLine && contextLine.includes(':')) {
+        const match = contextLine.match(/(\d+):(\d+)/);
+        if (match) {
+          lineInfo = ` (line ${match[1]}, column ${match[2]})`;
+        }
       }
+      
+      i += 2;
+      while (i < lines.length && lines[i].trim() && !lines[i].includes('---')) {
+        const word = lines[i].trim();
+        if (word) {
+          errors.push({ file: currentFile, word, location: lineInfo });
+        }
+        i++;
+      }
+      inMisspelledSection = false;
     }
   }
   
@@ -41,18 +56,20 @@ function formatSpellcheckResults() {
     if (!groupedErrors[error.file]) {
       groupedErrors[error.file] = [];
     }
-    groupedErrors[error.file].push(error.word);
+    groupedErrors[error.file].push({ word: error.word, location: error.location });
   });
   
-  Object.entries(groupedErrors).forEach(([file, words]) => {
+  Object.entries(groupedErrors).forEach(([file, items]) => {
     console.log(`📄 ${file}:`);
-    words.forEach(word => console.log(`   - ${word}`));
+    items.forEach(item => {
+      console.log(`   - ${item.word}${item.location}`);
+    });
     console.log('');
   });
   
   console.log('💡 To fix these errors:');
   console.log('1. Add correct words to .wordlist.txt');
   console.log('2. Fix actual typos in the files');
+  
+  process.exit(1);
 }
-
-formatSpellcheckResults();
