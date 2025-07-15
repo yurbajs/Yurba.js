@@ -9,12 +9,12 @@ import MyLayout from './MyLayout.vue'
 
 export default {
   extends: DefaultTheme,
-  Layout: MyLayout,
-  // Layout: () => {
-  //   return h(DefaultTheme.Layout, null, {
-  //     // https://vitepress.dev/guide/extending-default-theme#layout-slots
-  //   })
-  // },
+  // Layout: MyLayout,
+  Layout: () => {
+    return h(DefaultTheme.Layout, null, {
+      // https://vitepress.dev/guide/extending-default-theme#layout-slots
+    })
+  },
   enhanceApp({ app, router, siteData }) {
     app.component('HeroActions', HeroActions)
     app.component('SimpleHero', SimpleHero)
