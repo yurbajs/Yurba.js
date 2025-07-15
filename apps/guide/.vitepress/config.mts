@@ -10,11 +10,37 @@ export default defineConfig({
   description: "The powerful library for creating bots and integrating with the Yurba API",
   base: '/',
   cleanUrls: true,
-  ignoreDeadLinks: true,
+  ignoreDeadLinks: [
+    // ignore exact url "/playground"
+    './LICENSE',
+    // ignore all localhost links
+    /^https?:\/\/localhost/,
+    // ignore all links include "/repl/""
+    /\/repl\//,
+    // custom function, ignore all links include "ignore"
+    (url) => {
+      return url.toLowerCase().includes('ignore')
+    }
+  ],
   metaChunk: true,
   sitemap: {
-    hostname: 'https://yurbajs.vercel.app'
+    hostname: 'https://yurbajs.vercel.app',
+    transformItems: (items) => {
+      // add new items or modify/filter existing items
+      items.push({
+        url: '/',
+        changefreq: 'monthly',
+        priority: 1
+      })
+      items.push({
+        url: '/indruction',
+        changefreq: 'monthly',
+        priority: 0.8
+      })
+      return items
+    }
   },
+
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
