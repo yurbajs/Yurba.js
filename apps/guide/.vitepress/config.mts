@@ -4,16 +4,34 @@ import links from './links.json'
 import { sidebar } from './sidebar'
 import { t, createNavItem } from './utils/i18n'
 
-
-
 export default defineConfig({
   title: "Yurba.js",
+  titleTemplate: ":title | Yurba.js",
   description: "The powerful library for creating bots and integrating with the Yurba API",
   base: '/',
   cleanUrls: true,
   ignoreDeadLinks: true,
+  metaChunk: true,
+  sitemap: {
+    hostname: 'https://yurbajs.vercel.app'
+  },
   head: [
-    ['link', { rel: 'icon', href: '/logo.png' }]
+    ['link', { rel: 'icon', href: '/logo.png' }],
+    ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
+    ['meta', { name: 'theme-color', content: '#00c7be' }],
+    ['meta', { name: 'author', content: 'RastGame' }],
+    ['meta', { name: 'keywords', content: 'yurba.js, yurba, bot, api, javascript, typescript, library' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: 'Yurba.js' }],
+    ['meta', { property: 'og:title', content: 'Yurba.js - Powerful Bot Library' }],
+    ['meta', { property: 'og:description', content: 'The powerful library for creating bots and integrating with the Yurba API' }],
+    ['meta', { property: 'og:image', content: 'https://yurbajs.vercel.app/banner.svg' }],
+    ['meta', { property: 'og:url', content: 'https://yurbajs.vercel.app' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: 'Yurba.js - Powerful Bot Library' }],
+    ['meta', { name: 'twitter:description', content: 'The powerful library for creating bots and integrating with the Yurba API' }],
+    ['meta', { name: 'twitter:image', content: 'https://yurbajs.vercel.app/banner.svg' }],
+    ['link', { rel: 'canonical', href: 'https://yurbajs.vercel.app' }]
   ],
   
   srcDir: '.',
@@ -29,7 +47,14 @@ export default defineConfig({
       label: 'Українська',
       lang: 'uk',
       title: 'Yurba.js',
+      titleTemplate: ':title | Yurba.js',
       description: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API',
+      head: [
+        ['meta', { property: 'og:title', content: 'Yurba.js - Потужна бібліотека для ботів' }],
+        ['meta', { property: 'og:description', content: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API' }],
+        ['meta', { name: 'twitter:title', content: 'Yurba.js - Потужна бібліотека для ботів' }],
+        ['meta', { name: 'twitter:description', content: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API' }]
+      ],
       themeConfig: {
         nav: [
           { text: 'Посібник', link: '/uk/introduction' },
@@ -77,7 +102,7 @@ export default defineConfig({
 
 
   themeConfig: {
-    logo: '/logo.png',
+    logo: { src: '/logo.png', alt: 'Yurba.js Logo' },
     nav: [
       createNavItem('nav.guide', '/introduction'),
       { text: t('nav.documentation'), link: links.docs },
@@ -99,7 +124,7 @@ export default defineConfig({
       '/uk/': []
     },
 
-    aside: false,
+    aside: true,
 
     search: {
       provider: 'local',
@@ -181,8 +206,8 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: links.github },
-      { icon: 'npm', link: links.npm }
+      { icon: 'github', link: links.github, ariaLabel: 'GitHub Repository' },
+      { icon: 'npm', link: links.npm, ariaLabel: 'NPM Package' }
     ],
 
     footer: {
@@ -191,17 +216,20 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: `${links.github}/edit/main/apps/guide/:path`
+      pattern: `${links.github}/edit/main/apps/guide/:path`,
+      text: 'Edit this page on GitHub'
     },
 
-    // Додаткові функції
-    outline: false,
+    outline: {
+      level: [2, 3],
+      label: 'On this page'
+    },
 
     lastUpdated: {
-      text: 'Updated at',
+      text: 'Last updated',
       formatOptions: {
-        dateStyle: 'full',
-        timeStyle: 'medium'
+        dateStyle: 'short',
+        timeStyle: 'short'
       }
     },
 
@@ -213,24 +241,16 @@ export default defineConfig({
     darkModeSwitchLabel: 'Appearance',
     lightModeSwitchTitle: 'Switch to light theme',
     darkModeSwitchTitle: 'Switch to dark theme',
+    returnToTopLabel: 'Return to top',
+    sidebarMenuLabel: 'Menu',
 
-    // Українські переклади
-    localeLinks: {
-      text: 'Мова',
-      items: [
-        { text: 'English', link: '/' },
-        { text: 'Українська', link: '/uk/' }
-      ]
-    },
-
-    // Переклади для української версії
-    i18nRouting: false,
+    externalLinkIcon: true,
 
     notFound: {
-      title: t('notFound.title'),
-      quote: t('notFound.quote'),
-      linkText: t('notFound.linkText'),
-      linkLabel: t('notFound.linkText')
+      title: '404 - Page Not Found',
+      quote: 'But if you don\'t change your direction, and if you keep looking, you may end up where you are heading.',
+      linkText: 'Take me home',
+      linkLabel: 'Go to homepage'
     }
   }
 })
