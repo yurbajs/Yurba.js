@@ -14,7 +14,7 @@ Once you open it, you need to open a terminal in this location and initialize th
 ```sh
 npm init
 ```
-### Та заповняємо типу цього:
+### And fill it out like this:
 <img src="/images/npm-init.png" width="700" />
 
 ---
@@ -23,17 +23,17 @@ npm init
 
 ` Enter `
 
-По ітогу в нас вийде щось типу цього:
+As a result, we'll get something like this:
 <img src="/images/ls-cat-package-json.png" width="800" />
-> [!NOTE] Або якщо в редактору коду:
+> [!NOTE] Or if in a code editor:
 <img src="/images/vscodium-ls.png" width="800"  />
 
 # Create config.json / .env
 
-> [!NOTE] Рекомендація
-Я б рекомендував все ж, використовувати `.env`, але вибір за вами
+> [!NOTE] Recommendation
+> I would still recommend using `.env`, but the choice is yours
 
-## Використання .config
+## Using .config
 
 ::: code-group
 
@@ -43,7 +43,7 @@ npm init
 }
 ```
 
-```javascript [Використання]
+```javascript [Usage]
 const { token } = require('./config.json');
 
 console.log(token);
@@ -52,7 +52,7 @@ console.log(token);
 :::
 
 > [!DANGER] 
-> Якщо ви використовуєте `Git`, 
+> If you're using `Git`,
 
 
-# Git та ``.gitignore``
+# Git and `.gitignore`
