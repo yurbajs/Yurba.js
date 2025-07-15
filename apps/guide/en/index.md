@@ -9,6 +9,6 @@ hero:
     src: /banner.svg
     alt: Yurba.js
 
----
+--- 
 
 <HeroActions />
