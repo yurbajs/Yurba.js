@@ -20,6 +20,8 @@ matrix:
   - '**/*.md'
   default_encoding: utf-8
   output: spellcheck-results.txt
+  context_visible_len: 3
+  context: 2
 - name: Ukrainian
   hunspell:
     d: uk_UA
@@ -40,3 +42,5 @@ matrix:
   - 'apps/guide/uk/**/*.md'
   default_encoding: utf-8
   output: spellcheck-results-uk.txt
+  context_visible_len: 3
+  context: 2
