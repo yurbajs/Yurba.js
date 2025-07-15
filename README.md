@@ -44,7 +44,7 @@ The main package is [`Yurba.js`](https://github.com/RastGame/Yurba.js/tree/main/
 - [npm][npm]
 - [Related libraries][related-libs]
 
-special for spllechk erra fid this!!!
+special for spllechk erra fid this!!!!
 
 ## Contributing
 Want to help make yurba.js better?
