@@ -19,7 +19,6 @@
 
 ## About
 
-
 This repository contains [multiple packages](https://github.com/yurbajs/yurba.js/tags) that work with the [Yurba.one API](https://docs.yurba.one/overview) and are required for the main package to function.
 The main package is [`Yurba.js`](https://github.com/yurbajs/yurba.js/tree/main/packages/yurba.js).
 
@@ -35,7 +34,6 @@ The main package is [`Yurba.js`](https://github.com/yurbajs/yurba.js/tree/main/p
 - `@yurbajs/types` ([source][source]) - Types for yurba.js packages and yurba.one. [![NPM Version](https://img.shields.io/npm/v/@yurbajs/types)](https://www.npmjs.com/package/@yurbajs/types)
 
 
-
 ## Links
 - [Website][website] ([source][website-source])
 - [Documentation][documentation]
@@ -45,7 +43,6 @@ The main package is [`Yurba.js`](https://github.com/yurbajs/yurba.js/tree/main/p
 - [GitHub][source]
 - [Gitlab][gitlab]
 - [npm][npm]
-- [Related libraries][related-libs]
 
 ## Contributing
 Want to help make yurba.js better?
@@ -73,5 +70,4 @@ Need assistance? Here's where to find help:
 [yurba-channel]: https://me.yurba.one/yjs
 [yurba-chat]: https://me.yurba.one/yurba.js
 [npm]: https://www.npmjs.com/package/yurba.js
-[related-libs]: #
-[guide]: https://yurba.js.org
+[guide]: https://yurba.js.org/introduction
