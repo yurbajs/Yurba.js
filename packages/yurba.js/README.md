@@ -2,7 +2,7 @@
   <br />
   <p>
     <a href="https://yurba.js.org"><img src="https://yurba.js.org/logo.svg" width="300" alt="yurba.js logo" /></a>
-  </p> 
+  </p>
   <br />
   <p>
     <a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/v/yurba.js.svg?maxAge=3600" alt="npm version" /></a>
