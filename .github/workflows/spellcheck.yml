@@ -1,4 +1,4 @@
-name: Spellcheck Action Check
+name: Spellcheck
 on:
   pull_request:
     branches: [ main, dev ]
@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    name: Spellcheck
+    name: Check
     runs-on: ubuntu-latest
     steps:
     # The checkout step

@@ -26,5 +26,7 @@
     "invalidLink": false,
     "notDocumented": false
   },
-  "skipErrorChecking": true
+  "skipErrorChecking": true,
+  "customCss": "./apps/docs/assets/yurba-theme.css",
+  "favicon": "https://yurba.js.org/logo.svg"
 }
