@@ -13,7 +13,7 @@
 
 
 ### Bug Fixes
-
+ 
 * fix bug ([339f6d2](https://github.com/rastgame/yurba.js/commit/339f6d20414f9237724c2046962b61506c8dc8bd))
 * jest ([794209a](https://github.com/rastgame/yurba.js/commit/794209ab05ea008cbac1989dc28b86f85981e8d3))
 
