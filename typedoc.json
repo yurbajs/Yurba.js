@@ -4,7 +4,7 @@
   "entryPoints": ["packages/*"],
   "out": "apps/docs/dist",
   "theme": "default",
-  "includeVersion": true,
+  "includeVersion": false,
   "excludePrivate": true,
   "excludeProtected": true,
   "excludeInternal": true,
@@ -39,6 +39,10 @@
     "external": true
   },
   "searchInComments": true,
-  "customCss": "apps/docs/theme/assets/style.css"
+  "customCss": "apps/docs/theme/assets/style.css",
+  "cname": "https://yurbajs.pages.dev/",
+  "disableSources": false,
+  "lightHighlightTheme": "github-light",
+  "darkHighlightTheme": "github-dark"
 }
 >>>>>>> 82a9b22 (update docs)

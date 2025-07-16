@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-
+console.log("Documentation")
 const fs = require('fs');
 const path = require('path');
 

@@ -19,7 +19,7 @@
     "clean": "turbo run clean",
     "all": "pnpm run lint && pnpm test && pnpm build",
     "install:all": "pnpm install",
-    "docs": "pnpm run docs:clean && npx typedoc && node apps/docs/apply-custom-styles.js && node fix-docs.js",
+    "docs": "pnpm run docs:clean && npx typedoc && node apps/docs/scripts/docs.js",
     "docs:serve": "pnpm run docs && npx http-server apps/docs/dist -p 3000 -o",
     "docs:clean": "rimraf apps/docs/dist",
     "docs:watch": "typedoc --watch",
@@ -50,6 +50,7 @@
     "ts-jest": "^29.4.0",
     "turbo": "^2.5.4",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "typedoc": "^0.28.7",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0",
@@ -57,6 +58,10 @@
     "typedoc": "^0.28.3",
     "typedoc-plugin-markdown": "^3.17.1",
     "typedoc-plugin-mermaid": "^1.10.0",
+=======
+    "typedoc": "^0.28.7",
+
+>>>>>>> c044e11 (update)
     "typescript": "^5.1.6",
     "typescript-eslint": "^8.0.0",
 >>>>>>> 82a9b22 (update docs)
