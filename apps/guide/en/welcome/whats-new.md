@@ -8,9 +8,6 @@ sidebar: true
 
 Stay up to date with the latest features, improvements, and bug fixes in yurba.js. This page highlights the most recent changes across all packages in the yurba.js ecosystem.
 
-> [!CAUTION] Beta Version
-> This library is currently in active development. The stable release will begin with version 1.0.0+. Breaking changes may occur between minor versions.
-
 ## Latest Release - v0.1.9 (July 12, 2025)
 
 ###  Major Improvements

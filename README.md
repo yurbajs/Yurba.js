@@ -1,7 +1,7 @@
 <div align="center">
 	<br />
 	<p>
-		<a href="https://yurba.js.org"><img src="https://yurbajs.vercel.app/banner.svg" width="500" alt="yurba.js" /></a>
+		<a href="https://yurba.js.org"><img src="https://yurba.js.org/banner.svg" width="500" alt="yurba.js" /></a>
 	</p>
 	<br />	
 	<p>
@@ -24,6 +24,9 @@ This repository contains [multiple packages](https://github.com/yurbajs/yurba.js
 The main package is [`Yurba.js`](https://github.com/yurbajs/yurba.js/tree/main/packages/yurba.js).
 
 > This library draws inspiration from [discord.js](https://github.com/discordjs/discord.js), so you may notice some similarities in design and structure.
+
+> [!NOTE] 
+> Thanks to [JS.ORG](https://js.org) for [the domain](https://yurba.js.org) ([GitHub](https://github.com/js-org/js.org)).
 
 ## Packages
 - `yurba.js` ([source][source]) - The powerful library for creating bots and integrating with the Yurba API. [![NPM Version](https://img.shields.io/npm/v/yurba.js)](https://www.npmjs.com/package/yurba.js)
@@ -60,7 +63,6 @@ Need assistance? Here's where to find help:
 - Ask questions in our [Chat][yurba-chat]
 - Browse existing [issues](https://github.com/yurbajs/yurba.js/issues) and [discussions](https://github.com/yurbajs/yurba.js/discussions)
 
-
 [gitlab]: https://gitlab.com/yurbajs/yurba.js
 [github-tags]: https://github.com/yurbajs/yurba.js/tags
 [source]: https://github.com/yurbajs/yurba.js/tree/main/packages/yurba.js
@@ -72,4 +74,4 @@ Need assistance? Here's where to find help:
 [yurba-chat]: https://me.yurba.one/yurba.js
 [npm]: https://www.npmjs.com/package/yurba.js
 [related-libs]: #
-[guide]: https://yurbajs.vercel.app
+[guide]: https://yurba.js.org

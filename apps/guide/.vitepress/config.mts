@@ -24,7 +24,7 @@ export default defineConfig({
   ],
   metaChunk: true,
   sitemap: {
-    hostname: 'https://yurbajs.vercel.app',
+    hostname: 'https://yurba.js.org',
     transformItems: (items) => {
       // add new items or modify/filter existing items
       items.push({
@@ -51,13 +51,13 @@ export default defineConfig({
     ['meta', { property: 'og:site_name', content: 'Yurba.js' }],
     ['meta', { property: 'og:title', content: 'Yurba.js - Powerful Bot Library' }],
     ['meta', { property: 'og:description', content: 'The powerful library for creating bots and integrating with the Yurba API' }],
-    ['meta', { property: 'og:image', content: 'https://yurbajs.vercel.app/banner.svg' }],
-    ['meta', { property: 'og:url', content: 'https://yurbajs.vercel.app' }],
+    ['meta', { property: 'og:image', content: 'https://yurba.js.org/banner.svg' }],
+    ['meta', { property: 'og:url', content: 'https://yurba.js.org' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: 'Yurba.js - Powerful Bot Library' }],
     ['meta', { name: 'twitter:description', content: 'The powerful library for creating bots and integrating with the Yurba API' }],
-    ['meta', { name: 'twitter:image', content: 'https://yurbajs.vercel.app/banner.svg' }],
-    ['link', { rel: 'canonical', href: 'https://yurbajs.vercel.app' }]
+    ['meta', { name: 'twitter:image', content: 'https://yurba.js.org/banner.svg' }],
+    ['link', { rel: 'canonical', href: 'https://yurba.js.org' }]
   ],
   
   srcDir: '.',
