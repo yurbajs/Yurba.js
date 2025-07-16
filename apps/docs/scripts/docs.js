@@ -22,29 +22,12 @@ function fixHtmlFiles(dir) {
       fixHtmlFiles(filePath);
     } else if (file.endsWith('.html')) {
       let content = fs.readFileSync(filePath, 'utf8');
-      
-      // Виправляємо відносні шляхи для роботи з file:// протоколом
-      content = content.replace(/href="assets\//g, 'href="./assets/');
-      content = content.replace(/src="assets\//g, 'src="./assets/');
-      content = content.replace(/href="\.\.\/assets\//g, 'href="../assets/');
-      content = content.replace(/src="\.\.\/assets\//g, 'src="../assets/');
+
       
       // Додаємо мета-теги для SEO
       content = content.replace(
         /<head>/,
         `<head>\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <meta name="description" content="Yurba.js API Documentation ">\n    <meta name="keywords" content="yurba, yurba.js, api, documentation, javascript, typescript">\n    <meta name="author" content="RastGame">`
-      );
-      
-      // Додаємо підтримку підсвічування синтаксису
-      content = content.replace(
-        /<\/head>/,
-        `    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">\n    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>\n</head>`
-      );
-      
-      // Додаємо favicon
-      content = content.replace(
-        /<\/head>/,
-        `    <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">\n</head>`
       );
       
       fs.writeFileSync(filePath, content);
