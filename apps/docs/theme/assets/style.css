@@ -99,22 +99,28 @@ body {
 /* Main layout */
 .container-main {
   max-width: 1200px;
-
-
+  margin: 0 auto;
+  display: flex;
+  min-height: calc(100vh - 60px);
 }
-
-/* ---------------------------- */
 
 .col-content {
   flex: 1;
   padding: var(--space-xl) var(--space-lg);
-
+  max-width: calc(100% - 280px);
   order: 1;
 }
 
-
 .col-sidebar {
+  width: 280px;
+  min-width: 280px;
   background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  padding: var(--space-lg);
+  overflow-y: auto;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
   order: 2;
 }
 
@@ -192,6 +198,10 @@ pre code {
   border-radius: 0.25rem;
   font-size: 0.875rem;
   margin-bottom: 0.125rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  line-height: 1.4;
 }
 
 .tsd-navigation a:hover {
@@ -213,6 +223,30 @@ pre code {
 
 .tsd-navigation li {
   margin: 0;
+}
+
+/* Sidebar navigation improvements */
+.tsd-navigation {
+  font-size: 0.875rem;
+}
+
+.tsd-navigation .tsd-accordion-summary {
+  padding: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+}
+
+.tsd-navigation .tsd-accordion-details {
+  margin-left: var(--space-sm);
+}
+
+.tsd-navigation .tsd-accordion-details ul {
+  margin-left: var(--space-md);
+}
+
+.tsd-navigation .tsd-accordion-details a {
+  padding-left: var(--space-md);
+  font-size: 0.8125rem;
 }
 
 /* Panels */
@@ -331,6 +365,50 @@ th {
   gap: var(--space-sm);
 }
 
+/* Additional fixes for text overflow and layout */
+.tsd-signature-symbol,
+.tsd-signature-type {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.tsd-member-group h2,
+.tsd-index-group h3 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fix for long parameter names and types */
+.tsd-parameters {
+  overflow-x: auto;
+}
+
+.tsd-parameter-list {
+  word-break: break-word;
+}
+
+/* Ensure proper spacing and sizing for all elements */
+.tsd-comment {
+  margin: var(--space-md) 0;
+  line-height: 1.6;
+}
+
+.tsd-comment p {
+  margin-bottom: var(--space-sm);
+}
+
+/* Fix sidebar scrolling and text wrapping */
+.col-sidebar * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tsd-navigation .tsd-kind-namespace > a,
+.tsd-navigation .tsd-kind-module > a,
+.tsd-navigation .tsd-kind-class > a {
+  font-weight: 500;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .container-main {
@@ -339,10 +417,13 @@ th {
   
   .col-sidebar {
     width: 100%;
+    min-width: auto;
     position: static;
     height: auto;
     border-left: none;
     border-top: 1px solid var(--border);
+    max-height: 300px;
+    overflow-y: auto;
   }
   
   .col-content {
@@ -358,6 +439,17 @@ th {
   
   #tsd-toolbar-links {
     order: -1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .col-sidebar {
+    width: 240px;
+    min-width: 240px;
+  }
+  
+  .col-content {
+    max-width: calc(100% - 240px);
   }
 }
 
