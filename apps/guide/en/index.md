@@ -1,4 +1,5 @@
 ---
+title: Yurba.js
 layout: home
 
 hero:

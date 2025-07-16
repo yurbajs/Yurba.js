@@ -6,7 +6,7 @@ import { t, createNavItem } from './utils/i18n'
 
 export default defineConfig({
   title: "Yurba.js",
-  titleTemplate: ":title | Yurba.js",
+  titleTemplate: ":title",
   description: "The powerful library for creating bots and integrating with the Yurba API",
   base: '/',
   cleanUrls: true,
