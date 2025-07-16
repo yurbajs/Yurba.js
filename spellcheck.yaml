@@ -6,35 +6,24 @@ matrix:
   dictionary:
     wordlists:
     - .wordlist.txt
+    encoding: utf-8
   pipeline:
-  - pyspelling.filters.markdown:
-  - pyspelling.filters.html:
-      comments: false
-      attributes:
-      - title
-      - alt
-      ignores:
-      - code
-      - pre
+    - pyspelling.filters.markdown:
+        markdown_extensions:
+        - pymdownx.superfences
   sources:
   - '**/*.md'
   default_encoding: utf-8
+  expect_match: true
+  
 - name: Ukrainian
   hunspell:
     d: uk_UA
-  dictionary:
-    wordlists:
-    - .wordlist.txt
   pipeline:
-  - pyspelling.filters.markdown:
-  - pyspelling.filters.html:
-      comments: false
-      attributes:
-      - title
-      - alt
-      ignores:
-      - code
-      - pre
+    - pyspelling.filters.markdown:
+        markdown_extensions:
+        - pymdownx.superfences
   sources:
   - 'apps/guide/uk/**/*.md'
   default_encoding: utf-8
+  expect_match: true
