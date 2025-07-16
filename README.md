@@ -22,8 +22,6 @@
 This repository contains [multiple packages](https://github.com/yurbajs/yurba.js/tags) that work with the [Yurba.one API](https://docs.yurba.one/overview) and are required for the main package to function.
 The main package is [`Yurba.js`](https://github.com/yurbajs/yurba.js/tree/main/packages/yurba.js).
 
-> This library draws inspiration from [discord.js](https://github.com/discordjs/discord.js), so you may notice some similarities in design and structure.
-
 > [!NOTE] 
 > Thanks to [JS.ORG](https://js.org) for [the domain](https://yurba.js.org) ([GitHub](https://github.com/js-org/js.org)).
 
