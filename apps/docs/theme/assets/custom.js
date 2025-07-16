@@ -73,4 +73,32 @@ document.addEventListener('DOMContentLoaded', function() {
       (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.body.classList.add('dark-theme');
   }
+  
+  // Покращення для головної сторінки
+  if (window.location.pathname.endsWith('/index.html') || window.location.pathname.endsWith('/')) {
+    // Додаємо логотип на головну сторінку
+    const pageTitle = document.querySelector('.tsd-page-title');
+    if (pageTitle) {
+      const logo = document.createElement('img');
+      logo.src = './assets/logo.svg';
+      logo.alt = 'Yurba.js Logo';
+      logo.style.width = '100px';
+      logo.style.marginBottom = '20px';
+      logo.style.display = 'block';
+      
+      const container = pageTitle.querySelector('.container');
+      if (container) {
+        container.insertBefore(logo, container.firstChild);
+      }
+      
+      // Додаємо опис під заголовком
+      const h1 = pageTitle.querySelector('h1');
+      if (h1 && !pageTitle.querySelector('.subtitle')) {
+        const subtitle = document.createElement('p');
+        subtitle.className = 'subtitle';
+        subtitle.textContent = 'Офіційна API документація для розробників';
+        h1.parentNode.insertBefore(subtitle, h1.nextSibling);
+      }
+    }
+  }
 });

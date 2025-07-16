@@ -3,7 +3,7 @@
   "entryPointStrategy": "packages",
   "entryPoints": ["packages/*"],
   "out": "apps/docs/dist",
-  "theme": "apps/docs/theme",
+  "theme": "default",
   "includeVersion": true,
   "excludePrivate": true,
   "excludeProtected": true,
@@ -28,13 +28,9 @@
 }
 =======
   "navigationLinks": {
-    "Документація": "https://yurba.js.org",
+    "Guide": "https://yurba.js.org",
     "GitHub": "https://github.com/RastGame/Yurba.js",
     "npm": "https://www.npmjs.com/package/yurba.js"
-  },
-  "sidebarLinks": {
-    "API": "globals.html",
-    "Посібник": "https://yurba.js.org"
   },
   "visibilityFilters": {
     "protected": false,
@@ -43,6 +39,6 @@
     "external": true
   },
   "searchInComments": true,
-  "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-mermaid", "apps/docs/typedoc-plugin.js"]
+  "customCss": "apps/docs/theme/assets/style.css"
 }
 >>>>>>> 82a9b22 (update docs)
