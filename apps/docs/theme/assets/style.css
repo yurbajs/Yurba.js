@@ -47,6 +47,10 @@ body {
   font-size: 16px;
 }
 
+
+
+
+
 /* Header */
 .tsd-page-toolbar {
   background: var(--bg);
@@ -73,6 +77,8 @@ body {
   text-decoration: none;
 }
 
+
+
 #tsd-toolbar-links {
   display: flex;
   gap: var(--space-lg);
@@ -88,32 +94,31 @@ body {
   color: var(--primary);
 }
 
+/* --------------------------- */
+
 /* Main layout */
 .container-main {
   max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  min-height: calc(100vh - 80px);
+
+
 }
+
+/* ---------------------------- */
 
 .col-content {
   flex: 1;
   padding: var(--space-xl) var(--space-lg);
-  max-width: calc(100% - 300px);
+
   order: 1;
 }
 
+
 .col-sidebar {
-  width: 300px;
   background: var(--bg-secondary);
-  border-left: 1px solid var(--border);
-  padding: var(--space-lg);
-  overflow-y: auto;
-  position: sticky;
-  top: 80px;
-  height: calc(100vh - 80px);
   order: 2;
 }
+
+
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
@@ -154,6 +159,7 @@ a:hover {
   color: var(--primary-hover);
   text-decoration: underline;
 }
+
 
 /* Code */
 code {
@@ -388,10 +394,6 @@ th {
   display: none;
 }
 
-/* Simplify navigation */
-.tsd-small-nested-navigation {
-  padding-left: var(--space-md);
-}
 
 /* Footer */
 footer {
