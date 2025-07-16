@@ -243,6 +243,10 @@ export default defineConfig({
           linkLabel: t('notFound.linkText', 'uk')
         }
       }
+    },
+    'help-translate': {
+      label: t('nav.help_translate'),
+      link: 'https://crowdin.com/project/yurbajs'
     }
   },
 

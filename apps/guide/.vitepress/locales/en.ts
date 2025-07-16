@@ -3,7 +3,8 @@ export const en = {
     guide: "Guide",
     documentation: "Documentation", 
     examples: "Examples",
-    changelog: "Changelog"
+    changelog: "Changelog",
+    help_translate: "Help Translate"
   },
   sidebar: {
     gettingStarted: "Getting Started",
