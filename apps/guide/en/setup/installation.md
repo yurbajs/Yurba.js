@@ -48,6 +48,13 @@ If you see a version number (e.g., `v20.10.0`), Node.js is installed. Ensure it'
    npm --version
    ```
 
+#### Windows Path Issues
+If Node.js commands aren't recognized in Windows:
+
+1. Open System Properties → Advanced → Environment Variables
+2. Ensure `C:\Program Files\nodejs\` is in your PATH
+3. Restart your command prompt/PowerShell
+
 ### macOS Installation
 
 Choose one of these methods:
@@ -152,7 +159,7 @@ bun add yurba.js
 For new projects, we recommend **[pnpm](https://pnpm.io/)** for its speed and efficiency, or **npm** for its universal compatibility. The [yurba.js](https://github.com/yurbajs/yurba.js) project itself uses pnpm.
 :::
 
-## Verifying Installation
+### Verifying Installation
 
 After installation, verify that yurba.js is properly installed:
 
@@ -177,12 +184,7 @@ After installation, verify that yurba.js is properly installed:
    ```
    :::
 
-#### Windows Path Issues
-If Node.js commands aren't recognized in Windows:
 
-1. Open System Properties → Advanced → Environment Variables
-2. Ensure `C:\Program Files\nodejs\` is in your PATH
-3. Restart your command prompt/PowerShell
 
 ## Next Steps
 
@@ -190,7 +192,7 @@ Congratulations! You now have Node.js and yurba.js installed on your system. You
 
 ## Additional Resources
 
-- **[Node.js Documentation](https://nodejs.org/docs/)** - Official Node.js documentation
+- **[Node.js Documentation](https://nodejs.org/docs/latest/api/)** - Official Node.js documentation
 - **[npm Documentation](https://docs.npmjs.com/)** - Package manager documentation
 - **[TypeScript Handbook](https://www.typescriptlang.org/docs/)** - If you plan to use TypeScript
-- **[VS Code](https://code.visualstudio.com/)** - Recommended code editor with excellent Node.js support
+- **[Vscodium](https://vscodium.com/)** - Recommended code editor  (`Free/Libre Open Source Software Binaries of VS Code`)

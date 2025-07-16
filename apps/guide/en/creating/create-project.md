@@ -12,19 +12,11 @@ Now that you have Node.js installed and your bot account configured, it's time t
 
 ### Step 1: Create Project Directory
 
-First, create a dedicated directory for your bot project:
+First, create a dedicated directory/folder for your bot project:
 
-```bash
-# Create and navigate to your project directory
-mkdir my-yurba-bot
+```sh
 cd my-yurba-bot
 ```
-
-> [!TIP] Naming Conventions
-> Use descriptive names for your bot projects:
-> - `weather-bot` - for a weather information bot
-> - `moderation-bot` - for a server moderation bot
-> - `music-bot` - for a music streaming bot
 
 ### Step 2: Initialize Package.json
 
@@ -54,24 +46,12 @@ You'll be prompted to fill out project information. Here's an example configurat
 
 <img src="/images/npm-init.png" width="700" alt="npm init process" />
 
-**Recommended values:**
-- **name**: `my-yurba-bot` (or your chosen project name)
-- **version**: `1.0.0`
-- **description**: `A powerful bot built with yurba.js`
-- **entry point**: `index.js` (or `src/index.js` for organized structure)
-- **test command**: `jest` (if you plan to add tests)
-- **git repository**: Your repository URL
-- **keywords**: `yurba, bot, yurba.js, automation`
-- **author**: Your name
-- **license**: `MIT` (or your preferred license)
 
 ### Step 3: Verify Package.json
 
 After initialization, your `package.json` should look similar to this:
 
-<img src="/images/package-json.png" width="500" alt="Generated package.json" />
-
-```json
+```json:line-numbers [package.json]
 {
   "name": "my-yurba-bot",
   "version": "1.0.0",
@@ -86,239 +66,26 @@ After initialization, your `package.json` should look similar to this:
 }
 ```
 
-## Installing Dependencies
+### Configuration File s
 
-### Core Dependencies
-
-Install yurba.js and essential dependencies:
+Create a `.env` file and the `config.json` file
 
 ::: code-group
 
-```bash [npm]
-# Install yurba.js
-npm install yurba.js
-
-# Install dotenv for environment variables
-npm install dotenv
-
-# Optional: Install additional utilities
-npm install chalk winston
+```sh:line-numbers [.env]
+YURBA_TOKEN=your-token-here
 ```
 
-```bash [yarn]
-# Install yurba.js
-yarn add yurba.js
-
-# Install dotenv for environment variables
-yarn add dotenv
-
-# Optional: Install additional utilities
-yarn add chalk winston
+```json [config.json]
+{
+  "prefix": "/"
+}
 ```
 
-```bash [pnpm]
-# Install yurba.js
-pnpm add yurba.js
-
-# Install dotenv for environment variables
-pnpm add dotenv
-
-# Optional: Install additional utilities
-pnpm add chalk winston
-```
-
-```bash [bun]
-# Install yurba.js
-bun add yurba.js
-
-# Note: Bun has built-in .env support
-# Optional: Install additional utilities
-bun add chalk winston
-```
-
-:::
-
-### Development Dependencies
-
-For a more robust development experience, consider adding these dev dependencies:
-
-::: code-group
-
-```bash [npm]
-npm install --save-dev \
-  typescript \
-  @types/node \
-  ts-node \
-  nodemon \
-  eslint \
-  prettier
-```
-
-```bash [yarn]
-yarn add --dev \
-  typescript \
-  @types/node \
-  ts-node \
-  nodemon \
-  eslint \
-  prettier
-```
-
-```bash [pnpm]
-pnpm add --save-dev \
-  typescript \
-  @types/node \
-  ts-node \
-  nodemon \
-  eslint \
-  prettier
-```
-
-```bash [bun]
-bun add --dev \
-  typescript \
-  @types/node \
-  ts-node \
-  nodemon \
-  eslint \
-  prettier
-```
-
-:::
-
-## Configuration Management
-
-Proper configuration management is crucial for bot security and maintainability.
-
-### Environment Variables (.env)
-
-Create a `.env` file to store sensitive configuration:
-
-```env
-# .env
-# Bot Configuration
-YURBA_TOKEN=y.your-token-here
-BOT_PREFIX=/
-BOT_NAME=MyYurbaBot
-
-# Environment Settings
-NODE_ENV=development
-DEBUG=true
-LOG_LEVEL=debug
-
-# Optional: Database Configuration
-# DATABASE_URL=postgresql://user:password@localhost:5432/botdb
-
-# Optional: External API Keys
-# WEATHER_API_KEY=your-weather-api-key
-# OPENAI_API_KEY=your-openai-api-key
-```
 
 > [!DANGER] Security Warning
-> Never commit the `.env` file to version control. It contains sensitive information that should remain private.
-
-### Configuration File (Alternative)
-
-If you prefer JSON configuration, create a `config.json` file:
-
-```json
-{
-  "token": "y.your-token-here",
-  "prefix": "/",
-  "name": "MyYurbaBot",
-  "environment": "development",
-  "debug": true,
-  "logLevel": "debug",
-  "features": {
-    "autoReconnect": true,
-    "commandLogging": true,
-    "errorReporting": true
-  },
-  "limits": {
-    "maxReconnectAttempts": 5,
-    "commandCooldown": 1000,
-    "maxMessageLength": 2000
-  }
-}
-```
-
-### Loading Configuration
-
-Create a configuration loader module:
-
-::: code-group
-
-```javascript [config.js (CommonJS)]
-const dotenv = require('dotenv');
-
-// Load environment variables
-dotenv.config();
-
-module.exports = {
-  token: process.env.YURBA_TOKEN,
-  prefix: process.env.BOT_PREFIX || '/',
-  name: process.env.BOT_NAME || 'YurbaBot',
-  environment: process.env.NODE_ENV || 'development',
-  debug: process.env.DEBUG === 'true',
-  logLevel: process.env.LOG_LEVEL || 'info',
-  
-  // Validate required configuration
-  validate() {
-    if (!this.token) {
-      throw new Error('YURBA_TOKEN is required in environment variables');
-    }
-    
-    if (!this.token.startsWith('y.')) {
-      throw new Error('Invalid token format. Token must start with "y."');
-    }
-    
-    return true;
-  }
-};
-```
-
-```typescript [config.ts (TypeScript)]
-import dotenv from 'dotenv';
-
-// Load environment variables
-dotenv.config();
-
-interface BotConfig {
-  token: string;
-  prefix: string;
-  name: string;
-  environment: string;
-  debug: boolean;
-  logLevel: string;
-  validate(): boolean;
-}
-
-const config: BotConfig = {
-  token: process.env.YURBA_TOKEN!,
-  prefix: process.env.BOT_PREFIX || '/',
-  name: process.env.BOT_NAME || 'YurbaBot',
-  environment: process.env.NODE_ENV || 'development',
-  debug: process.env.DEBUG === 'true',
-  logLevel: process.env.LOG_LEVEL || 'info',
-  
-  // Validate required configuration
-  validate(): boolean {
-    if (!this.token) {
-      throw new Error('YURBA_TOKEN is required in environment variables');
-    }
-    
-    if (!this.token.startsWith('y.')) {
-      throw new Error('Invalid token format. Token must start with "y."');
-    }
-    
-    return true;
-  }
-};
-
-export default config;
-```
-
-:::
+> Never commit the `.env`  file to version control. It contains sensitive information that should remain private.
+> Or if you use only `config.json` with `token` 
 
 ## Project Scripts
 
