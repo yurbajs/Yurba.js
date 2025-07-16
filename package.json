@@ -19,7 +19,7 @@
     "clean": "turbo run clean",
     "all": "pnpm run lint && pnpm test && pnpm build",
     "install:all": "pnpm install",
-    "docs": "pnpm run docs:clean && npx typedoc && node apps/docs/scripts/docs.js",
+    "docs": "pnpm run docs:clean && build && npx typedoc && node apps/docs/scripts/docs.js",
     "docs:serve": "pnpm run docs && npx http-server apps/docs/dist -p 3000 -o",
     "docs:clean": "rimraf apps/docs/dist",
     "docs:watch": "typedoc --watch",
