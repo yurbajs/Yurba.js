@@ -7,6 +7,7 @@ infoCommand
 pingCommand
 YurbaBot
 SIGINT
+Fchecks
 SIGTERM
 uncaughtException
 Unhandled
