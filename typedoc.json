@@ -13,7 +13,7 @@
   "categorizeByGroup": true,
   "sort": ["alphabetical"],
   "gitRevision": "main",
-  "sourceLinkTemplate": "https://github.com/RastGame/Yurba.js/blob/{gitRevision}/{path}#L{line}",
+  "sourceLinkTemplate": "https://github.com/yurbajs/yurba.js/blob/main/{path}#L{line}",
   "cleanOutputDir": true,
   "treatWarningsAsErrors": false,
   "favicon": "https://yurba.js.org/logo.png",
