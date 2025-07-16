@@ -1,0 +1,3 @@
+files:
+  - source: /apps/guide/en/**/*.md
+    translation: /apps/guide/%language%/%original_file_name%
