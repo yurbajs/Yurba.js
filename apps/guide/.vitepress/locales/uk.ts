@@ -3,7 +3,8 @@ export const uk = {
     guide: "Посібник",
     documentation: "Документація",
     examples: "Приклади",
-    changelog: "Зміни"
+    changelog: "Зміни",
+    help_translate: "Допомогти з перекладом"
   },
   sidebar: {
     gettingStarted: "Початок роботи",

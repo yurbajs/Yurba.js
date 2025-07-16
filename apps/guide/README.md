@@ -6,6 +6,7 @@
   <br />
   <p>
     <a href="https://github.com/yurbajs/yurba.js/commits/main"><img src="https://img.shields.io/github/last-commit/yurbajs/yurba.js.svg?logo=github&logoColor=ffffff" alt="Last commit" /></a>
+    <a title="Crowdin" target="_blank" href="https://crowdin.com/project/yurbajs"><img src="https://badges.crowdin.net/yurbajs/localized.svg"></a>
     <a href="https://github.com/yurbajs/yurba.js/graphs/contributors"><img src="https://img.shields.io/github/contributors/yurbajs/yurba.js.svg?maxAge=3600&logo=github&logoColor=fff&color=00c7be" alt="contributors" /></a>
   </p>
 </div>
