@@ -340,7 +340,7 @@ class Client extends EventEmitter {
    * await client.waitFor('message', msg => msg.Text === 'Hello', { timeout: 5000 });
    *
    * @example 2
-   * // Wait for user eventію та отримати всі аргументи
+   * // Wait for user event and get all arguments
    * const [arg1, arg2] = await client.waitFor('customEvent', () => true, { multiple: true });
    */
   async waitFor<T extends any[] = any[]>(
@@ -407,15 +407,15 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Відправляє повідомлення в діалог
-   * @param dialogId ID діалогу
-   * @param text Текст повідомлення
-   * @param replyToId ID повідомлення, на яке відповідаємо (опціонально)
-   * @param photos_list Список фото для прикріплення (опціонально)
-   * @param attachments Список вкладень (опціонально)
-   * @param edit ID повідомлення для редагування (опціонально)
-   * @param repost Дані репосту (опціонально)
-   * @returns Promise, який вирішується з даними відповіді
+   * Sends a message to a dialog
+   * @param dialogId Dialog ID
+   * @param text Message text
+   * @param replyToId ID of the message to reply to (optional)
+   * @param photos_list List of photos to attach (optional)
+   * @param attachments List of attachments (optional)
+   * @param edit ID of the message to edit (optional)
+   * @param repost Repost data (optional)
+   * @returns Promise that resolves with response data
    */
   async sendMessage(
     dialogId: number,
@@ -448,9 +448,9 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Отримує інформацію про користувача за тегом
-   * @param userTag Тег користувача
-   * @returns Promise, який вирішується з даними користувача
+   * Gets user information by tag
+   * @param userTag User tag
+   * @returns Promise that resolves with user data
    */
   async getUser(userTag: string): Promise<UserModel | null> {
     try {
@@ -464,9 +464,9 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Отримує фото з Yurba
-   * @param photoId ID фото для отримання
-   * @returns Promise, який вирішується з відповіддю API
+   * Gets a photo from Yurba
+   * @param photoId Photo ID to retrieve
+   * @returns Promise that resolves with API response
    */
   async getPhoto(photoId: string): Promise<PhotoModel | null> {
     try {
@@ -480,8 +480,9 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Видаляє повідомлення за його ID
-   * @param ID ID повідомлення для видалення
+   * Deletes a message by its ID
+   * @param ID Message ID to delete
+   * @returns Promise that resolves with boolean indicating success
    */
   async deleteMessage(ID: number): Promise<boolean> {
     try {
@@ -494,10 +495,10 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Додає слухача для вказаної події
-   * @param event Назва або символ події
-   * @param listener Функція зворотного виклику
-   * @returns Екземпляр Client
+   * Adds a listener for the specified event
+   * @param event Event name or symbol
+   * @param listener Callback function
+   * @returns Client instance
    * @example
    * client.on('message', (msg) => {
    *   console.log('Received message:', msg);
@@ -508,11 +509,11 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Додає одноразового слухача для вказаної події
-   * Слухач викликається лише наступного разу, коли подія спрацьовує, потім видаляється
-   * @param event Назва або символ події
-   * @param listener Функція зворотного виклику
-   * @returns Екземпляр Client
+   * Adds a one-time listener for the specified event
+   * The listener is invoked only the next time the event is triggered, then removed
+   * @param event Event name or symbol
+   * @param listener Callback function
+   * @returns Client instance
    * @example
    * client.once('ready', () => {
    *   console.log('Bot is ready!');
@@ -523,10 +524,10 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Видаляє слухача для вказаної події
-   * @param event Назва або символ події
-   * @param listener Функція зворотного виклику для видалення
-   * @returns Екземпляр Client
+   * Removes a listener for the specified event
+   * @param event Event name or symbol
+   * @param listener Callback function to remove
+   * @returns Client instance
    * @example
    * const handler = (msg) => {};
    * client.on('message', handler);
@@ -537,11 +538,11 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Емітує вказану подію з заданими аргументами
+   * Emits the specified event with given arguments
    * @internal
-   * @param event Назва або символ події
-   * @param args Аргументи для передачі слухачам подій
-   * @returns True, якщо подія мала слухачів, false в іншому випадку
+   * @param event Event name or symbol
+   * @param args Arguments to pass to event listeners
+   * @returns True if the event had listeners, false otherwise
    * @example
    ```
     client.emit('customEvent', { foo: 'bar' });
@@ -552,20 +553,20 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Видаляє конкретного слухача з події
-   * Аліас для off()
-   * @param event Назва або символ події
-   * @param listener Функція зворотного виклику для видалення
-   * @returns Екземпляр Client
+   * Removes a specific listener from an event
+   * Alias for off()
+   * @param event Event name or symbol
+   * @param listener Callback function to remove
+   * @returns Client instance
    */
   removeListener(event: string | symbol, listener: (...args: any[]) => void): this {
     return super.removeListener(event, listener);
   }
 
   /**
-   * Видаляє всіх слухачів або тих, що вказані для події
-   * @param event Назва або символ події (опціонально)
-   * @returns Екземпляр Client
+   * Removes all listeners or those specified for an event
+   * @param event Event name or symbol (optional)
+   * @returns Client instance
    * @example
    * client.removeAllListeners('message');
    */
@@ -574,24 +575,26 @@ class Client extends EventEmitter {
   }
 
   /**
-   * Додає middleware функцію для виконання для кожного вхідного повідомлення
-   * @param middleware Middleware функція
-   * @param config Конфігурація middleware
+   * Adds a middleware function to execute for each incoming message
+   * @param middleware Middleware function
+   * @param config Middleware configuration
    */
   use(middleware: MiddlewareFunction, config?: MiddlewareConfig): void {
     this.middlewareManager.use(middleware, config);
   }
 
   /**
-   * Видаляє middleware за назвою
-   * @param name Назва middleware
+   * Removes middleware by name
+   * @param name Middleware name
+   * @returns Boolean indicating whether the middleware was removed
    */
   removeMiddleware(name: string): boolean {
     return this.middlewareManager.remove(name);
   }
 
   /**
-   * Отримує список всіх middleware
+   * Gets a list of all middleware
+   * @returns Array of middleware configurations
    */
   getMiddlewares(): MiddlewareConfig[] {
     return this.middlewareManager.list();

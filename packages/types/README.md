@@ -1,7 +1,7 @@
 <div align="center">
   <br />
   <p>
-    <a href="https://yurba.js.org"><img src="https://yurbajs.vercel.app/banner.svg" width="500" alt="yurba.js logo" /></a>
+    <a href="https://yurba.js.org"><img src="https://yurba.js.org/banner.svg" width="500" alt="yurba.js logo" /></a>
   </p>
   <br />
   <p>

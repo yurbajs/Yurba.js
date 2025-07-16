@@ -1,5 +1,5 @@
 /**
- * Рівні логування
+ * Logging levels
  */
 export enum LogLevel {
   DEBUG = 0,
@@ -10,7 +10,7 @@ export enum LogLevel {
 }
 
 /**
- * Опції логера
+ * Logger options
  */
 export interface LoggerOptions {
   level?: LogLevel;
@@ -19,11 +19,11 @@ export interface LoggerOptions {
   timestamp?: boolean;
   logToFile?: boolean;
   logFilePath?: string;
-  enabled?: boolean; // Додано новий параметр для вмикання/вимикання логера
+  enabled?: boolean; // Added new parameter for enabling/disabling the logger
 }
 
 /**
- * Клас для логування повідомлень
+ * Class for logging messages
  */
 export default class Logger {
   private level: LogLevel;
@@ -32,12 +32,12 @@ export default class Logger {
   private timestamp: boolean;
   private logToFile: boolean;
   private logFilePath: string;
-  private enabled: boolean; // Додано нове поле
+  private enabled: boolean; // Added new field
 
   /**
-   * Створює новий логер
-   * @param prefix Префікс для повідомлень
-   * @param options Опції логера
+   * Creates a new logger
+   * @param prefix Prefix for messages
+   * @param options Logger options
    */
   constructor(prefix: string = '', options: LoggerOptions = {}) {
     this.prefix = prefix;
@@ -46,35 +46,36 @@ export default class Logger {
     this.timestamp = options.timestamp ?? true;
     this.logToFile = options.logToFile ?? false;
     this.logFilePath = options.logFilePath ?? './logs/app.log';
-    this.enabled = options.enabled ?? true; // Ініціалізація нового поля
+    this.enabled = options.enabled ?? true; // Initialization of the new field
   }
 
   /**
-   * Встановлює рівень логування
-   * @param level Рівень логування
+   * Sets the logging level
+   * @param level Logging level
    */
   setLevel(level: LogLevel): void {
     this.level = level;
   }
 
   /**
-   * Вмикає або вимикає логер
-   * @param enabled true - для ввімкнення, false - для вимкнення
+   * Enables or disables the logger
+   * @param enabled true - to enable, false - to disable
    */
   setEnabled(enabled: boolean): void {
     this.enabled = enabled;
   }
 
   /**
-   * Перевіряє чи ввімкнений логер
+   * Checks if the logger is enabled
+   * @returns true if logger is enabled, false otherwise
    */
   isEnabled(): boolean {
     return this.enabled;
   }
 
   /**
-   * Логує повідомлення на рівні DEBUG
-   * @param args Аргументи для логування
+   * Logs messages at DEBUG level
+   * @param args Arguments to log
    */
   debug(...args: any[]): void {
     if (!this.enabled) return;
@@ -82,8 +83,8 @@ export default class Logger {
   }
 
   /**
-   * Логує повідомлення на рівні INFO
-   * @param args Аргументи для логування
+   * Logs messages at INFO level
+   * @param args Arguments to log
    */
   info(...args: any[]): void {
     if (!this.enabled) return;
@@ -91,8 +92,8 @@ export default class Logger {
   }
 
   /**
-   * Логує повідомлення на рівні WARN
-   * @param args Аргументи для логування
+   * Logs messages at WARN level
+   * @param args Arguments to log
    */
   warn(...args: any[]): void {
     if (!this.enabled) return;
@@ -100,8 +101,8 @@ export default class Logger {
   }
 
   /**
-   * Логує повідомлення на рівні ERROR
-   * @param args Аргументи для логування
+   * Logs messages at ERROR level
+   * @param args Arguments to log
    */
   error(...args: any[]): void {
     if (!this.enabled) return;
@@ -109,11 +110,11 @@ export default class Logger {
   }
 
   /**
-   * Внутрішній метод для логування
-   * @param level Рівень логування
-   * @param levelName Назва рівня
-   * @param color Колір для консолі
-   * @param args Аргументи для логування
+   * Internal method for logging
+   * @param level Logging level
+   * @param levelName Level name
+   * @param color Console color
+   * @param args Arguments to log
    * @private
    */
   private log(level: LogLevel, levelName: string, color: string, ...args: any[]): void {
@@ -136,8 +137,8 @@ export default class Logger {
   }
 
   /**
-   * Записує лог у файл
-   * @param message Повідомлення для запису
+   * Writes log to file
+   * @param message Message to write
    * @private
    */
   private writeToFile(message: string): void {

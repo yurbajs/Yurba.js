@@ -5,9 +5,11 @@ import DefaultTheme from 'vitepress/theme'
 import './clean-style.css'
 import HeroActions from './components/HeroActions.vue'
 import SimpleHero from './components/SimpleHero.vue'
+import MyLayout from './MyLayout.vue'
 
 export default {
   extends: DefaultTheme,
+  // Layout: MyLayout,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
