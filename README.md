@@ -8,7 +8,7 @@
 		<a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/v/yurba.js.svg?maxAge=3600" alt="npm version" /></a>
 		<a href="https://www.npmjs.com/package/yurba.js"><img src="https://img.shields.io/npm/dt/yurba.js.svg?maxAge=3600" alt="npm downloads" /></a>
 		<img alt="GitHub Release" src="https://img.shields.io/github/v/release/yurbajs/yurba.js?display_name=release">
-        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/yurbajs/yurba.js/pr-checks.yml?branch=main&label=Tests&link=https%3A%2F%2Fgithub.com%2Fyurbajs%2Fyurba.js%2Factions%2Fworkflows%2Fpr-checks.yml">
+        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/yurbajs/yurba.js/checks.yml?branch=main&label=Tests&link=https%3A%2F%2Fgithub.com%2Fyurbajs%2Fyurba.js%2Factions%2Fworkflows%2Fchecks.yml">
 		<!-- <a href="https://github.com/yurbajs/yurba.js/actions"><img src="https://github.com/yurbajs/yurba.js/actions/workflows/tests.yml/badge.svg" alt="Tests status" /></a> -->
 		<a href="https://github.com/yurbajs/yurba.js/commits/main"><img src="https://img.shields.io/github/last-commit/yurbajs/yurba.js.svg?logo=github&logoColor=ffffff" alt="Last commit." /></a>
 		<a href="https://github.com/yurbajs/yurba.js/graphs/contributors"><img src="https://img.shields.io/github/contributors/yurbajs/yurba.js.svg?maxAge=3600&logo=github&logoColor=fff&color=00c7be" alt="contributors" /></a>
