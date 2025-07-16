@@ -32,7 +32,7 @@ function fixHtmlFiles(dir) {
       // Додаємо мета-теги для SEO
       content = content.replace(
         /<head>/,
-        `<head>\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <meta name="description" content="Yurba.js API Documentation - Офіційна документація для розробників">\n    <meta name="keywords" content="yurba, yurba.js, api, documentation, javascript, typescript">\n    <meta name="author" content="Yurba.js Team">`
+        `<head>\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <meta name="description" content="Yurba.js API Documentation ">\n    <meta name="keywords" content="yurba, yurba.js, api, documentation, javascript, typescript">\n    <meta name="author" content="RastGame">`
       );
       
       // Додаємо підтримку підсвічування синтаксису

@@ -16,17 +16,13 @@
   "sourceLinkTemplate": "https://github.com/RastGame/Yurba.js/blob/{gitRevision}/{path}#L{line}",
   "cleanOutputDir": true,
   "treatWarningsAsErrors": false,
+  "favicon": "https://yurba.js.org/logo.png",
   "validation": {
     "notExported": false,
     "invalidLink": false,
     "notDocumented": false
   },
   "skipErrorChecking": true,
-<<<<<<< HEAD
-  "customCss": "./apps/docs/assets/yurba-theme.css",
-  "favicon": "https://yurba.js.org/logo.svg"
-}
-=======
   "navigationLinks": {
     "Guide": "https://yurba.js.org",
     "GitHub": "https://github.com/RastGame/Yurba.js",
@@ -45,4 +41,3 @@
   "lightHighlightTheme": "github-light",
   "darkHighlightTheme": "github-dark"
 }
->>>>>>> 82a9b22 (update docs)

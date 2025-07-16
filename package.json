@@ -49,22 +49,9 @@
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.0",
     "turbo": "^2.5.4",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "typedoc": "^0.28.7",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0",
-=======
-    "typedoc": "^0.28.3",
-    "typedoc-plugin-markdown": "^3.17.1",
-    "typedoc-plugin-mermaid": "^1.10.0",
-=======
-    "typedoc": "^0.28.7",
-
->>>>>>> c044e11 (update)
-    "typescript": "^5.1.6",
-    "typescript-eslint": "^8.0.0",
->>>>>>> 82a9b22 (update docs)
     "vitepress": "^1.6.3",
     "ws": "^8.18.3"
   },
