@@ -24,7 +24,6 @@
     "clean": "rimraf lib",
     "test": "jest",
     "lint": "eslint src/**/*.ts",
-    "docs": "typedoc",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "keywords": [

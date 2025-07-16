@@ -1,0 +1,69 @@
+{{> header}}
+
+<div class="tsd-page-title">
+    <div class="container">
+        <h1>{{model.name}} <span class="version">{{project.version}}</span></h1>
+        <div class="lead">
+            <p>Офіційна API документація для Yurba.js та пов'язаних пакетів</p>
+        </div>
+    </div>
+</div>
+
+<div class="container container-main">
+    <div class="row">
+        <div class="col-8 col-content">
+            <div class="tsd-panel tsd-typography">
+                {{#markdown}}{{{model.readme}}}{{/markdown}}
+            </div>
+
+            <section class="tsd-panel-group tsd-index-group">
+                <h2>Пакети</h2>
+                <div class="tsd-panel tsd-index">
+                    <div class="packages-list">
+                        {{#each packages}}
+                        <div class="package-card">
+                            <h3><a href="{{url}}">{{name}}</a></h3>
+                            <p>{{#if readme}}{{readme.shortText}}{{else}}Документація для пакету {{name}}{{/if}}</p>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </section>
+
+            <section class="tsd-panel-group">
+                <h2>Корисні посилання</h2>
+                <div class="tsd-panel">
+                    <ul class="useful-links">
+                        <li><a href="https://yurba.js.org" target="_blank">Офіційний сайт</a></li>
+                        <li><a href="https://github.com/RastGame/Yurba.js" target="_blank">GitHub репозиторій</a></li>
+                        <li><a href="https://www.npmjs.com/package/yurba.js" target="_blank">npm пакет</a></li>
+                        <li><a href="https://me.yurba.one/yurba.js" target="_blank">Yurba Chat</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+            <nav class="tsd-navigation primary">
+                <ul>
+                    <li class="current">
+                        <a href="index.html">Головна</a>
+                    </li>
+                    {{#each navigation.children}}
+                    {{> navigation}}
+                    {{/each}}
+                </ul>
+            </nav>
+
+            <nav class="tsd-navigation secondary menu-sticky">
+                <ul class="before-current">
+                    {{#each toc.children}}
+                    {{> toc.root}}
+                    {{/each}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+{{> footer}}

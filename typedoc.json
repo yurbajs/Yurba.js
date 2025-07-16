@@ -1,18 +1,13 @@
 {
   "name": "Yurba.js Documentation",
   "entryPointStrategy": "packages",
-  "entryPoints": [
-    "packages/yurba.js",
-    "packages/rest",
-    "packages/ws",
-    "packages/types"
-  ],
-  "out": "apps/docs",
-  "theme": "default",
+  "entryPoints": ["packages/*"],
+  "out": "apps/docs/dist",
+  "theme": "apps/docs/theme",
   "includeVersion": true,
-  "excludePrivate": false,
-  "excludeProtected": false,
-  "excludeInternal": false,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
   "hideGenerator": true,
   "readme": "README.md",
   "categorizeByGroup": true,
@@ -27,6 +22,27 @@
     "notDocumented": false
   },
   "skipErrorChecking": true,
+<<<<<<< HEAD
   "customCss": "./apps/docs/assets/yurba-theme.css",
   "favicon": "https://yurba.js.org/logo.svg"
 }
+=======
+  "navigationLinks": {
+    "Документація": "https://yurba.js.org",
+    "GitHub": "https://github.com/RastGame/Yurba.js",
+    "npm": "https://www.npmjs.com/package/yurba.js"
+  },
+  "sidebarLinks": {
+    "API": "globals.html",
+    "Посібник": "https://yurba.js.org"
+  },
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": true,
+    "external": true
+  },
+  "searchInComments": true,
+  "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-mermaid", "apps/docs/typedoc-plugin.js"]
+}
+>>>>>>> 82a9b22 (update docs)
