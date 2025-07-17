@@ -89,15 +89,33 @@
 
 @media (max-width: 640px) {
   .actions {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  .action:nth-child(1),
+  .action:nth-child(2) {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 120px;
+  }
+  
+  .action:nth-child(3),
+  .action:nth-child(4),
+  .action:nth-child(5) {
+    flex: 1 1 calc(33.333% - 6px);
+    min-width: 80px;
   }
   
   .Button {
     width: 100%;
-    max-width: 280px;
-    padding: 12px 24px;
+    padding: 10px 16px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 }
 
