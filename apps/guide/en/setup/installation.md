@@ -159,6 +159,33 @@ bun add yurba.js
 For new projects, we recommend **[pnpm](https://pnpm.io/)** for its speed and efficiency, or **npm** for its universal compatibility. The [yurba.js](https://github.com/yurbajs/yurba.js) project itself uses pnpm.
 :::
 
+## Installing dotenv
+
+For secure environment variable management, we recommend installing [dotenv](https://www.npmjs.com/package/dotenv). This package allows you to load environment variables from a `.env` file into `process.env`.
+
+::: code-group
+
+```bash [npm]
+npm install dotenv
+```
+
+```bash [yarn]
+yarn add dotenv
+```
+
+```bash [pnpm]
+pnpm add dotenv
+```
+
+```bash [bun]
+# Note: Bun has built-in .env support, but you can still use dotenv if needed
+bun add dotenv
+```
+
+:::
+
+
+
 ### Verifying Installation
 
 After installation, verify that yurba.js is properly installed:

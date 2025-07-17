@@ -15,9 +15,9 @@ Ready to get started? Follow these essential steps:
 
 1. **[Installation](/setup/installation)** - Set up Node.js and install yurba.js
 2. **[Bot Account Setup](/setup/setting-up-bot-account)** - Create and configure your bot account
-3. **[Project Creation](/creating/create-project)** - Initialize your bot project
-4. **[File Structure](/creating/create-files)** - Create your main bot files
-5. **[Project Organization](/creating/structure)** - Learn best practices for structuring your code
+3. **[Project Creation](/develoment/create-project)** - Initialize your bot project
+4. **[File Structure](/develoment/create-files)** - Create your main bot files
+5. **[Project Organization](/develoment/structure)** - Learn best practices for structuring your code
 
 ## Prerequisites
 

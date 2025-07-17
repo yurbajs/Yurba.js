@@ -20,9 +20,9 @@ export const sidebar = [
     text: 'Development',
     collapsed: true,
     items: [
-      { text: 'Project', link: '/creating/create-project' },
-      { text: 'Files', link: '/creating/create-files' },
-      { text: 'Structure', link: '/creating/structure' }
+      { text: 'Project', link: '/develoment/create-project' },
+      { text: 'Files', link: '/develoment/create-files' },
+      { text: 'Structure', link: '/develoment/structure' }
     ]
   },
   {
