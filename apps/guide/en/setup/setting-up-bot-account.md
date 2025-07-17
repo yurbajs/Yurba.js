@@ -31,7 +31,8 @@ Choose one of these registration methods:
 #### Option A: Direct Registration
 1. Navigate to [yurba.one/register](https://yurba.one/register/)
 2. Fill out the registration form with your bot's information
-3. Use a dedicated email address for your bot (e.g., `mybot@yourdomain.com`)
+3. Use a any email address for your bot (e.g., `mybot@domain.com`)
+- You can also use temporary email, but then it's recommended to add your real email as a `reserve email` in [settings](https://yurba.one/settings/?page=profile)
 4. Choose a username that clearly identifies it as a bot
 5. Complete the registration process
 
@@ -43,22 +44,17 @@ Choose one of these registration methods:
 3. Use a Google account dedicated to your bot
 4. Complete the OAuth flow
 
-
-
 > [!TIP] Best Practices for Bot Accounts
 > - Use descriptive usernames (e.g., `WeatherBot`, `ModeratorBot`)
 > - Set a clear profile picture that represents your bot's function
 > - Write a bio that explains what your bot does
-> - Consider using a dedicated email domain for all your bots
 
 ### Step 2: Account Configuration
 
 After registration, configure your bot account:
 
 - **Profile Setup**
-   - Upload a distinctive avatar
    - Write a clear description of your bot's purpose
-   - Set appropriate privacy settings
 
 ## Obtaining Your Authentication Token
 
@@ -121,7 +117,3 @@ If you lose access to your bot account:
    - Provide proof of account ownership
    - Explain that this is a bot account
 
-3. **Backup Strategies**
-   - Keep backup access methods (recovery email, phone)
-   - Document your bot's account details securely
-   - Consider having multiple administrators for important bots

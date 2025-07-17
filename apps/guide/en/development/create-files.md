@@ -6,7 +6,7 @@ sidebar: true
 
 # Creating Your Bot Files
 
-Welcome! We're now starting to create code for your bot. We already have [config.json](/develoment/create-project#configuration-file-s) and [.env](/develoment/create-project#configuration-file-s), and we've set up [version control with git](/develoment/create-project#configuration-file-s).
+Welcome! We're now starting to create code for your bot. We already have [config.json](/development/create-project#configuration-file-s) and [.env](/development/create-project#configuration-file-s), and we've set up [version control with git](/development/create-project#configuration-file-s).
 
 ## Creating `index.js`
 
@@ -51,7 +51,7 @@ client.init();
 YURBA_TOKEN=YOUR-TOKEN-HERE
 ```
 
-```json [package.json]
+```json:line-numbers [package.json]
 {
   "name": "my-bot",
   "version": "0.0.1",
@@ -79,7 +79,7 @@ YURBA_TOKEN=YOUR-TOKEN-HERE
 
 ## Add start script
 
-```json [package.json]
+```json:line-numbers [package.json]
 {
   "name": "my-bot",
   "version": "0.0.1",
@@ -139,7 +139,7 @@ After starting, you should see something like this:
 Ready!
 ```
 
-Let's execute our first command [`/ping`](/develoment/create-files#creating-index-js)
+Let's execute our first command [`/ping`](/development/create-files#creating-index-js)
 
 <img src="/images/ping.png" width="800" alt="Ping!" />
 

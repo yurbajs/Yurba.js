@@ -66,7 +66,7 @@ After initialization, your `package.json` should look similar to this:
 }
 ```
 
-### Configuration File's
+### Configuration Files
 
 Create a `.env` file and the `config.json` file
 
@@ -86,22 +86,23 @@ YURBA_TOKEN=your-token-here
 
 
 ::: danger Security Warning
-Never commit sensitive files like [`.env`](/develoment/create-project#create-gitignore) or [`config.json`](/develoment/create-project#create-gitignore) containing tokens to version control. These files contain private credentials that should be kept secure.
+Never commit sensitive files like [`.env`](/development/create-project#create-gitignore) or [`config.json`](/development/create-project#create-gitignore) containing tokens to version control. These files contain private credentials that should be kept secure.
 
-Make sure to add these files to your [`.gitignore`](/develoment/create-project#create-gitignore) to prevent accidental commits.
+Make sure to add these files to your [`.gitignore`](/development/create-project#create-gitignore) to prevent accidental commits.
 :::
 
-
 ## Git Setup
+
+> [!NOTE] What is Git?
+> [Git](https://git-scm.com/about/1) is a distributed version control system that helps you track changes in your code, collaborate with others, and manage different versions of your project.
 
 ### Initialize Git
 
 ```bash
 git init
 ```
-
 ::: tip
-If you use GitHub or GitLab, you can initialize your repository with these commands:
+If you use [GitHub](https://github.com) or [GitLab](https://gitlab.com), you can initialize your repository with these commands:
 
 ::: code-group
 

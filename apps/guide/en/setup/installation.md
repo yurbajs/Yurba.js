@@ -195,23 +195,32 @@ After installation, verify that yurba.js is properly installed:
 ::: code-group
 
    ```sh [npm]
-   npm list yurba.js
+   npm list
    ```
 
    ```sh [pnpm]
-   pnpm list yurba.js
+   pnpm list 
    ```
 
    ```sh [yarn]
-   yarn list yurba.js
+   yarn list 
    ```
 
    ```sh [bun]
-   bun list yurba.js
+   bun list y
    ```
    :::
 
+```console
+λ ~/Projects/yurbajs/examples/guide-bot main* ❯❯ pnpm list
+Legend: production dependency, optional only, dev only
 
+my-bot@0.0.1 /Projects/yurbajs/examples/guide-bot
+
+dependencies:
+dotenv 17.2.0
+yurba.js 0.1.9
+```
 
 ## Next Steps
 

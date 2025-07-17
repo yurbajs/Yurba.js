@@ -9,7 +9,7 @@ export const sidebar = [
   },
   {
     text: 'Setup',
-    collapsed: true,
+    collapsed: false,
     items: [
       { text: 'Installation', link: '/setup/installation' },
       { text: 'Bot account', link: '/setup/setting-up-bot-account' },
@@ -18,11 +18,11 @@ export const sidebar = [
   },
   {
     text: 'Development',
-    collapsed: true,
+    collapsed: false,
     items: [
-      { text: 'Project', link: '/develoment/create-project' },
-      { text: 'Files', link: '/develoment/create-files' },
-      { text: 'Structure', link: '/develoment/structure' }
+      { text: 'Project', link: '/development/create-project' },
+      { text: 'Files', link: '/development/create-files' },
+      { text: 'Structure', link: '/development/structure' }
     ]
   },
   {

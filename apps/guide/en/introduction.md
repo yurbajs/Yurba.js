@@ -5,19 +5,15 @@ Welcome to the comprehensive guide for **yurba.js** - the powerful and flexible 
 > [!CAUTION] Beta Version
 > This library is currently in active development. The stable release will begin with version 1.0.0+. Breaking changes may occur between minor versions.
 
-## What is Yurba.js?
-
-Yurba.js is a modern, TypeScript-first library that provides a comprehensive interface for interacting with the [Yurba.one API](https://docs.yurba.one/overview). Drawing inspiration from [discord.js](https://github.com/discordjs/discord.js), it offers an intuitive and powerful development experience for creating bots and applications.
-
 ## Quick Start Guide
 
 Ready to get started? Follow these essential steps:
 
 1. **[Installation](/setup/installation)** - Set up Node.js and install yurba.js
 2. **[Bot Account Setup](/setup/setting-up-bot-account)** - Create and configure your bot account
-3. **[Project Creation](/develoment/create-project)** - Initialize your bot project
-4. **[File Structure](/develoment/create-files)** - Create your main bot files
-5. **[Project Organization](/develoment/structure)** - Learn best practices for structuring your code
+3. **[Project Creation](/development/create-project)** - Initialize your bot project
+4. **[File Structure](/development/create-files)** - Create your main bot files
+5. **[Project Organization](/development/structure)** - Upgrade structure code
 
 ## Prerequisites
 
