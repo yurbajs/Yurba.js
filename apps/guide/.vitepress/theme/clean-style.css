@@ -53,10 +53,8 @@
   --vp-button-brand-active-bg: var(--vp-c-brand-1);
 }
 
-/* ===== NAVBAR ПОКРАЩЕННЯ ===== */
-.VPNav {
-  backdrop-filter: blur(1px);
-}
+/*           ------------------------           */ 
+
 
 .VPNavBar .title {
   font-weight: 700;
@@ -69,16 +67,40 @@
   font-weight: 600;
 }
 
+/*           ------------------------1           */ 
+
 /* ===== МОБІЛЬНЕ МЕНЮ ===== */
 @media (max-width: 768px) {
   .VPSidebar {
-    transform: translateX(0) !important;
+    transition: transform 0.25s ease;
+    position: fixed;
+    z-index: 100;
+    background: var(--vp-c-bg);
+    height: 100vh;
+    width: 260px;
+    padding: 32px 20px;
+    box-shadow: none;
   }
   
   .VPSidebar.open {
-    transform: translateX(0) !important;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .VPNavBarHamburger {
+    z-index: 200;
+  }
+  
+  .dark .VPSidebar {
+    box-shadow: none;
+  }
+  
+  .dark .VPSidebar.open {
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.3);
   }
 }
+
+/*           ------------------------           */ 
+
 
 /* ===== ПОКРАЩИТИ LAYOUT ===== */
 .VPDoc .container {
@@ -88,6 +110,7 @@
 .VPDoc .content {
   max-width: 1000px;
 }
+
 
 /* ===== ПОКРАЩИТИ CODE GROUPS ===== */
 .vp-code-group {
