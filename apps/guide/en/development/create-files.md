@@ -23,7 +23,7 @@ const config = require('./config.json');
 require('dotenv').config()
 
 // Create client (bot) with your token and prefix
-const client = new Client(process.env.YURBA_TOKEN);
+const client = new Client(process.env.YURBA_TOKEN, {prefix: config.prefix});
 
 // Register first command - ping
 client.registerCommand('ping', {}, (message, args) => {
