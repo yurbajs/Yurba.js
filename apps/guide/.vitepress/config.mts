@@ -13,6 +13,7 @@ export default defineConfig({
   ignoreDeadLinks: [
     // ignore exact url "/playground"
     './LICENSE',
+    './README.md',
     // ignore all localhost links
     /^https?:\/\/localhost/,
     // ignore all links include "/repl/""
@@ -22,51 +23,70 @@ export default defineConfig({
       return url.toLowerCase().includes('ignore')
     }
   ],
-  metaChunk: true,
+  metaChunk: false,
   sitemap: {
     hostname: 'https://yurba.js.org',
+    xslUrl: "/sitemap.xsl",
     lastmodDateOnly: false,
+      xmlns: { // trim the xml namespace
+        news: false, // flip to false to omit the xml namespace for news
+        xhtml: false,
+        image: false,
+        video: false,
+        custom: [
+          'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"',
+          'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"',
+        ],
+      },
     transformItems: (items) => {
-      // Створюємо Map для уникнення дублікатів
       const urlMap = new Map()
-      
-      // Додаємо всі існуючі елементи
+
       items.forEach(item => {
-        const url = item.url.replace('https://yurba.js.org', '')
+        // Уніфікуємо url
+        let url = item.url.trim()
+        if (!url.startsWith('/')) url = '/' + url
+        if (url.toLowerCase() === '/readme') return; // скіпаємо
+
+        if (url === '/index' || url === '/') url = '/'
+
         urlMap.set(url, {
-          url: item.url,
+          url: `https://yurba.js.org${url}`,
           changefreq: item.changefreq || 'monthly',
           priority: item.priority || 0.5,
           lastmod: item.lastmod || new Date().toISOString()
         })
       })
-      
-      // Встановлюємо пріоритети для важливих сторінок
-      if (urlMap.has('/')) {
-        urlMap.get('/').changefreq = 'weekly'
-        urlMap.get('/').priority = 1.0
-      }
-      
-      if (urlMap.has('/introduction')) {
-        urlMap.get('/introduction').changefreq = 'monthly'
-        urlMap.get('/introduction').priority = 0.8
-      }
-      
-      // Встановлюємо пріоритети для інших сторінок
+
+      // Пріоритети та частота
       urlMap.forEach((item, url) => {
-        if (url.startsWith('/setup/')) {
+        const cleanUrl = url.replace(/^\/(uk|en|fr)?\/?/, '/')
+
+        if (cleanUrl === '/') {
+          item.priority = 1.0
+          item.changefreq = 'monthly'
+        } else if (cleanUrl === '/introduction') {
+          item.priority = 0.8
+          item.changefreq = 'monthly'
+        } else if (cleanUrl === '/getting-started') {
+          item.priority = 0.8
+          item.changefreq = 'monthly'
+        } else if (cleanUrl.startsWith('/setup/')) {
           item.priority = 0.7
           item.changefreq = 'monthly'
-        } else if (url.startsWith('/development/')) {
+        } else if (cleanUrl.startsWith('/development/')) {
           item.priority = 0.6
           item.changefreq = 'monthly'
-        } else if (url.startsWith('/welcome/')) {
+        } else if (cleanUrl.startsWith('/welcome/')) {
           item.priority = 0.5
-          item.changefreq = 'yearly'
+          item.changefreq = 'monthly'
         }
       })
-      
+
+      console.log( Array.from(urlMap.values()))
       return Array.from(urlMap.values())
+
+      
+
     }
   },
 
@@ -102,7 +122,7 @@ export default defineConfig({
       label: 'Українська',
       lang: 'uk',
       title: 'Yurba.js',
-      titleTemplate: ':title | Yurba.js',
+      titleTemplate: ':title',
       description: 'Потужна бібліотека для створення ботів та інтеграції з Yurba API',
       head: [
         ['meta', { property: 'og:title', content: 'Yurba.js - Потужна бібліотека для ботів' }],
