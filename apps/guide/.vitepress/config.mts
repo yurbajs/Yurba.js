@@ -9,7 +9,7 @@ export default defineConfig({
   titleTemplate: ":title",
   description: "The powerful library for creating bots and integrating with the Yurba API",
   base: '/',
-  cleanUrls: true,
+  cleanUrls: false,
   ignoreDeadLinks: [
     './LICENSE',
     './README.md',
@@ -43,7 +43,7 @@ export default defineConfig({
         if (!url.startsWith('/')) url = '/' + url
         if (url.toLowerCase() === '/readme') return // Skip
         if (url.toLowerCase() === '/docs') return // Skip redirect
-
+        // else if (!url.endsWith('.html')) url = `${url}.html`
         if (url === '/index' || url === '/') url = '/'
 
         urlMap.set(url, {
@@ -61,6 +61,7 @@ export default defineConfig({
         if (cleanUrl === '/') {
           item.priority = 1.0
           item.changefreq = 'monthly'
+
         } else if (cleanUrl === '/introduction') {
           item.priority = 0.8
           item.changefreq = 'monthly'
