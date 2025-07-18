@@ -11,14 +11,10 @@ export default defineConfig({
   base: '/',
   cleanUrls: true,
   ignoreDeadLinks: [
-    // ignore exact url "/playground"
     './LICENSE',
     './README.md',
-    // ignore all localhost links
     /^https?:\/\/localhost/,
-    // ignore all links include "/repl/""
     /\/repl\//,
-    // custom function, ignore all links include "ignore"
     (url) => {
       return url.toLowerCase().includes('ignore')
     }
@@ -28,24 +24,25 @@ export default defineConfig({
     hostname: 'https://yurba.js.org',
     xslUrl: "/sitemap.xsl",
     lastmodDateOnly: false,
-      xmlns: { // trim the xml namespace
-        news: false, // flip to false to omit the xml namespace for news
-        xhtml: false,
-        image: false,
-        video: false,
-        custom: [
-          'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"',
-          'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"',
-        ],
-      },
+    xmlns: {
+      news: false,
+      xhtml: false,
+      image: false,
+      video: false,
+      custom: [
+        'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"',
+        'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"',
+      ],
+    },
     transformItems: (items) => {
       const urlMap = new Map()
 
       items.forEach(item => {
-        // Уніфікуємо url
+        // Normalize URL
         let url = item.url.trim()
         if (!url.startsWith('/')) url = '/' + url
-        if (url.toLowerCase() === '/readme') return; // скіпаємо
+        if (url.toLowerCase() === '/readme') return // Skip
+        if (url.toLowerCase() === '/docs') return // Skip redirect
 
         if (url === '/index' || url === '/') url = '/'
 
@@ -57,7 +54,7 @@ export default defineConfig({
         })
       })
 
-      // Пріоритети та частота
+      // Set priorities and frequencies
       urlMap.forEach((item, url) => {
         const cleanUrl = url.replace(/^\/(uk|en|fr)?\/?/, '/')
 
@@ -82,11 +79,7 @@ export default defineConfig({
         }
       })
 
-      console.log( Array.from(urlMap.values()))
       return Array.from(urlMap.values())
-
-      
-
     }
   },
 
@@ -113,10 +106,61 @@ export default defineConfig({
   rewrites: {
     'en/(.*)': '(.*)',
   },
+  
   locales: {
     root: {
       label: 'English',
-      lang: 'en'
+      lang: 'en',
+      title: 'Yurba.js',
+      titleTemplate: ':title',
+      description: 'The powerful library for creating bots and integrating with the Yurba API',
+      themeConfig: {
+        nav: [
+          createNavItem('nav.guide', '/introduction'),
+          { text: t('nav.documentation'), link: links.docs },
+          createNavItem('nav.examples', '/examples'),
+          {
+            text: `v${versions.current}`,
+            items: [
+              { text: t('nav.changelog'), link: links.changelog },
+              ...versions.versions.map(v => ({
+                text: v.archived ? `${v.label} (archived)` : v.label,
+                link: v.path
+              }))
+            ]
+          }
+        ],
+        
+        outline: {
+          level: [2, 3],
+          label: t('ui.onThisPage', 'en')
+        },
+        
+        lastUpdated: {
+          text: t('ui.updated', 'en')
+        },
+        
+        docFooter: {
+          prev: t('ui.prevPage', 'en'),
+          next: t('ui.nextPage', 'en')
+        },
+        
+        darkModeSwitchLabel: t('ui.appearance', 'en'),
+        lightModeSwitchTitle: t('ui.lightTheme', 'en'),
+        darkModeSwitchTitle: t('ui.darkTheme', 'en'),
+        
+        editLink: {
+          pattern: `${links.github}/edit/main/apps/guide/:path`,
+          text: t('ui.editPage', 'en')
+        },
+        
+        notFound: {
+          title: t('notFound.title', 'en'),
+          quote: t('notFound.quote', 'en'),
+          linkText: t('notFound.linkText', 'en'),
+          linkLabel: t('notFound.linkText', 'en')
+        }
+      }
     },
     uk: {
       label: 'Українська',
@@ -132,13 +176,13 @@ export default defineConfig({
       ],
       themeConfig: {
         nav: [
-          { text: 'Посібник', link: '/uk/introduction' },
-          { text: 'Документація', link: links.docs },
-          { text: 'Приклади', link: '/uk/examples' },
+          createNavItem('nav.guide', '/introduction', 'uk'),
+          { text: t('nav.documentation', 'uk'), link: links.docs },
+          createNavItem('nav.examples', '/examples', 'uk'),
           {
             text: `v${versions.current}`,
             items: [
-              { text: 'Зміни', link: links.changelog },
+              { text: t('nav.changelog', 'uk'), link: links.changelog },
               ...versions.versions.map(v => ({
                 text: v.archived ? `${v.label.replace('current', 'поточна')} (архів)` : v.label.replace('current', 'поточна'),
                 link: v.path === '/' ? '/uk/' : `/uk${v.path}`
@@ -147,23 +191,23 @@ export default defineConfig({
           }
         ],
         outline: {
-          label: 'На цій сторінці'
+          label: t('ui.onThisPage', 'uk')
         },
         lastUpdated: {
-          text: 'Оновлено'
+          text: t('ui.updated', 'uk')
         },
         docFooter: {
-          prev: 'Попередня сторінка',
-          next: 'Наступна сторінка'
+          prev: t('ui.prevPage', 'uk'),
+          next: t('ui.nextPage', 'uk')
         },
-        darkModeSwitchLabel: 'Вигляд',
-        lightModeSwitchTitle: 'Переключити на світлу тему',
-        darkModeSwitchTitle: 'Переключити на темну тему',
+        darkModeSwitchLabel: t('ui.appearance', 'uk'),
+        lightModeSwitchTitle: t('ui.lightTheme', 'uk'),
+        darkModeSwitchTitle: t('ui.darkTheme', 'uk'),
         returnToTopLabel: 'Повернутися до початку',
         sidebarMenuLabel: 'Меню',
         editLink: {
           pattern: `${links.github}/edit/main/apps/guide/:path`,
-          text: 'Редагувати цю сторінку'
+          text: t('ui.editPage', 'uk')
         },
         notFound: {
           title: t('notFound.title', 'uk'),
@@ -179,28 +223,12 @@ export default defineConfig({
     }
   },
 
-
   themeConfig: {
     logo: { src: '/logo.png', alt: 'Yurba.js Logo' },
-    nav: [
-      createNavItem('nav.guide', '/introduction'),
-      { text: t('nav.documentation'), link: links.docs },
-      createNavItem('nav.examples', '/examples'),
-      {
-        text: `v${versions.current}`,
-        items: [
-          { text: 'Changelog', link: links.changelog },
-          ...versions.versions.map(v => ({
-            text: v.archived ? `${v.label} (archived)` : v.label,
-            link: v.path
-          }))
-        ]
-      }
-    ],
-
+    
     sidebar: {
-      '/': sidebar,
-      '/uk/': []
+      '/': createSidebar('en'),
+      '/uk/': createSidebar('uk')
     },
 
     aside: true,
@@ -285,42 +313,72 @@ export default defineConfig({
       copyright: 'Copyright © 2025 RastGame'
     },
 
-    editLink: {
-      pattern: `${links.github}/edit/main/apps/guide/:path`,
-      text: 'Edit this page on GitHub'
-    },
-
-    outline: {
-      level: [2, 3],
-      label: 'On this page'
-    },
-
-    lastUpdated: {
-      text: 'Last updated',
-      formatOptions: {
-        dateStyle: 'short',
-        timeStyle: 'short'
-      }
-    },
-
-    docFooter: {
-      prev: 'Previous page',
-      next: 'Next page'
-    },
-
-    darkModeSwitchLabel: 'Appearance',
-    lightModeSwitchTitle: 'Switch to light theme',
-    darkModeSwitchTitle: 'Switch to dark theme',
-    returnToTopLabel: 'Return to top',
-    sidebarMenuLabel: 'Menu',
-
     externalLinkIcon: true,
-
-    notFound: {
-      title: '404 - Page Not Found',
-      quote: 'But if you don\'t change your direction, and if you keep looking, you may end up where you are heading.',
-      linkText: 'Take me home',
-      linkLabel: 'Go to homepage'
-    }
   }
 })
+
+// Helper function to create localized sidebar
+function createSidebar(lang: 'en' | 'uk') {
+  return [
+    {
+      text: lang === 'uk' ? t('sidebar.guide', 'uk') : t('sidebar.guide', 'en'),
+      collapsed: false,
+      items: [
+        { 
+          text: lang === 'uk' ? t('sidebar.introduction', 'uk') : t('sidebar.introduction', 'en'), 
+          link: lang === 'uk' ? '/uk/introduction' : '/introduction' 
+        },
+        { 
+          text: "What's new", 
+          link: lang === 'uk' ? '/uk/welcome/whats-new' : '/welcome/whats-new' 
+        }
+      ]
+    },
+    {
+      text: 'Setup',
+      collapsed: false,
+      items: [
+        { 
+          text: lang === 'uk' ? t('sidebar.installation', 'uk') : t('sidebar.installation', 'en'), 
+          link: lang === 'uk' ? '/uk/setup/installation' : '/setup/installation' 
+        },
+        { 
+          text: 'Bot account', 
+          link: lang === 'uk' ? '/uk/setup/setting-up-bot-account' : '/setup/setting-up-bot-account' 
+        },
+        { 
+          text: 'Chat', 
+          link: lang === 'uk' ? '/uk/setup/chat-with-bot' : '/setup/chat-with-bot' 
+        }
+      ]
+    },
+    {
+      text: 'Development',
+      collapsed: false,
+      items: [
+        { 
+          text: 'Project', 
+          link: lang === 'uk' ? '/uk/development/create-project' : '/development/create-project' 
+        },
+        { 
+          text: 'Files', 
+          link: lang === 'uk' ? '/uk/development/create-files' : '/development/create-files' 
+        },
+        { 
+          text: 'Structure', 
+          link: lang === 'uk' ? '/uk/development/structure' : '/development/structure' 
+        }
+      ]
+    },
+    {
+      text: lang === 'uk' ? t('sidebar.examples', 'uk') : t('sidebar.examples', 'en'),
+      collapsed: true,
+      items: [
+        { 
+          text: lang === 'uk' ? t('sidebar.overview', 'uk') : t('sidebar.overview', 'en'), 
+          link: lang === 'uk' ? '/uk/examples' : '/examples' 
+        }
+      ]
+    }
+  ]
+}

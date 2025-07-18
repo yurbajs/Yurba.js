@@ -16,7 +16,9 @@ export const en = {
     creatingBot: "Creating a Bot",
     commands: "Commands",
     events: "Events",
-    overview: "Overview"
+    overview: "Overview",
+    setup: "Setup",
+    development: "Development"
   },
   ui: {
     onThisPage: "On this page",
@@ -26,11 +28,28 @@ export const en = {
     appearance: "Appearance",
     lightTheme: "Switch to light theme",
     darkTheme: "Switch to dark theme",
-    editPage: "Edit this page"
+    editPage: "Edit this page",
+    returnToTop: "Return to top",
+    menu: "Menu"
   },
   notFound: {
     title: "PAGE NOT FOUND",
     quote: "But if you don't change your direction, and if you keep looking, you may end up where you are heading.",
     linkText: "Take me home"
+  },
+  search: {
+    buttonText: "Search",
+    buttonAriaLabel: "Search docs",
+    displayDetails: "Display detailed list",
+    resetButtonTitle: "Reset search",
+    backButtonTitle: "Close search",
+    noResultsText: "No results for",
+    selectText: "to select",
+    selectKeyAriaLabel: "enter",
+    navigateText: "to navigate",
+    navigateUpKeyAriaLabel: "up arrow",
+    navigateDownKeyAriaLabel: "down arrow",
+    closeText: "to close",
+    closeKeyAriaLabel: "escape"
   }
 }

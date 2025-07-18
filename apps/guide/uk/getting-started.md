@@ -1,3 +1,10 @@
+---
+editLink: true
+sidebar: false
+---
+
+
+
 # Встановлення 
 ```sh
 npm install yurba.js
@@ -33,5 +40,5 @@ client.init();
 Це просто тестова версія, хехе, але гадаю це буде корисно, хотя тут нічого й немає
 :::
 ::: info
-[English version](/)
+[English version](/introduction)
 :::
