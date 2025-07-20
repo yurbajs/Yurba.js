@@ -17,7 +17,7 @@
 	</p>
 </div>
 
-## About
+## About 
 
 This repository contains [multiple packages](https://github.com/yurbajs/yurba.js/tags) that work with the [Yurba.one API](https://docs.yurba.one/overview) and are required for the main package to function.
 The main package is [`Yurba.js`](https://github.com/yurbajs/yurba.js/tree/main/packages/yurba.js).
