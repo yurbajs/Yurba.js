@@ -67,7 +67,7 @@ try {
 * [Yurba Channel][yurba-channel]
 * [Yurba Chat][yurba-chat]
 * [GitHub][source]
-* [npm][npm]
+* [npm][npm] 
 
 ## Contributing
 
