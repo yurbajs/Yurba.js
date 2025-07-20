@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@yurbajs/types": "workspace:*",
-    "axios": "^1.7.9"
+    "axios": "^1.10.0"
   },
   "publishConfig": {
     "access": "public"
