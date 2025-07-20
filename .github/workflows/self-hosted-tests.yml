@@ -1,38 +1,43 @@
-name: Self-hosted Tests
+name: Checks (Local server)
 
 on:
   push:
     branches: [ main, dev ]
+    paths: 
+      - 'packages/**'
   pull_request:
     branches: [ main, dev ]
+    paths: 
+      - 'packages/**'
   workflow_dispatch:
+
+
 
 jobs:
   test:
-    name: Run Tests
+    if: github.actor = 'RastGame'
     runs-on: self-hosted
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+
+      - name: Cache pnpm store
+        uses: actions/cache@v3
         with:
-          node-version: '18'
-          cache: 'pnpm'
-          
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 10.12.4
-          run_install: false
-          
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Set pnpm store directory
+        run: pnpm config set store-dir ~/.pnpm-store
+
       - name: Install dependencies
         run: pnpm install
-        
+
       - name: Build packages
         run: pnpm run build
-        
+
       - name: Run tests
         run: pnpm run test
