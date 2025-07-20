@@ -21,6 +21,7 @@
     "all": "pnpm run lint && pnpm test && pnpm build",
     "install:all": "pnpm install",
 
+
     "docs": "pnpm run docs:clean && pnpm run build && npx typedoc && node apps/docs/scripts/docs.js",
     "docs:local": "pnpm run docs:clean && npx typedoc && node apps/docs/scripts/docs.js",
     "docs:serve": "pnpm run docs && npx http-server apps/docs/dist -p 3000 -o",

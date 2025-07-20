@@ -24,6 +24,7 @@
     "clean": "rimraf lib",
     "test": "jest --coverage",
     "lint": "eslint src/**/*.ts",
+    "publish": "lerna publish",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "keywords": [
