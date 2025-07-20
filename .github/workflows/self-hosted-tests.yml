@@ -15,7 +15,7 @@ on:
 
 jobs:
   test:
-    if: github.actor = 'RastGame'
+    if: github.actor == 'RastGame'
     runs-on: self-hosted
 
     steps:
