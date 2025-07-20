@@ -24,7 +24,6 @@
     "clean": "rimraf dist",
     "test": "jest --passWithNoTests --coverage",
     "lint": "eslint src/**/*.ts",
-    "publish": "lerna publish",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "keywords": [
