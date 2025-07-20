@@ -17,7 +17,7 @@ REST client for Yurba API with full TypeScript support.
 
 > WARNING: it's alpha version 
 
-## Install
+## Install  
 Node.js 20 or newer is required.
 
 ```sh
