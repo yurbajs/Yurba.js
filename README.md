@@ -39,7 +39,6 @@ The main package is [`Yurba.js`](https://github.com/yurbajs/yurba.js/tree/main/p
 - [Yurba Channel][yurba-channel]
 - [Yurba Chat/Discussion][yurba-chat]
 - [GitHub][source]
-- [Gitlab][gitlab]
 - [npm][npm]
 
 ## Contributing
@@ -58,7 +57,6 @@ Need assistance? Here's where to find help:
 - Ask questions in our [Chat][yurba-chat]
 - Browse existing [issues](https://github.com/yurbajs/yurba.js/issues) and [discussions](https://github.com/yurbajs/yurba.js/discussions)
 
-[gitlab]: https://gitlab.com/yurbajs/yurba.js
 [github-tags]: https://github.com/yurbajs/yurba.js/tags
 [source]: https://github.com/yurbajs/yurba.js/tree/main/packages/yurba.js
 [website]: https://yurba.js.org
