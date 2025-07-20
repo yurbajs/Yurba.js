@@ -1,5 +1,6 @@
 {
   "version": "independent",
+  "updateInternalDependencies": "none",
   "npmClient": "pnpm",
   "command": {
     "publish": {
