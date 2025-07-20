@@ -1,38 +1,44 @@
-name: Self-hosted Tests
+name: Checks (Local server)
 
 on:
   push:
     branches: [ main, dev ]
+    paths: 
+      - 'packages/**'
   pull_request:
     branches: [ main, dev ]
+    paths: 
+      - 'packages/**'
   workflow_dispatch:
+
+
 
 jobs:
   test:
-    name: Run Tests
+    if: github.actor == 'RastGame'
     runs-on: self-hosted
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Set pnpm store directory
+        run: pnpm config set store-dir ~/.pnpm-store
         
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'pnpm'
-          
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 10.12.4
-          run_install: false
-          
+      # Add cache verification step
+      - name: Check local pnpm cache
+        run: ls -la ~/.pnpm-store || echo "Cache directory not found or empty"
+
       - name: Install dependencies
         run: pnpm install
-        
+
       - name: Build packages
         run: pnpm run build
-        
+
       - name: Run tests
         run: pnpm run test
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -12,6 +12,7 @@ on:
 
 jobs:
   lint:
+    if: github.actor != 'RastGame'
     name: Lint
     runs-on: ubuntu-latest
     steps:
@@ -34,6 +35,7 @@ jobs:
       run: pnpm run lint
 
   test:
+    if: github.actor != 'RastGame'
     name: Tests
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +58,13 @@ jobs:
     - name: Run tests
       run: pnpm run test
 
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+
   build:
+    if: github.actor != 'RastGame'
     name: Build
     runs-on: ubuntu-latest
     steps:
