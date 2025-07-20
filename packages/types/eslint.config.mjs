@@ -6,7 +6,6 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default tseslint.config(
-  ts.configs.recommended,
   ...tseslint.configs.recommended,
   {
     files: ["src/**/*.ts"],
