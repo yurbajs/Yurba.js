@@ -22,7 +22,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "rimraf lib",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint src/**/*.ts",
     "prepublishOnly": "npm run clean && npm run build"
   },
