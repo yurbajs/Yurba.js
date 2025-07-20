@@ -81,8 +81,8 @@ importers:
   packages/rest:
     dependencies:
       '@yurbajs/types':
-        specifier: 0.1.7
-        version: 0.1.7
+        specifier: workspace:*
+        version: link:../types
       axios:
         specifier: ^1.7.9
         version: 1.10.0
@@ -92,8 +92,8 @@ importers:
   packages/ws:
     dependencies:
       '@yurbajs/types':
-        specifier: 0.1.7
-        version: 0.1.7
+        specifier: workspace:*
+        version: link:../types
       ws:
         specifier: ^8.18.0
         version: 8.18.3
@@ -101,14 +101,14 @@ importers:
   packages/yurba.js:
     dependencies:
       '@yurbajs/rest':
-        specifier: 0.1.7
-        version: 0.1.7
+        specifier: workspace:*
+        version: link:../rest
       '@yurbajs/types':
-        specifier: 0.1.7
-        version: 0.1.7
+        specifier: workspace:*
+        version: link:../types
       '@yurbajs/ws':
-        specifier: 0.1.6
-        version: 0.1.6
+        specifier: workspace:*
+        version: link:../ws
       events:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1301,15 +1301,6 @@ packages:
   '@yarnpkg/parsers@3.0.0-rc.46':
     resolution: {integrity: sha512-aiATs7pSutzda/rq8fnuPwTglyVwjM22bNnK2ZgjrpAjQHSSl3lztd2f9evst1W/qnC58DRz7T7QndUDumAR4Q==}
     engines: {node: '>=14.15.0'}
-
-  '@yurbajs/rest@0.1.7':
-    resolution: {integrity: sha512-+ZiCAVpBk1kDKzIDwG+zc0WPgp7oIkV8jNZmVT8DPmW+GN9kxW6DjQqDa0BLF1nuX2l5UlfbLzS0NjWQ6jVq+g==}
-
-  '@yurbajs/types@0.1.7':
-    resolution: {integrity: sha512-k+BEpC8lARJQzlYaO7cNM40MC8MssSDSYcg1xexHKBBAkC7Vhi/BU9BkTxtCLR8zfQRIo+4cfApZm7eEuxgYMA==}
-
-  '@yurbajs/ws@0.1.6':
-    resolution: {integrity: sha512-sTywLWNwfUoOr2/wXcWzVoO89BFOztkH200yP+NWwm1VdOUtMtT4ybfifmqmbHUY/G+6xCXNPW4i6m/2jdZYdw==}
 
   '@zkochan/js-yaml@0.0.6':
     resolution: {integrity: sha512-nzvgl3VfhcELQ8LyVrYOru+UtAy1nrygk2+AGbTm8a5YcO6o8lSjAT+pfg3vJWxIoZKOUhrK6UU7xW/+00kQrg==}
@@ -5786,23 +5777,6 @@ snapshots:
     dependencies:
       js-yaml: 3.14.1
       tslib: 2.8.1
-
-  '@yurbajs/rest@0.1.7':
-    dependencies:
-      '@yurbajs/types': 0.1.7
-      axios: 1.10.0
-    transitivePeerDependencies:
-      - debug
-
-  '@yurbajs/types@0.1.7': {}
-
-  '@yurbajs/ws@0.1.6':
-    dependencies:
-      '@yurbajs/types': 0.1.7
-      ws: 8.18.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
 
   '@zkochan/js-yaml@0.0.6':
     dependencies:
