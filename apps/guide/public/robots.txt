@@ -4,7 +4,6 @@ User-agent: *
 Allow: /
 
 # Disallow specific paths
-Disallow: /404
 Disallow: /README
 
 # Sitemap

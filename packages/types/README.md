@@ -35,7 +35,6 @@ bun add @yurbajs/types
 * [Yurba Channel][yurba-channel]
 * [Yurba Chat][yurba-chat]
 * [GitHub][source]
-* [GitLab][gitlab]
 * [npm][npm]
 
 ## Contributing
@@ -56,7 +55,6 @@ Need assistance?
 * Ask questions in our [Chat][yurba-chat].
 * Browse existing [issues](https://github.com/yurbajs/yurba.js/issues) and [discussions](https://github.com/yurbajs/yurba.js/discussions).
 
-[gitlab]: https://gitlab.com/yurbajs/yurba.js
 [source]: https://github.com/yurbajs/yurba.js/tree/main/packages/types
 [website]: https://yurba.js.org
 [website-source]: https://github.com/yurbajs/yurba.js
