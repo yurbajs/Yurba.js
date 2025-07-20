@@ -1,6 +1,6 @@
 {
   "name": "@yurbajs/types",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Types for yurba.js packages and yurba.one",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,5 +35,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "744aab79c9bc6f4dcfd34e4d48c91e47cabb89e4"
+  "gitHead": "5830062bfe31a6bc3f1b8a0cf8142a58749c57e9"
 }

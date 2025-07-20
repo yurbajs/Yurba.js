@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.10](https://github.com/yurbajs/yurba.js/compare/yurba.js@0.1.9...yurba.js@0.1.10) (2025-07-20)
+
+
+### Bug Fixes
+
+* fix ([bfa9558](https://github.com/yurbajs/yurba.js/commit/bfa9558f003abe7caaaa7518bba9a0dcf86d5522))
+
+
+
+
+
 ## [0.1.9](https://github.com/rastgame/yurba.js/compare/yurba.js@0.1.8...yurba.js@0.1.9) (2025-07-12)
 
 

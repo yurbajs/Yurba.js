@@ -20,6 +20,11 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "publish": {
+      "dependsOn": ["build", "test", "lint"],
+      "cache": false,
+      "outputs": []
     }
   },
   "globalDependencies": [

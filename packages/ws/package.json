@@ -1,6 +1,6 @@
 {
   "name": "@yurbajs/ws",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "WebSocket client for yurba.one",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,11 +34,11 @@
     "events"
   ],
   "dependencies": {
-    "@yurbajs/types": "workspace:*",
+    "@yurbajs/types": "0.1.7",
     "ws": "^8.18.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "744aab79c9bc6f4dcfd34e4d48c91e47cabb89e4"
+  "gitHead": "5830062bfe31a6bc3f1b8a0cf8142a58749c57e9"
 }
