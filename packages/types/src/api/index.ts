@@ -5,10 +5,9 @@
  * TODO LIST FOR ALL TYPES:
  * 
  * 📝 CORE ENTITIES:
- * [ ] Photo
- *   [ ] Add payload methods
- *   [ ] Add edit methods
- *   [ ] Add delete methods
+ * [x] Photo
+ *   [x] Add payload methods
+ *   [x] Add delete methods
  * [x] Post
  *   [x] Add payload methods
  *   [x] Add edit methods
@@ -17,20 +16,19 @@
  *   [x] Add payload methods
  *   [x] Add edit methods
  *   [x] Add delete methods
+ * [x] Comments
+ *   [x] Add payload methods
+ *   [x] Add delete methods
  * [x] Dialog
  *   [x] Add payload methods
  *   [x] Add edit methods
  *   [x] Add delete methods
- * [ ] User
- *   [ ] Add payload methods
- *   [ ] Add edit methods
- *   [ ] Add delete methods
+
  * 
  * 📎 ATTACHMENTS:
- * [ ] Files (Attachments)
- *   [ ] Add payload methods
- *   [ ] Add edit methods
- *   [ ] Add delete methods
+ * [x] Files (Attachments)
+ *   [x] Add payload methods
+ *   [x] Add delete methods
  * [ ] Videos (Attachments)
  *   [ ] Add payload methods
  *   [ ] Add edit methods
@@ -41,13 +39,6 @@
  * 
  * 🔍 FEATURES:
  * [x] Search
-
- * [ ] Settings (Profile)
- *   [ ] Add types
- *   [ ] Add methods
- * [ ] Security (Settings, types: Token)
- *   [ ] Add types
- *   [ ] Add methods
  * 
  * [ ] Goling (Settings)
  *   [ ] Add types
@@ -460,6 +451,42 @@ export interface TrackPayload {
 
 
 export type DeleteTrackResponse = Playlist;
+
+// -------- Videos types --------
+
+export interface Video {
+    ID:          number;
+    Code:        string;
+    Name:        string;
+    Description: string;
+    Preview:     Photo['ID'];
+    Duration:    number;
+    Views:       number;
+    Mine:        boolean;
+    Timestamp:   number;
+    Url:         string;
+}
+
+///// Other later, videos in dev
+
+// -------- Comments types --------
+
+export interface Comment {
+    ID:        number;
+    Author:    Author;
+    Content:   string;
+    Photos:    Photo['ID'][];
+    Timestamp: number;
+    Likes:     Likes;
+    Post:      Post;
+}
+
+export interface CommentPayload {
+    content:     string;
+    photos_list: Photo['ID'][];
+}
+
+export type DeleteCommentResponse = BaseDelete;
 
 // -------- Search types --------
 
