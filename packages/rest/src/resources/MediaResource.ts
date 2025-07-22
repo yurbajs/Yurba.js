@@ -3,79 +3,85 @@ import {
   Photo,
   Track,
   Playlist,
+  DeletePhotoResponse,
+  PlaylistPayload,
+  BaseOkay,
+  DeletePlaylistResponse,
+  EditPlaylistResponse,
+  DeleteTrackResponse
 } from '@yurbajs/types';
 
 /**
- * Ресурс для роботи з медіа
+ * Resource for working with media
  */
 export class MediaResource {
   private client: REST;
 
   /**
-   * Створює новий ресурс для роботи з медіа
-   * @param client REST клієнт
+   * Creates a new resource for working with media
+   * @param client REST client
    */
   constructor(client: REST) {
     this.client = client;
   }
 
   /**
-   * Отримати фото за ID
-   * @param photoId ID фото
-   * @returns Дані фото
+   * Get photo by ID
+   * @param photoId Photo ID
+   * @returns Photo data
    */
   async getPhoto(photoId: string): Promise<Photo> {
     return this.client.get<Photo>(`/photos/${photoId}`);
   }
 
   /**
-   * Видалити фото
-   * @param photoId ID фото
-   * @returns Результат видалення
+   * Delete photo
+   * @param photoId Photo ID
+   * @returns Deletion result
    */
-  async deletePhoto(photoId: number): Promise<any> {
-    return this.client.delete<any>(`/photos/${photoId}`);
+  async deletePhoto(photoId: number): Promise<DeletePhotoResponse> {
+    return this.client.delete<DeletePhotoResponse>(`/photos/${photoId}`);
   }
 
   /**
-   * Отримати трек за ID
-   * @param trackId ID треку
-   * @returns Дані треку
+   * Get track by ID
+   * @param trackId Track ID
+   * @returns Track data
    */
   async getTrack(trackId: number): Promise<Track> {
     return this.client.get<Track>(`/musebase/${trackId}`);
   }
 
   /**
-   * Створити плейлист
-   * @param name Назва плейлиста
-   * @param release Дата релізу
-   * @param description Опис плейлиста
-   * @param cover ID обкладинки
-   * @returns Створений плейлист
+   * Create playlist
+   * @param name Playlist name
+   * @param release Release date
+   * @param description Playlist description
+   * @param cover Cover ID
+   * @returns Created playlist
    */
-  async createPlaylist(name: string, release: string, description: string, cover: number): Promise<any> {
-    const playlistData: Playlist = { name, release, description, cover };
-    return this.client.post<any>('/musebase/playlists', playlistData);
+  async createPlaylist(name: string, release: string, description: string, cover: number): Promise<Playlist> {
+    const playlistData: PlaylistPayload = { name, release, description, cover };
+    return this.client.post<Playlist>('/musebase/playlists', playlistData);
   }
 
   /**
-   * Видалити плейлист
-   * @param playlistId ID плейлиста
-   * @returns Результат видалення
+   * Delete playlist
+   * @param playlistId Playlist ID
+   * @returns Deletion result
    */
-  async deletePlaylist(playlistId: number): Promise<any> {
-    return this.client.delete<any>(`/musebase/playlists/${playlistId}`);
+  async deletePlaylist(playlistId: number): Promise<DeletePlaylistResponse> {
+    return this.client.delete<DeletePlaylistResponse>(`/musebase/playlists/${playlistId}`);
   }
 
   /**
-   * Оновити плейлист
-   * @param playlistId ID плейлиста
-   * @param name Назва плейлиста
-   * @param release Дата релізу
-   * @param description Опис плейлиста
-   * @param cover ID обкладинки
-   * @returns Оновлений плейлист
+   * Update playlist
+   * @param playlistId Playlist ID
+   * @param name Playlist name
+   * @param release Release date
+   * @param description Playlist description
+   * @param cover Cover ID
+   * @returns Updated playlist
    */
   async updatePlaylist(
     playlistId: number,
@@ -83,46 +89,46 @@ export class MediaResource {
     release: string,
     description: string,
     cover: number
-  ): Promise<any> {
-    const playlistData: Playlist = { name, release, description, cover };
-    return this.client.patch<any>(`/musebase/playlists/${playlistId}`, playlistData);
+  ): Promise<EditPlaylistResponse> {
+    const playlistData: PlaylistPayload = { name, release, description, cover };
+    return this.client.patch<EditPlaylistResponse>(`/musebase/playlists/${playlistId}`, playlistData);
   }
 
   /**
-   * Додати трек до плейлиста
-   * @param playlistId ID плейлиста
-   * @param trackId ID треку
-   * @returns Результат додавання
+   * Add track to playlist
+   * @param playlistId Playlist ID
+   * @param trackId Track ID
+   * @returns Addition result
    */
-  async addTrackToPlaylist(playlistId: number, trackId: number): Promise<any> {
-    return this.client.post<any>(`/musebase/playlists/${playlistId}/tracks/${trackId}`, {});
+  async addTrackToPlaylist(playlistId: number, trackId: number): Promise<BaseOkay> {
+    return this.client.post<BaseOkay>(`/musebase/playlists/${playlistId}/tracks/${trackId}`, {});
   }
 
   /**
-   * Видалити трек з плейлиста
-   * @param playlistId ID плейлиста
-   * @param trackId ID треку
-   * @returns Результат видалення
+   * Remove track from playlist
+   * @param playlistId Playlist ID
+   * @param trackId Track ID
+   * @returns Removal result
    */
-  async removeTrackFromPlaylist(playlistId: number, trackId: number): Promise<any> {
-    return this.client.delete<any>(`/musebase/playlists/${playlistId}/tracks/${trackId}`);
+  async removeTrackFromPlaylist(playlistId: number, trackId: number): Promise<DeleteTrackResponse> {
+    return this.client.delete<DeleteTrackResponse>(`/musebase/playlists/${playlistId}/tracks/${trackId}`);
   }
 
   /**
-   * Отримати плейлист за ID
-   * @param playlistId ID плейлиста
-   * @returns Дані плейлиста
+   * Get playlist by ID
+   * @param playlistId Playlist ID
+   * @returns Playlist data
    */
-  async getPlaylist(playlistId: number): Promise<any> {
-    return this.client.get<any>(`/musebase/playlists/${playlistId}`);
+  async getPlaylist(playlistId: number): Promise<Playlist> {
+    return this.client.get<Playlist>(`/musebase/playlists/${playlistId}`);
   }
 
   /**
-   * Отримати плейлисти користувача
-   * @param tag Тег користувача
-   * @returns Список плейлистів
+   * Get user playlists
+   * @param tag User tag
+   * @returns List of playlists
    */
-  async getUserPlaylists(tag: string): Promise<any[]> {
-    return this.client.get<any[]>(`/user/${tag}/playlists`);
+  async getUserPlaylists(tag: string): Promise<Playlist[]> {
+    return this.client.get<Playlist[]>(`/user/${tag}/playlists`);
   }
 }
