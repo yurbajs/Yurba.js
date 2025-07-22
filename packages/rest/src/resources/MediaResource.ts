@@ -1,5 +1,9 @@
 import { REST } from '../RestClient';
-import { PhotoModel, TrackData, PlaylistData } from '@yurbajs/types';
+import {
+  Photo,
+  Track,
+  Playlist,
+} from '@yurbajs/types';
 
 /**
  * Ресурс для роботи з медіа
@@ -20,8 +24,8 @@ export class MediaResource {
    * @param photoId ID фото
    * @returns Дані фото
    */
-  async getPhoto(photoId: string): Promise<PhotoModel> {
-    return this.client.get<PhotoModel>(`/photos/${photoId}`);
+  async getPhoto(photoId: string): Promise<Photo> {
+    return this.client.get<Photo>(`/photos/${photoId}`);
   }
 
   /**
@@ -38,8 +42,8 @@ export class MediaResource {
    * @param trackId ID треку
    * @returns Дані треку
    */
-  async getTrack(trackId: number): Promise<TrackData> {
-    return this.client.get<TrackData>(`/musebase/${trackId}`);
+  async getTrack(trackId: number): Promise<Track> {
+    return this.client.get<Track>(`/musebase/${trackId}`);
   }
 
   /**
@@ -51,7 +55,7 @@ export class MediaResource {
    * @returns Створений плейлист
    */
   async createPlaylist(name: string, release: string, description: string, cover: number): Promise<any> {
-    const playlistData: PlaylistData = { name, release, description, cover };
+    const playlistData: Playlist = { name, release, description, cover };
     return this.client.post<any>('/musebase/playlists', playlistData);
   }
 
@@ -80,7 +84,7 @@ export class MediaResource {
     description: string,
     cover: number
   ): Promise<any> {
-    const playlistData: PlaylistData = { name, release, description, cover };
+    const playlistData: Playlist = { name, release, description, cover };
     return this.client.patch<any>(`/musebase/playlists/${playlistId}`, playlistData);
   }
 
