@@ -19,7 +19,7 @@
     "test": "jest --passWithNoTests --coverage",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint src test --ext ts --ext js",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "bundle": "microbundle -f es,cjs,umd --name YurbaEvents",
     "build": "npm run clean && npm run bundle && npm run docs",
