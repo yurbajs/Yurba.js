@@ -170,10 +170,18 @@ export interface Dialog {
     Member:      boolean;
 }
 
+export interface DialogMember {
+    ID:        number;
+    Dialog:    number;
+    Member:    User;
+    Timestamp: number;
+}
+
+
 export interface CreateDialogPayload {
     name:        string;
-    description: string;
-    type:        DialogTypeInt;
+    description?: string;
+    type:        Dtype;
 }
 
 export type CreateDialogResponse = DialogInfo;
@@ -184,10 +192,9 @@ export enum DialogType {
   Private = 'private',
 }
 
-export enum DialogTypeInt {
+export enum Dtype {
   Channel = 2,
-  Group = 1,
-  Private = 0,
+  Group = 1
 }
 
 export enum DialogVerify {
