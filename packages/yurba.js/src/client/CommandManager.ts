@@ -146,8 +146,8 @@ export default class CommandManager implements ICommandManager {
    * @param enhanceMessage Function to enhance message
    */
   async handleCommand(
-    message: Message["Message"],
-    enhanceMessage: (msg: Message["Message"]) => void
+    message: Message,
+    enhanceMessage: (msg: Message) => void
   ): Promise<void> {
     enhanceMessage(message);
 
@@ -206,7 +206,7 @@ export default class CommandManager implements ICommandManager {
   async parseArgs<T extends Record<string, unknown>>(
     args: string[],
     argsSchema: CommandArgsSchema,
-    message: Message["Message"]
+    message: Message
   ): Promise<T> {
     const parsedArgs: Record<string, unknown> = {};
 

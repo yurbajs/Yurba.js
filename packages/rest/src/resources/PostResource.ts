@@ -1,24 +1,24 @@
 import { REST } from '../RestClient';
-import { PostCreate, PostModel, PostEdit, PostDeleteRespone, Language } from '@yurbajs/types';
+import { CreatePostPayload, Post, DeletePostResponse, Language } from '@yurbajs/types';
 
 export class PostResource {
   constructor(private client: REST) {}
 
-  async get(tag: string, lastId: number = 0, lang: Language = 0, feed: boolean = false): Promise<PostModel[]> {
+  async get(tag: string, lastId: number = 0, lang: Language = 0, feed: boolean = false): Promise<Post[]> {
     const language = lang ? `&lang=${lang}` : '';
-    return this.client.get<PostModel[]>(`/user/${tag}/posts?last_id=${lastId}${language}&feed=${feed}`);
+    return this.client.get<Post[]>(`/user/${tag}/posts?last_id=${lastId}${language}&feed=${feed}`);
   }
 
-  async create(tag: string, data: PostCreate): Promise<PostModel> {
-    return this.client.post<PostModel>(`/user/${tag}/post`, data);
+  async create(tag: string, data: CreatePostPayload): Promise<Post> {
+    return this.client.post<Post>(`/user/${tag}/post`, data);
   }
 
-  async delete(postId: number): Promise<PostDeleteRespone> {
-    return this.client.delete<PostDeleteRespone>(`/posts/${postId}`);
+  async delete(postId: number): Promise<DeletePostResponse> {
+    return this.client.delete<DeletePostResponse>(`/posts/${postId}`);
   }
 
-  async edit(postId: number, data: PostEdit): Promise<PostModel> {
-    return this.client.patch<PostModel>(`/posts/${postId}`, data);
+  async edit(postId: number, data: CreatePostPayload): Promise<Post> {
+    return this.client.patch<Post>(`/posts/${postId}`, data);
   }
 
   comments = {

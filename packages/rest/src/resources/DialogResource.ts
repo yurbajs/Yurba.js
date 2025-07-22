@@ -1,4 +1,6 @@
 import { REST } from '../RestClient';
+import { Dialog, DialogTypeInt } from '@yurbajs/types';
+
 
 /**
  * Ресурс для роботи з діалогами
@@ -11,21 +13,24 @@ export class DialogResource {
   }
   
   /**
-   * Отримати всі діалоги користувача
-   * @returns Список діалогів
+   * Отримати всі діалоги
+   * @since 0.1.7
+   * @category Dialogs
+   * @returns {Promise<Dialog[]} Список діалогів
+   * 
    */
-  async getAll(): Promise<any> {
-    return this.client.get<any>('/dialogs');
+  async getAll(): Promise<Dialog[]> {
+    return this.client.get<Dialog[]>('/dialogs');
   }
   
   /**
    * Створити новий діалог
-   * @param name - Назва діалогу
-   * @param description - Опис діалогу
-   * @param type - Тип діалогу
+   * @param {string} name - Назва діалогу
+   * @param {string} description - Опис діалогу
+   * @param {DialogTypeInt} type - Тип діалогу
    * @returns Створений діалог
    */
-  async create(name: string, description: string, type: string): Promise<any> {
+  async create(name: string, description: string, type: DialogTypeInt): Promise<any> {
     return this.client.post<any>('/dialogs', { name, description, type });
   }
   

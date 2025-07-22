@@ -2,7 +2,7 @@ import { REST } from '@yurbajs/rest';
 import { EventEmitter } from 'events';
 import * as pkg from '../../package.json';
 import Logger, { LogLevel } from '../utils/Logger';
-import { UserModel, CommandArgsSchema, CommandHandler, Message, PhotoModel, TokenValidationError, WebSocketError, ApiRequestError, ClientOptions, MiddlewareFunction, MiddlewareConfig } from '@yurbajs/types';
+import { CommandArgsSchema, CommandHandler, Message, TokenValidationError, WebSocketError, ApiRequestError, ClientOptions, MiddlewareFunction, MiddlewareConfig, UserModel, PhotoModel } from '@yurbajs/types';
 
 import WSM from './WebsocketManager';
 import MessageManager from './MessageManager';
@@ -272,7 +272,7 @@ class Client extends EventEmitter {
    * @param msg Message object
    * @private
    */
-  private async handleCommandMessage(msg: Message['Message']): Promise<void> {
+  private async handleCommandMessage(msg: Message): Promise<void> {
     try {
       await this.commandManager.handleCommand(msg, this.messageManager.enhanceMessage.bind(this.messageManager));
     } catch (err) {
@@ -298,21 +298,21 @@ class Client extends EventEmitter {
         this.emit('middlewareError', { error: err, message });
       });
 
-      const { Type, Message: msg } = message;
+      const msg = message;
       if (!msg) return;
 
       this.messageManager.enhanceMessage(msg);
 
       // Handle commands
-      if (Type === 'message' && msg.Text && msg.Text.startsWith(this.prefix)) {
+      if (msg.Type === 'message' && msg.Text && msg.Text.startsWith(this.prefix)) {
         await this.handleCommandMessage(msg);
       }
 
       // Emit event with message type
-      this.emit(Type, msg);
+      this.emit(msg.Type, msg);
       
       // Also emit general 'message' event for convenience
-      if (Type === 'message') {
+      if (msg.Type === 'message') {
         this.emit('message', msg);
       }
     } catch (error) {

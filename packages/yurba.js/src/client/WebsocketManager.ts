@@ -1,7 +1,7 @@
 import { default as ReconnectingWebSocket } from "@yurbajs/ws";
 import { EventEmitter } from "events";
 import Logger, { LogLevel } from "../utils/Logger";
-import { Message, ShortUserModel, IWebSocketManager } from "@yurbajs/types";
+import { Message, IWebSocketManager } from "@yurbajs/types";
 
 let logging = new Logger("WSM", { enabled: false });
 
@@ -43,7 +43,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
    * @param botData Bot data
    * @returns Promise that resolves after successful connection
    */
-  async connect(botData: ShortUserModel): Promise<void> {
+  async connect(botData: any): Promise<void> {
     this.ws = new ReconnectingWebSocket(
       `wss://api.yurba.one/ws?token=${this.token}`,
       {

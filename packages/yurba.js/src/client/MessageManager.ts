@@ -19,7 +19,7 @@ export default class MessageManager implements IMessageManager {
    * Enhances message object with additional methods
    * @param message Message object
    */
-  enhanceMessage(message: Message['Message']): void {
+  enhanceMessage(message: Message): void {
     /**
      * Replies to the message
      * @param text Reply text
