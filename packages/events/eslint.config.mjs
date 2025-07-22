@@ -9,7 +9,7 @@ export default tseslint.config(
   {
     ignores: ["dist/**", "lib/**", "**/*.d.ts", "**/*.js.map"]
   },
-  ...tseslint.configs.recommended,
+  tseslint.configs.recommended,
   {
     files: ["**/*.ts"],
     languageOptions: {
@@ -23,7 +23,8 @@ export default tseslint.config(
     },
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-require-imports": "off"
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unused-expressions": "off"
     }
   }
 );
