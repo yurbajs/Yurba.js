@@ -1,11 +1,11 @@
-import { ShortUserModel } from '../users';
+import { Author } from '../';
 import { Dialog, Repost, ReplyTo } from './';
 
 export interface Message {
     Type: string;
     Message: {
       ID: number;
-      Author: ShortUserModel;
+      Author: Author;
       Dialog: Dialog;
       Type: string;
       Text: string;
