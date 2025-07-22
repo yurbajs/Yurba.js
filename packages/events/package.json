@@ -22,7 +22,7 @@
     "lint": "eslint src/**/*.ts",
     "typecheck": "tsc --noEmit",
     "bundle": "microbundle -f es,cjs,umd --name YurbaEvents",
-    "build": "npm run clean && npm run bundle && npm run docs",
+    "build": "npm run clean && npm run bundle",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run build && npm test"
   },

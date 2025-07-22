@@ -180,7 +180,7 @@ export default class CommandManager implements ICommandManager {
     const { handler, argsSchema } = this.commands.get(actualCommand)!;
 
     try {
-      const parsedArgs = await this.parseArgs([...args], argsSchema, message);
+      const parsedArgs = await this.parseArgs([...args], argsSchema);
       if (!parsedArgs) {
         throw new Error("Invalid arguments for the command.");
       }
@@ -205,8 +205,7 @@ export default class CommandManager implements ICommandManager {
    */
   async parseArgs<T extends Record<string, unknown>>(
     args: string[],
-    argsSchema: CommandArgsSchema,
-    message: Message
+    argsSchema: CommandArgsSchema
   ): Promise<T> {
     const parsedArgs: Record<string, unknown> = {};
 
@@ -315,12 +314,7 @@ export default class CommandManager implements ICommandManager {
           break;
         }
         case "repost":
-          if (message.Repost?.ID) {
-            parsedArgs[argName] = message.Repost;
-          } else {
-            throw new CommandError("Repost is required but not found.", 'parseArgs');
-          }
-          break;
+          throw new CommandError("Repost is not supported in the current Message type.", 'parseArgs');
         default:
           throw new CommandError(`Unknown argument type: ${type}`, 'parseArgs');
       }

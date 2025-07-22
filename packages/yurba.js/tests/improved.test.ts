@@ -47,7 +47,7 @@ describe('Client Improvements', () => {
 
     it('should add middleware', () => {
       const middleware = jest.fn();
-      client.use(middleware, { name: 'test-middleware' });
+      client.use(middleware, { name: 'test-middleware', enabled: true });
       
       const middlewares = client.getMiddlewares();
       expect(middlewares).toHaveLength(1);
@@ -56,7 +56,7 @@ describe('Client Improvements', () => {
 
     it('should remove middleware', () => {
       const middleware = jest.fn();
-      client.use(middleware, { name: 'test-middleware' });
+      client.use(middleware, { name: 'test-middleware', enabled: true });
       
       const removed = client.removeMiddleware('test-middleware');
       expect(removed).toBe(true);

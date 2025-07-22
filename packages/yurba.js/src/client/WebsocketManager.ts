@@ -3,10 +3,20 @@ import { EventEmitter } from "events";
 import Logger, { LogLevel } from "../utils/Logger";
 import { 
   Message, 
-  IWebSocketManager, 
-  WebSocketSubscribeData, 
-  WebSocketUnsubscribeData 
+  IWebSocketManager
 } from "@yurbajs/types";
+
+// Локальні типи для WebSocket subscribe/unsubscribe
+interface WebSocketSubscribeData {
+  command: string;
+  category: string;
+  thing_id: number;
+}
+interface WebSocketUnsubscribeData {
+  command: string;
+  category: string;
+  thing_id: number;
+}
 
 let logging = new Logger("WSM", { enabled: false });
 

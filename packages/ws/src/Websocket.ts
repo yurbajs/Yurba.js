@@ -1,6 +1,5 @@
 import WebSocket from 'ws';
 import { EventEmitter } from 'events';
-import { ReconnectingWebSocketOptions } from '@yurbajs/types';
 
 /**
  * @internal
@@ -33,7 +32,7 @@ class ReconnectingWebSocket extends EventEmitter {
    * @param url URL to connect to
    * @param options WebSocket options
    */
-  constructor(url: string, options: ReconnectingWebSocketOptions = {}) {
+  constructor(url: string, options: _ReconnectingWebSocketOptions = {}) {
     super();
     this.url = url;
     this.options = {
