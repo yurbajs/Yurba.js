@@ -1,6 +1,1 @@
-export interface Dialog {
-    ID: number;
-    Type: string;
-    Name: string;
-    Avatar: number;
-}
+export { Dialog, DialogInfo, DialogType, DialogTypeInt, DialogVerify } from '../api';
