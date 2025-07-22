@@ -2,7 +2,19 @@ import { REST } from '@yurbajs/rest';
 import { EventEmitter } from 'events';
 import * as pkg from '../../package.json';
 import Logger, { LogLevel } from '../utils/Logger';
-import { CommandArgsSchema, CommandHandler, Message, TokenValidationError, WebSocketError, ApiRequestError, ClientOptions, MiddlewareFunction, MiddlewareConfig, UserModel, PhotoModel } from '@yurbajs/types';
+import { 
+  CommandArgsSchema, 
+  CommandHandler, 
+  Message, 
+  TokenValidationError, 
+  WebSocketError, 
+  ApiRequestError, 
+  ClientOptions, 
+  MiddlewareFunction, 
+  MiddlewareConfig, 
+  UserModel, 
+  PhotoModel 
+} from '@yurbajs/types';
 
 import WSM from './WebsocketManager';
 import MessageManager from './MessageManager';

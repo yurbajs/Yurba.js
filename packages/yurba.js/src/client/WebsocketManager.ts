@@ -1,7 +1,12 @@
 import { default as ReconnectingWebSocket } from "@yurbajs/ws";
 import { EventEmitter } from "events";
 import Logger, { LogLevel } from "../utils/Logger";
-import { Message, IWebSocketManager } from "@yurbajs/types";
+import { 
+  Message, 
+  IWebSocketManager, 
+  WebSocketSubscribeData, 
+  WebSocketUnsubscribeData 
+} from "@yurbajs/types";
 
 let logging = new Logger("WSM", { enabled: false });
 
@@ -98,7 +103,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
    * @param thing_id Object ID
    */
   public subscribeToEvents(category: string, thing_id: number): void {
-    const subscribeData = {
+    const subscribeData: WebSocketSubscribeData = {
       command: "subscribe",
       category,
       thing_id,
@@ -125,7 +130,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
    * @param thing_id Object ID
    */
   public unsubscribeFromEvents(category: string, thing_id: number): void {
-    const unsubscribeData = {
+    const unsubscribeData: WebSocketUnsubscribeData = {
       command: "unsubscribe",
       category,
       thing_id,
@@ -160,7 +165,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
     logging.info("Restoring subscriptions...");
     this.subscriptions.forEach((ids, category) => {
       ids.forEach((id) => {
-        const subscribeData = {
+        const subscribeData: WebSocketSubscribeData = {
           command: "subscribe",
           category,
           thing_id: id,

@@ -1,7 +1,11 @@
 import WebSocket from 'ws';
 import { EventEmitter } from 'events';
+import { ReconnectingWebSocketOptions } from '@yurbajs/types';
 
-interface ReconnectingWebSocketOptions {
+/**
+ * @internal
+ */
+interface _ReconnectingWebSocketOptions {
   maxReconnectAttempts?: number;
   retryDelay?: number;
   debug?: boolean;
@@ -15,7 +19,7 @@ interface ReconnectingWebSocketOptions {
  */
 class ReconnectingWebSocket extends EventEmitter {
   private url: string;
-  private options: Required<ReconnectingWebSocketOptions>;
+  private options: Required<_ReconnectingWebSocketOptions>;
   private ws: WebSocket | null = null;
   private reconnectAttempts: number = 0;
   private isConnected: boolean = false;

@@ -1,4 +1,11 @@
-import { Message, IMessageManager } from '@yurbajs/types';
+import { 
+  Message, 
+  IMessageManager, 
+  EnhancedMessage, 
+  MessageResponse, 
+  PhotoAttachment, 
+  Attachment 
+} from '@yurbajs/types';
 import { REST } from '@yurbajs/rest';
 
 /**
