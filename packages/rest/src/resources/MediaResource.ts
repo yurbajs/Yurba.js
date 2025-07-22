@@ -9,7 +9,7 @@ import {
   DeletePlaylistResponse,
   EditPlaylistResponse,
   DeleteTrackResponse
-} from '@yurbajs/types;
+} from '@yurbajs/types';
 
 /**
  * Resource for working with media
