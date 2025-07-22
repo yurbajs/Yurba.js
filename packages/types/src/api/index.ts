@@ -437,7 +437,7 @@ export interface Playlist {
 }
 
 export enum Authorship {
-    Empty = "{}", // 
+    Empty = "{}", // maybe later it has been @author
 }
 
 export interface TrackPayload {
@@ -450,6 +450,14 @@ export interface TrackPayload {
 }
 
 
+export interface PlaylistPayload {
+    name:        string;
+    release:     string;
+    description: string;
+    cover:       Photo['ID'];
+}
+export type EditPlaylistResponse = BaseOkay;
+export type DeletePlaylistResponse = BaseDelete;
 export type DeleteTrackResponse = Playlist;
 
 // -------- Videos types --------
@@ -597,7 +605,9 @@ export type PostItem = Post;
 // SYSTEM ENUMS & UTILITIES
 // ================================
 
-export interface BaseDelete {
+export type BaseDelete = BaseOkay;
+
+export interface BaseOkay {
     "ok": boolean
 }
 
