@@ -105,6 +105,7 @@ class Client extends EventEmitter {
   private isReady: boolean = false;
   private reconnectAttempts: number = 0;
   private maxReconnectAttempts: number = 5;
+  private wsmMessageSubscribed: boolean = false;
 
   /**
    * Creates a new Yurba client
@@ -237,7 +238,11 @@ class Client extends EventEmitter {
         this.emit('ready');
       });
       
-      this.wsm.on('message', (message: Message) => this.handleMessage(message));
+      // Захист від подвійної підписки на подію message
+      if (!this.wsmMessageSubscribed) {
+        this.wsm.on('message', (message: Message) => this.handleMessage(message));
+        this.wsmMessageSubscribed = true;
+      }
       
       await this.wsm.connect(user as UserModel);
     } catch (error) {
@@ -269,6 +274,7 @@ class Client extends EventEmitter {
         if (this._user) {
           await this.wsm.connect(this._user as UserModel);
         } else {
+          // Якщо немає користувача, тоді викликаємо init()
           await this.init();
         }
       } catch (error) {
@@ -320,13 +326,11 @@ class Client extends EventEmitter {
         await this.handleCommandMessage(msg);
       }
 
-      // Emit event with message type
-      this.emit(msg.Type, msg);
-      
-      // Also emit general 'message' event for convenience
-      if (msg.Type === 'message') {
-        this.emit('message', msg);
+      // Emit event with message type, але не дублюй 'message'
+      if (msg.Type !== 'message') {
+        this.emit(msg.Type, msg);
       }
+      this.emit('message', msg);
     } catch (error) {
       erlog('Error handling message:', error);
       this.emit('error', error);

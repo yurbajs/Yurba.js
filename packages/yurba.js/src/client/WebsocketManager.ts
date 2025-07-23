@@ -83,8 +83,13 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
       logging.debug("WebSocket received a message:", data);
       try {
         const raw = JSON.parse(data.toString());
-        // Якщо є вкладене поле Message, піднімаємо його на верхній рівень
-        const message = raw.Message ? { ...raw.Message, ...raw } : raw;
+        // Якщо є вкладене поле Message, використовуємо тільки його, але додаємо Type з raw
+        let message;
+        if (raw.Message) {
+          message = { ...raw.Message, Type: raw.Type || raw.Message.Type };
+        } else {
+          message = raw;
+        }
         this.emit("message", message);
       } catch (err) {
         logging.error("Failed to parse WebSocket message:", err);
