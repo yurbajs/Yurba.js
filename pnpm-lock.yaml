@@ -23,9 +23,6 @@ importers:
       '@types/ws':
         specifier: ^8.18.1
         version: 8.18.1
-      axios:
-        specifier: ^1.10.0
-        version: 1.10.0
       dotenv:
         specifier: ^17.2.0
         version: 17.2.0
@@ -117,16 +114,16 @@ importers:
   packages/rest:
     dependencies:
       '@yurbajs/types':
-        specifier: 0.1.7
-        version: 0.1.7
+        specifier: workspace:*
+        version: link:../types
 
   packages/types: {}
 
   packages/ws:
     dependencies:
       '@yurbajs/types':
-        specifier: 0.1.7
-        version: 0.1.7
+        specifier: workspace:*
+        version: link:../types
       ws:
         specifier: ^8.18.0
         version: 8.18.3
@@ -134,14 +131,14 @@ importers:
   packages/yurba.js:
     dependencies:
       '@yurbajs/rest':
-        specifier: 0.1.7
-        version: 0.1.7
+        specifier: workspace:*
+        version: link:../rest
       '@yurbajs/types':
-        specifier: 0.1.7
-        version: 0.1.7
+        specifier: workspace:*
+        version: link:../types
       '@yurbajs/ws':
-        specifier: 0.1.6
-        version: 0.1.6
+        specifier: workspace:*
+        version: link:../ws
       events:
         specifier: ^3.3.0
         version: 3.3.0
