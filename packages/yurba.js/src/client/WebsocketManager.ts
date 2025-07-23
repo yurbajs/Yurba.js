@@ -2,7 +2,6 @@ import { default as ReconnectingWebSocket } from "@yurbajs/ws";
 import { EventEmitter } from "events";
 import Logger, { LogLevel } from "../utils/Logger";
 import { 
-  Message, 
   IWebSocketManager
 } from "@yurbajs/types";
 
@@ -83,8 +82,10 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
     this.ws.on("message", (data: string) => {
       logging.debug("WebSocket received a message:", data);
       try {
-        const message: Message = JSON.parse(data.toString());
-        this.emit("message", message); // Emit "message" event for Client
+        const raw = JSON.parse(data.toString());
+        // Якщо є вкладене поле Message, піднімаємо його на верхній рівень
+        const message = raw.Message ? { ...raw.Message, ...raw } : raw;
+        this.emit("message", message);
       } catch (err) {
         logging.error("Failed to parse WebSocket message:", err);
         this.emit(

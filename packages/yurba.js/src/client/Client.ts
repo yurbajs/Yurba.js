@@ -95,7 +95,7 @@ const erlog = (...args: unknown[]): void => {
  */
 class Client extends EventEmitter {
   private token: string;
-  private prefix: string;
+  private prefix: string = '/';
   private wsm: WSM;
   public api: REST;
   private messageManager: MessageManager;
