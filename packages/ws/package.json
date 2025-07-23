@@ -34,7 +34,7 @@
     "events"
   ],
   "dependencies": {
-    "@yurbajs/types": "0.1.7",
+    "@yurbajs/types": "workspace:*",
     "ws": "^8.18.0"
   },
   "publishConfig": {

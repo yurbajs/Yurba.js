@@ -33,7 +33,7 @@
     "client"
   ],
   "dependencies": {
-    "@yurbajs/types": "0.1.7"
+    "@yurbajs/types": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

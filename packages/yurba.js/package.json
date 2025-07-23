@@ -35,9 +35,9 @@
     "yurba.one"
   ],
   "dependencies": {
-    "@yurbajs/rest": "0.1.7",
-    "@yurbajs/types": "0.1.7",
-    "@yurbajs/ws": "0.1.6",
+    "@yurbajs/rest": "workspace:*",
+    "@yurbajs/types": "workspace:*",
+    "@yurbajs/ws": "workspace:*",
     "events": "^3.3.0"
   },
   "publishConfig": {
