@@ -220,7 +220,7 @@ export default defineConfig({
     },
     'help-translate': {
       label: t('nav.help_translate'),
-      link: 'https://crowdin.com/project/yurbajs'
+      link: 'https://crowdin.com/project/yurbajs?s=https://yurba.js.org'
     }
   },
 

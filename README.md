@@ -6,7 +6,6 @@
     </a>
   </p>
   <br />
-
   <p align="center">
     <a href="https://github.com/yurbajs/yurba.js/stargazers">
       <img src="https://img.shields.io/github/stars/yurbajs/yurba.js?colorA=363a4f&colorB=b7bdf8&style=for-the-badge" alt="GitHub stars"/>
@@ -18,7 +17,6 @@
       <img src="https://img.shields.io/github/contributors/yurbajs/yurba.js?colorA=363a4f&colorB=a6da95&style=for-the-badge" alt="GitHub contributors"/>
     </a>
   </p>
-
   <p>
     <a href="https://www.npmjs.com/package/yurba.js">
       <img src="https://img.shields.io/npm/v/yurba.js.svg?colorA=363a4f&colorB=a6da95&style=flat-square" alt="npm version"/>
