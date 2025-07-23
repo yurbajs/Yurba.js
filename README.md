@@ -9,22 +9,22 @@
 
   <p align="center">
     <a href="https://github.com/yurbajs/yurba.js/stargazers">
-      <img src="https://img.shields.io/github/stars/yurbajs/yurba.js?colorA=363a4f&colorB=b7bdf8&style=for-the-badge" alt="GitHub stars" />
+      <img src="https://img.shields.io/github/stars/yurbajs/yurba.js?colorA=363a4f&colorB=b7bdf8&style=for-the-badge" alt="GitHub stars"/>
     </a>
     <a href="https://github.com/yurbajs/yurba.js/issues">
-      <img src="https://img.shields.io/github/issues/yurbajs/yurba.js?colorA=363a4f&colorB=f5a97f&style=for-the-badge" alt="GitHub issues" />
+      <img src="https://img.shields.io/github/issues/yurbajs/yurba.js?colorA=363a4f&colorB=f5a97f&style=for-the-badge" alt="GitHub issues"/>
     </a>
     <a href="https://github.com/yurbajs/yurba.js/contributors">
-      <img src="https://img.shields.io/github/contributors/yurbajs/yurba.js?colorA=363a4f&colorB=a6da95&style=for-the-badge" alt="GitHub contributors" />
+      <img src="https://img.shields.io/github/contributors/yurbajs/yurba.js?colorA=363a4f&colorB=a6da95&style=for-the-badge" alt="GitHub contributors"/>
     </a>
   </p>
 
   <p>
     <a href="https://www.npmjs.com/package/yurba.js">
-      <img src="https://img.shields.io/npm/v/yurba.js.svg?colorA=363a4f&colorB=a6da95&style=flat-square" alt="npm version" />
+      <img src="https://img.shields.io/npm/v/yurba.js.svg?colorA=363a4f&colorB=a6da95&style=flat-square" alt="npm version"/>
     </a>
     <a href="https://www.npmjs.com/package/yurba.js">
-      <img src="https://img.shields.io/npm/dt/yurba.js.svg?colorA=363a4f&colorB=a6da95&style=flat-square" alt="npm downloads" />
+      <img src="https://img.shields.io/npm/dt/yurba.js.svg?colorA=363a4f&colorB=a6da95&style=flat-square" alt="npm downloads"/>
     </a>
     <a href="https://github.com/yurbajs/yurba.js/actions/workflows/checks.yml">
       <img alt="GitHub branch check runs" src="https://img.shields.io/github/check-runs/yurbajs/yurba.js/main?style=flat-square&labelColor=%23363a4f">
