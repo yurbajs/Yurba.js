@@ -10,27 +10,33 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "build:local": "pnpm run clean && pnpm run build",
-    "test": "turbo run test",
-    "test:local": "pnpm run build:local && pnpm run test",
+    "install:all": "pnpm install",
+    "clean": "turbo run clean",
+    "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install",
+
     "lint": "turbo run lint",
     "lint:fix": "lerna run lint -- --fix",
+
+    "test": "turbo run test",
+    "test:local": "pnpm run build:local && pnpm run test",
+
+    "build": "turbo run build",
+    "build:local": "pnpm run clean && pnpm run build",
     "dev": "lerna run build --watch",
-    "clean": "turbo run clean",
-    "all": "pnpm run lint && pnpm test && pnpm build",
-    "install:all": "pnpm install",
+    "all": "pnpm run lint && pnpm run test && pnpm run build",
+
     "docs": "pnpm run docs:clean && pnpm run build && npx typedoc && node apps/docs/scripts/docs.js",
     "docs:local": "pnpm run docs:clean && npx typedoc && node apps/docs/scripts/docs.js",
     "docs:serve": "pnpm run docs && npx http-server apps/docs/dist -p 3000 -o",
     "docs:clean": "rimraf apps/docs/dist",
     "docs:watch": "typedoc --watch",
+
     "guide:dev": "vitepress dev apps/guide",
     "guide:build": "vitepress build apps/guide",
     "guide:preview": "vitepress preview apps/guide",
     "guide:start": "pnpm run guide:build && pnpm run guide:preview",
-    "publish": "turbo run lint test clean build && lerna publish",
-    "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install"
+
+    "publish": "turbo run lint test clean build && lerna publish"
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",
