@@ -1,5 +1,5 @@
 import { REST } from '../RestClient';
-import { UserModel, PhotoModel } from '@yurbajs/types';
+import { User, Photo } from '@yurbajs/types';
 
 /**
  * Ресурс для роботи з користувачами
@@ -19,8 +19,8 @@ export class UserResource {
    * Отримати інформацію про поточного користувача
    * @returns Дані користувача
    */
-  async getMe(): Promise<UserModel> {
-    return this.client.get<UserModel>('/get_me');
+  async getMe(): Promise<User> {
+    return this.client.get<User>('/get_me');
   }
 
   /**
@@ -28,8 +28,8 @@ export class UserResource {
    * @param tag Тег користувача
    * @returns Дані користувача
    */
-  async getByTag(tag: string): Promise<UserModel> {
-    return this.client.get<UserModel>(`/user/${tag}`);
+  async getByTag(tag: string): Promise<User> {
+    return this.client.get<User>(`/user/${tag}`);
   }
 
   /**
@@ -39,8 +39,8 @@ export class UserResource {
    * @param mode Режим (0 - всі, 1 - публічні, 2 - приватні)
    * @returns Список фотографій
    */
-  async getPhotos(tag: string, page: number, mode: number = 0): Promise<PhotoModel[]> {
-    return this.client.get<PhotoModel[]>(`/user/${tag}/photos?page=${page}&mode=${mode}`);
+  async getPhotos(tag: string, page: number, mode: number = 0): Promise<Photo[]> {
+    return this.client.get<Photo[]>(`/user/${tag}/photos?page=${page}&mode=${mode}`);
   }
 
   /**
@@ -49,8 +49,8 @@ export class UserResource {
    * @param page Номер сторінки
    * @returns Список друзів
    */
-  async getFriends(tag: string, page: number): Promise<UserModel[]> {
-    return this.client.get<UserModel[]>(`/user/${tag}/friends?page=${page}`);
+  async getFriends(tag: string, page: number): Promise<User[]> {
+    return this.client.get<User[]>(`/user/${tag}/friends?page=${page}`);
   }
 
   /**
@@ -58,8 +58,8 @@ export class UserResource {
    * @param page Номер сторінки
    * @returns Список запитів
    */
-  async getIncomingRequests(page: number): Promise<UserModel[]> {
-    return this.client.get<UserModel[]>(`/incoming_requests?page=${page}`);
+  async getIncomingRequests(page: number): Promise<User[]> {
+    return this.client.get<User[]>(`/incoming_requests?page=${page}`);
   }
 
   /**
@@ -67,8 +67,8 @@ export class UserResource {
    * @param page Номер сторінки
    * @returns Список запитів
    */
-  async getOutgoingRequests(page: number): Promise<UserModel[]> {
-    return this.client.get<UserModel[]>(`/outcoming_requests?page=${page}`);
+  async getOutgoingRequests(page: number): Promise<User[]> {
+    return this.client.get<User[]>(`/outcoming_requests?page=${page}`);
   }
 
   /**

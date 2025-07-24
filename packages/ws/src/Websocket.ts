@@ -1,7 +1,10 @@
 import WebSocket from 'ws';
 import { EventEmitter } from 'events';
 
-interface ReconnectingWebSocketOptions {
+/**
+ * @internal
+ */
+interface _ReconnectingWebSocketOptions {
   maxReconnectAttempts?: number;
   retryDelay?: number;
   debug?: boolean;
@@ -15,7 +18,7 @@ interface ReconnectingWebSocketOptions {
  */
 class ReconnectingWebSocket extends EventEmitter {
   private url: string;
-  private options: Required<ReconnectingWebSocketOptions>;
+  private options: Required<_ReconnectingWebSocketOptions>;
   private ws: WebSocket | null = null;
   private reconnectAttempts: number = 0;
   private isConnected: boolean = false;
@@ -29,7 +32,7 @@ class ReconnectingWebSocket extends EventEmitter {
    * @param url URL to connect to
    * @param options WebSocket options
    */
-  constructor(url: string, options: ReconnectingWebSocketOptions = {}) {
+  constructor(url: string, options: _ReconnectingWebSocketOptions = {}) {
     super();
     this.url = url;
     this.options = {

@@ -1,4 +1,4 @@
-import { Message } from './';
+import { Message } from '../api';
 
 /**
  * Represents a single argument schema entry for a command.
@@ -60,7 +60,7 @@ export type CommandArgsSchema = Record<string, CommandArgsSchemaEntry | string |
  *   console.log(args);
  * };
  */
-export type CommandHandler = (message: Message['Message'], args: CommandArgsSchema) => Promise<void>;
+export type CommandHandler = (message: Message, args: CommandArgsSchema) => Promise<void>;
 
 /**
  * Supported option types for commands.

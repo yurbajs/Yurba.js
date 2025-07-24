@@ -10,17 +10,20 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "build:local": "pnpm run clean && pnpm run build",
-    "test": "turbo run test",
-    "test:local": "pnpm run build:local && pnpm run test",
+    "install:all": "pnpm install",
+    "clean": "turbo run clean",
+    "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install",
+
     "lint": "turbo run lint",
     "lint:fix": "lerna run lint -- --fix",
-    "dev": "lerna run build --watch",
-    "clean": "turbo run clean",
-    "all": "pnpm run lint && pnpm test && pnpm build",
-    "install:all": "pnpm install",
 
+    "test": "turbo run test",
+    "test:local": "pnpm run build:local && pnpm run test",
+
+    "build": "turbo run build",
+    "build:local": "pnpm run clean && pnpm run build",
+    "dev": "lerna run build --watch",
+    "all": "pnpm run lint && pnpm run test && pnpm run build",
 
     "docs": "pnpm run docs:clean && pnpm run build && npx typedoc && node apps/docs/scripts/docs.js",
     "docs:local": "pnpm run docs:clean && npx typedoc && node apps/docs/scripts/docs.js",
@@ -33,8 +36,7 @@
     "guide:preview": "vitepress preview apps/guide",
     "guide:start": "pnpm run guide:build && pnpm run guide:preview",
 
-    "publish": "turbo run lint test clean build && lerna publish",
-    "reset": "pnpm run clean && rm -rf node_modules packages/*/node_modules && pnpm install"
+    "publish": "turbo run lint test clean build && lerna publish"
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",
@@ -42,7 +44,6 @@
     "@types/jest": "^29.5.14",
     "@types/node": "^22.16.4",
     "@types/ws": "^8.18.1",
-    "axios": "^1.10.0",
     "dotenv": "^17.2.0",
     "eslint": "^9.31.0",
     "events": "^3.3.0",
@@ -55,6 +56,7 @@
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.0",
     "turbo": "^2.5.4",
+    "type-coverage": "^2.29.7",
     "typedoc": "^0.28.7",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0",

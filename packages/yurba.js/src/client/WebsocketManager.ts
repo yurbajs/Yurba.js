@@ -1,7 +1,21 @@
 import { default as ReconnectingWebSocket } from "@yurbajs/ws";
 import { EventEmitter } from "events";
 import Logger, { LogLevel } from "../utils/Logger";
-import { Message, ShortUserModel, IWebSocketManager } from "@yurbajs/types";
+import { 
+  IWebSocketManager
+} from "@yurbajs/types";
+
+// Локальні типи для WebSocket subscribe/unsubscribe
+interface WebSocketSubscribeData {
+  command: string;
+  category: string;
+  thing_id: number;
+}
+interface WebSocketUnsubscribeData {
+  command: string;
+  category: string;
+  thing_id: number;
+}
 
 let logging = new Logger("WSM", { enabled: false });
 
@@ -43,7 +57,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
    * @param botData Bot data
    * @returns Promise that resolves after successful connection
    */
-  async connect(botData: ShortUserModel): Promise<void> {
+  async connect(botData: any): Promise<void> {
     this.ws = new ReconnectingWebSocket(
       `wss://api.yurba.one/ws?token=${this.token}`,
       {
@@ -68,8 +82,15 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
     this.ws.on("message", (data: string) => {
       logging.debug("WebSocket received a message:", data);
       try {
-        const message: Message = JSON.parse(data.toString());
-        this.emit("message", message); // Emit "message" event for Client
+        const raw = JSON.parse(data.toString());
+        // Якщо є вкладене поле Message, використовуємо тільки його, але додаємо Type з raw
+        let message;
+        if (raw.Message) {
+          message = { ...raw.Message, Type: raw.Type || raw.Message.Type };
+        } else {
+          message = raw;
+        }
+        this.emit("message", message);
       } catch (err) {
         logging.error("Failed to parse WebSocket message:", err);
         this.emit(
@@ -98,7 +119,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
    * @param thing_id Object ID
    */
   public subscribeToEvents(category: string, thing_id: number): void {
-    const subscribeData = {
+    const subscribeData: WebSocketSubscribeData = {
       command: "subscribe",
       category,
       thing_id,
@@ -125,7 +146,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
    * @param thing_id Object ID
    */
   public unsubscribeFromEvents(category: string, thing_id: number): void {
-    const unsubscribeData = {
+    const unsubscribeData: WebSocketUnsubscribeData = {
       command: "unsubscribe",
       category,
       thing_id,
@@ -160,7 +181,7 @@ export default class WSM extends EventEmitter implements IWebSocketManager {
     logging.info("Restoring subscriptions...");
     this.subscriptions.forEach((ids, category) => {
       ids.forEach((id) => {
-        const subscribeData = {
+        const subscribeData: WebSocketSubscribeData = {
           command: "subscribe",
           category,
           thing_id: id,

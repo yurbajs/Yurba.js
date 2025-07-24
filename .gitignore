@@ -28,4 +28,5 @@ dist
 
 # Test output
 coverage/
+.type-coverage/
 *.log

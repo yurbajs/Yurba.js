@@ -2,7 +2,19 @@ import { REST } from '@yurbajs/rest';
 import { EventEmitter } from 'events';
 import * as pkg from '../../package.json';
 import Logger, { LogLevel } from '../utils/Logger';
-import { UserModel, CommandArgsSchema, CommandHandler, Message, PhotoModel, TokenValidationError, WebSocketError, ApiRequestError, ClientOptions, MiddlewareFunction, MiddlewareConfig } from '@yurbajs/types';
+import { 
+  CommandArgsSchema, 
+  CommandHandler, 
+  Message, 
+  TokenValidationError, 
+  WebSocketError, 
+  ApiRequestError, 
+  ClientOptions, 
+  MiddlewareFunction, 
+  MiddlewareConfig, 
+  UserModel, 
+  PhotoModel 
+} from '@yurbajs/types';
 
 import WSM from './WebsocketManager';
 import MessageManager from './MessageManager';
@@ -83,7 +95,7 @@ const erlog = (...args: unknown[]): void => {
  */
 class Client extends EventEmitter {
   private token: string;
-  private prefix: string;
+  private prefix: string = '/';
   private wsm: WSM;
   public api: REST;
   private messageManager: MessageManager;
@@ -93,6 +105,7 @@ class Client extends EventEmitter {
   private isReady: boolean = false;
   private reconnectAttempts: number = 0;
   private maxReconnectAttempts: number = 5;
+  private wsmMessageSubscribed: boolean = false;
 
   /**
    * Creates a new Yurba client
@@ -225,7 +238,11 @@ class Client extends EventEmitter {
         this.emit('ready');
       });
       
-      this.wsm.on('message', (message: Message) => this.handleMessage(message));
+      // Захист від подвійної підписки на подію message
+      if (!this.wsmMessageSubscribed) {
+        this.wsm.on('message', (message: Message) => this.handleMessage(message));
+        this.wsmMessageSubscribed = true;
+      }
       
       await this.wsm.connect(user as UserModel);
     } catch (error) {
@@ -257,6 +274,7 @@ class Client extends EventEmitter {
         if (this._user) {
           await this.wsm.connect(this._user as UserModel);
         } else {
+          // Якщо немає користувача, тоді викликаємо init()
           await this.init();
         }
       } catch (error) {
@@ -272,7 +290,7 @@ class Client extends EventEmitter {
    * @param msg Message object
    * @private
    */
-  private async handleCommandMessage(msg: Message['Message']): Promise<void> {
+  private async handleCommandMessage(msg: Message): Promise<void> {
     try {
       await this.commandManager.handleCommand(msg, this.messageManager.enhanceMessage.bind(this.messageManager));
     } catch (err) {
@@ -298,23 +316,21 @@ class Client extends EventEmitter {
         this.emit('middlewareError', { error: err, message });
       });
 
-      const { Type, Message: msg } = message;
+      const msg = message;
       if (!msg) return;
 
       this.messageManager.enhanceMessage(msg);
 
       // Handle commands
-      if (Type === 'message' && msg.Text && msg.Text.startsWith(this.prefix)) {
+      if (msg.Type === 'message' && msg.Text && msg.Text.startsWith(this.prefix)) {
         await this.handleCommandMessage(msg);
       }
 
-      // Emit event with message type
-      this.emit(Type, msg);
-      
-      // Also emit general 'message' event for convenience
-      if (Type === 'message') {
-        this.emit('message', msg);
+      // Emit event with message type, але не дублюй 'message'
+      if (msg.Type !== 'message') {
+        this.emit(msg.Type, msg);
       }
+      this.emit('message', msg);
     } catch (error) {
       erlog('Error handling message:', error);
       this.emit('error', error);

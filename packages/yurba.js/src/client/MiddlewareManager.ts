@@ -6,14 +6,18 @@ const logging = new Logger('MiddlewareManager');
 export default class MiddlewareManager implements IMiddlewareManager {
   private middlewares: Map<string, { fn: MiddlewareFunction; config: MiddlewareConfig }> = new Map();
 
-  use(middleware: MiddlewareFunction, config: MiddlewareConfig = { name: `middleware_${Date.now()}` }): void {
-    if (this.middlewares.has(config.name)) {
-      throw new Error(`Middleware with name "${config.name}" already exists`);
+  use(middleware: MiddlewareFunction, config: Partial<MiddlewareConfig> = {}): void {
+    const fullConfig: MiddlewareConfig = {
+      name: config.name || `middleware_${Date.now()}`,
+      enabled: config.enabled !== undefined ? config.enabled : true
+    };
+    if (this.middlewares.has(fullConfig.name)) {
+      throw new Error(`Middleware with name "${fullConfig.name}" already exists`);
     }
 
-    this.middlewares.set(config.name, {
+    this.middlewares.set(fullConfig.name, {
       fn: middleware,
-      config: { priority: 0, enabled: true, ...config }
+      config: { priority: 0, enabled: true, ...config, name: fullConfig.name }
     });
 
     logging.info(`Registered middleware: ${config.name}`);
