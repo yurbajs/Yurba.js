@@ -6,7 +6,7 @@ import {
   CommandArgsSchema, 
   CommandHandler, 
   Message, 
-  TokenValidationError, 
+  YurbaError, 
   WebSocketError, 
   ApiRequestError, 
   ClientOptions, 
@@ -115,7 +115,7 @@ class Client extends EventEmitter {
    * @param options.prefix - Command prefix (default: '/')
    * @param options.maxReconnectAttempts - Maximum reconnection attempts (default: 5)
    * 
-   * @throws {TokenValidationError} When token format is invalid
+   * @throws {YurbaError} When token format is invalid
    * 
    * @example
    * ```typescript
@@ -169,11 +169,11 @@ class Client extends EventEmitter {
    */
   private validateToken(token: string): void {
     if (!token || typeof token !== 'string') {
-      throw new TokenValidationError('Token must be a non-empty string');
+      throw new YurbaError('Token must be a non-empty string');
     }
     
     if (!token.startsWith('y.') || token.length < 34) {
-      throw new TokenValidationError('Invalid Yurba token format. Token should start with "y." and be at least 34 characters long');
+      throw new YurbaError('Invalid Yurba token format. Token should start with "y." and be at least 34 characters long');
     }
   }
 
