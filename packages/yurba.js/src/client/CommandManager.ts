@@ -224,8 +224,13 @@ export default class CommandManager implements ICommandManager {
           captureRest = true;
         }
         if (argConfig.length >= 2) {
-          required = argConfig[1] !== false;
-          defaultValue = argConfig[1] === false ? null : argConfig[1];
+          if (argConfig[1] === false) {
+            required = false;
+            defaultValue = null;
+          } else {
+            required = false; // If a default value is provided, the argument is optional
+            defaultValue = argConfig[1];
+          }
         }
       } else {
         type = argConfig.type;
