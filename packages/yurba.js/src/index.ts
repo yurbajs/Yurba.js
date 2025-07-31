@@ -4,7 +4,7 @@ export {
   Client,
   Dev,
   Logger,
-  Version,
+  Version, 
   Author
 };
 

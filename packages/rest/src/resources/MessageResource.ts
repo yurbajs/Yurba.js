@@ -57,7 +57,7 @@ export class MessageResource {
       attachments: attachments || [],
       repost: repost || null,
     };
-    return this.client.post<any>(`/dialogs/${dialogId}/messages`, messageData);
+    return await this.client.post<any>(`/dialogs/${dialogId}/messages`, messageData);
   }
 
   /**
@@ -66,7 +66,7 @@ export class MessageResource {
    * @returns Результат видалення
    */
   async delete(messageId: number): Promise<boolean> {
-    await this.client.delete<any>(`/dialogs/messages/${messageId}`);
-    return true;
+    await this.client.patch<any>(`/dialogs/messages/${messageId}`);
+    return await this.client.delete<any>(`/dialogs/messages/${messageId}`);
   }
 }

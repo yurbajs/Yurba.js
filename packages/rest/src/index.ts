@@ -1,4 +1,4 @@
-import { REST, ApiError } from './RestClient';
+import { REST, ApiError, RestClientOptions, RequestConfig, RateLimitConfig } from './RestClient';
 import { UserResource } from './resources/UserResource';
 import { MessageResource } from './resources/MessageResource';
 import { DialogResource } from './resources/DialogResource';
@@ -6,18 +6,60 @@ import { PostResource } from './resources/PostResource';
 import { MediaResource } from './resources/MediaResource';
 import { AuthResource } from './resources/AuthResource';
 
-// Extend RestClient with resources
+/**
+ * Enhanced REST client for Yurba.one API with all resources
+ * 
+ * @example Basic usage
+ * ```typescript
+ * import { RestClient } from '@yurbajs/rest';
+ * 
+ * const client = new RestClient('your-token');
+ * const user = await client.users.getMe();
+ * ```
+ * 
+ * @example With configuration
+ * ```typescript
+ * const client = new RestClient('your-token', {
+ *   timeout: 10000,
+ *   maxRetries: 5,
+ *   debug: true
+ * });
+ * 
+ * // Set rate limiting
+ * client.setRateLimit({ maxRequests: 100, windowMs: 60000 });
+ * ```
+ * 
+ * @public
+ */
 class RestClient extends REST {
-  public users: UserResource;
-  public messages: MessageResource;
-  public dialogs: DialogResource;
-  public posts: PostResource;
-  public media: MediaResource;
-  public auth: AuthResource;
+  /** User-related API operations */
+  public readonly users: UserResource;
+  
+  /** Message-related API operations */
+  public readonly messages: MessageResource;
+  
+  /** Dialog-related API operations */
+  public readonly dialogs: DialogResource;
+  
+  /** Post-related API operations */
+  public readonly posts: PostResource;
+  
+  /** Media-related API operations */
+  public readonly media: MediaResource;
+  
+  /** Authentication-related API operations */
+  public readonly auth: AuthResource;
 
-  constructor(token: string, baseURL: string = 'https://api.yurba.one') {
-    super(token, baseURL);
+  /**
+   * Creates a new REST client with all resources
+   * 
+   * @param token - Authorization token for API requests
+   * @param options - Configuration options
+   */
+  constructor(token: string, options?: RestClientOptions) {
+    super(token, options);
     
+    // Initialize all resources
     this.users = new UserResource(this);
     this.messages = new MessageResource(this);
     this.dialogs = new DialogResource(this);
@@ -27,10 +69,24 @@ class RestClient extends REST {
   }
 }
 
-export {
-  RestClient as REST,
-  ApiError,
-};
-
+// Export main client as default and named export
+export { RestClient as REST };
 export default RestClient;
 
+// Export types and utilities
+export {
+  ApiError,
+  RestClientOptions,
+  RequestConfig,
+  RateLimitConfig
+};
+
+// Export individual resources for advanced usage
+export {
+  UserResource,
+  MessageResource,
+  DialogResource,
+  PostResource,
+  MediaResource,
+  AuthResource
+};
